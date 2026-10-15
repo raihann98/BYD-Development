@@ -1,0 +1,28 @@
+# Shopify CLI
+.shopify/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+*.stackdump
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Node / Build tools (jika ada)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor directories & files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary & log files
+*.log
+tmp/

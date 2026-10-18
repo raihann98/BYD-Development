@@ -1,0 +1,100 @@
+<section class="byd-explore-section">
+  <div class="byd-explore-grid">
+    <!-- Card 1: Lokasi -->
+    <a href="{{ section.settings.card_1_link | default: '/pages/contact' }}" class="byd-explore-card">
+      <div class="byd-explore-card-media">
+        {%- if section.settings.card_1_image != blank -%}
+          {{ section.settings.card_1_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.card_1_title }}
+        {%- else -%}
+          <img src="{{ 'byd-explore-map.webp' | asset_url }}" alt="Lokasi" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="byd-explore-card-content">
+        <h3 class="byd-explore-card-title">{{ section.settings.card_1_title | default: 'Lokasi' }}</h3>
+        <span class="byd-btn byd-btn-white">{{ section.settings.card_1_btn | default: 'Jelajahi' }}</span>
+      </div>
+    </a>
+
+    <!-- Card 2: Berita dan Artikel -->
+    <a href="{{ section.settings.card_2_link | default: '/blogs/news' }}" class="byd-explore-card">
+      <div class="byd-explore-card-media">
+        {%- if section.settings.card_2_image != blank -%}
+          {{ section.settings.card_2_image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.card_2_title }}
+        {%- else -%}
+          <img src="{{ 'byd-explore-building.webp' | asset_url }}" alt="Berita dan Artikel" loading="lazy">
+        {%- endif -%}
+      </div>
+      <div class="byd-explore-card-content">
+        <h3 class="byd-explore-card-title">{{ section.settings.card_2_title | default: 'Berita dan Artikel' }}</h3>
+        <span class="byd-btn byd-btn-white">{{ section.settings.card_2_btn | default: 'Jelajahi' }}</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BYD Explore Cards",
+  "tag": "section",
+  "class": "byd-section-explore",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Card 1 Settings"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card 1 Title",
+      "default": "Lokasi"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_1_image",
+      "label": "Card 1 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_1_btn",
+      "label": "Card 1 Button Label",
+      "default": "Jelajahi"
+    },
+    {
+      "type": "url",
+      "id": "card_1_link",
+      "label": "Card 1 Link"
+    },
+    {
+      "type": "header",
+      "content": "Card 2 Settings"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card 2 Title",
+      "default": "Berita dan Artikel"
+    },
+    {
+      "type": "image_picker",
+      "id": "card_2_image",
+      "label": "Card 2 Image"
+    },
+    {
+      "type": "text",
+      "id": "card_2_btn",
+      "label": "Card 2 Button Label",
+      "default": "Jelajahi"
+    },
+    {
+      "type": "url",
+      "id": "card_2_link",
+      "label": "Card 2 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Explore Cards"
+    }
+  ]
+}
+{% endschema %}

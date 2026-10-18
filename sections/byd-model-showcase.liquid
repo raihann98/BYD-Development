@@ -1,0 +1,144 @@
+<section class="byd-showcase-section" id="{{ section.settings.section_anchor | default: 'showcase' }}">
+  <!-- Background Image -->
+  <div class="byd-showcase-bg">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 2880 | image_tag: loading: 'lazy', alt: section.settings.model_title }}
+    {%- elsif section.settings.default_asset != blank -%}
+      <img src="{{ section.settings.default_asset | asset_url }}" alt="{{ section.settings.model_title }}" loading="lazy">
+    {%- else -%}
+      <img src="{{ 'byd-showcase-seal.jpg' | asset_url }}" alt="BYD Vehicle Showcase" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  <!-- Content Overlay -->
+  <div class="byd-showcase-overlay">
+    <!-- Top Model Title -->
+    <div class="byd-showcase-title-wrap">
+      <h2 class="byd-h2" style="color: {{ section.settings.text_color | default: '#ffffff' }};">
+        {{ section.settings.model_title | default: 'BYD SEAL' }}
+      </h2>
+      {%- if section.settings.model_desc != blank -%}
+        <p class="byd-desc" style="color: {{ section.settings.text_color | default: '#ffffff' }};">
+          {{ section.settings.model_desc }}
+        </p>
+      {%- endif -%}
+    </div>
+
+    <!-- Bottom CTAs -->
+    <div class="byd-showcase-actions">
+      {%- if section.settings.label_explore != blank -%}
+        <a href="{{ section.settings.url_explore | default: '/collections/all' }}" class="byd-btn byd-btn-white">
+          {{ section.settings.label_explore | default: 'Jelajahi' }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.label_test_drive != blank -%}
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-btn byd-btn-white">
+          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.label_quote != blank -%}
+        <a href="{{ section.settings.url_quote | default: '/pages/contact' }}" class="byd-btn byd-btn-white">
+          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BYD Model Showcase",
+  "tag": "section",
+  "class": "byd-section-showcase-wrap",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_anchor",
+      "label": "HTML Anchor ID",
+      "info": "Contoh: showcase-seal, showcase-atto3",
+      "default": "showcase-seal"
+    },
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Model Name / Title",
+      "default": "BYD SEAL"
+    },
+    {
+      "type": "text",
+      "id": "model_desc",
+      "label": "Description (Optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "text",
+      "id": "default_asset",
+      "label": "Default Asset Filename",
+      "default": "byd-showcase-seal.jpg"
+    },
+    {
+      "type": "select",
+      "id": "text_color",
+      "label": "Title Color",
+      "options": [
+        { "value": "#ffffff", "label": "White" },
+        { "value": "#000000", "label": "Black" }
+      ],
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "CTA Buttons"
+    },
+    {
+      "type": "text",
+      "id": "label_explore",
+      "label": "Button 1 Label",
+      "default": "Jelajahi"
+    },
+    {
+      "type": "url",
+      "id": "url_explore",
+      "label": "Button 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Button 2 Label",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Button 2 Link"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Button 3 Label",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Button 3 Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Model Showcase",
+      "settings": {
+        "model_title": "BYD SEAL",
+        "default_asset": "byd-showcase-seal.jpg",
+        "section_anchor": "showcase-seal"
+      }
+    }
+  ]
+}
+{% endschema %}

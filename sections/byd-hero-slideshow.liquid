@@ -1,0 +1,285 @@
+<section class="byd-hero-slider" id="bydHeroSlider" data-autoplay="{{ section.settings.enable_autoplay | default: 'true' }}" data-speed="{{ section.settings.autoplay_speed | default: 5000 }}">
+  <div class="byd-slides-track" id="bydHeroTrack">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        <div class="byd-slide-item" {{ block.shopify_attributes }}>
+          <div class="byd-slide-media">
+            {%- if block.settings.slide_image != blank -%}
+              {{ block.settings.slide_image | image_url: width: 2880 | image_tag: loading: 'lazy', alt: block.settings.title }}
+            {%- elsif block.settings.default_asset != blank -%}
+              <img src="{{ block.settings.default_asset | asset_url }}" alt="{{ block.settings.title }}" loading="lazy">
+            {%- else -%}
+              <img src="{{ 'byd-kv-m6-dm.jpg' | asset_url }}" alt="BYD KV Slide" loading="lazy">
+            {%- endif -%}
+          </div>
+          <div class="byd-slide-content">
+            <div class="byd-slide-header">
+              {%- if block.settings.title != blank -%}
+                <h2 class="byd-h2" style="color: {{ block.settings.text_color | default: '#ffffff' }};">{{ block.settings.title }}</h2>
+              {%- endif -%}
+              {%- if block.settings.subtitle != blank -%}
+                <p class="byd-desc" style="color: {{ block.settings.text_color | default: '#ffffff' }};">{{ block.settings.subtitle }}</p>
+              {%- endif -%}
+            </div>
+            <div class="byd-slide-footer">
+              {%- if block.settings.cta_label != blank -%}
+                <a href="{{ block.settings.cta_link | default: '#showcase-seal' }}" class="byd-btn {% if block.settings.button_style == 'black' %}byd-btn-black{% else %}byd-btn-white{% endif %}">
+                  {{ block.settings.cta_label }}
+                </a>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Default 7 Slides from BYD Reference -->
+      <!-- Slide 1: M6 DM -->
+      <div class="byd-slide-item byd-slide-m6dm">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-m6-dm.jpg' | asset_url }}" alt="BYD M6 DM" loading="eager">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="#showcase-m6dm" class="byd-btn byd-btn-white">Jelajahi BYD M6 DM</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: ATTO 1 -->
+      <div class="byd-slide-item byd-slide-atto1">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-atto1.png' | asset_url }}" alt="BYD ATTO 1" loading="lazy">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="#showcase-atto1" class="byd-btn byd-btn-white">Jelajahi BYD ATTO 1</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: SEAL -->
+      <div class="byd-slide-item byd-slide-seal">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-seal.jpg' | asset_url }}" alt="BYD SEAL" loading="lazy">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="#showcase-seal" class="byd-btn byd-btn-white">Jelajahi BYD SEAL</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: ATTO 3 -->
+      <div class="byd-slide-item byd-slide-atto3">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-atto3.jpg' | asset_url }}" alt="BYD ATTO 3" loading="lazy">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="#showcase-atto3" class="byd-btn byd-btn-white">Jelajahi BYD ATTO 3</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Cari Dealer -->
+      <div class="byd-slide-item byd-slide-dealer">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-dealer.png' | asset_url }}" alt="Cari Dealer" loading="lazy">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="/pages/contact" class="byd-btn byd-btn-white">Cari Dealer</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: DOLPHIN -->
+      <div class="byd-slide-item byd-slide-dolphin">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-dolphin.jpg' | asset_url }}" alt="BYD DOLPHIN" loading="lazy">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="#showcase-dolphin" class="byd-btn byd-btn-white">Jelajahi BYD DOLPHIN</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: SEALION 7 -->
+      <div class="byd-slide-item byd-slide-sealion7">
+        <div class="byd-slide-media">
+          <img src="{{ 'byd-kv-sealion7.jpg' | asset_url }}" alt="BYD SEALION 7" loading="lazy">
+        </div>
+        <div class="byd-slide-content">
+          <div class="byd-slide-header"></div>
+          <div class="byd-slide-footer">
+            <a href="/pages/contact" class="byd-btn byd-btn-white">Jelajahi BYD SEALION 7</a>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Navigation Arrows -->
+  <button class="byd-slider-arrow byd-arrow-prev" id="bydHeroPrev" aria-label="Previous Slide">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
+  <button class="byd-slider-arrow byd-arrow-next" id="bydHeroNext" aria-label="Next Slide">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+  </button>
+
+  <!-- Pagination Bullets -->
+  <div class="byd-slider-pagination" id="bydHeroPagination"></div>
+</section>
+
+<script>
+  (function() {
+    const slider = document.getElementById('bydHeroSlider');
+    const track = document.getElementById('bydHeroTrack');
+    const prevBtn = document.getElementById('bydHeroPrev');
+    const nextBtn = document.getElementById('bydHeroNext');
+    const pagination = document.getElementById('bydHeroPagination');
+    if (!track) return;
+
+    const slides = track.querySelectorAll('.byd-slide-item');
+    const total = slides.length;
+    let currentIndex = 0;
+    let timer = null;
+
+    // Create pagination bullets
+    pagination.innerHTML = '';
+    slides.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.className = 'byd-dot' + (idx === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+      dot.addEventListener('click', () => goToSlide(idx));
+      pagination.appendChild(dot);
+    });
+
+    const dots = pagination.querySelectorAll('.byd-dot');
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === currentIndex);
+      });
+    }
+
+    function goToSlide(idx) {
+      currentIndex = (idx + total) % total;
+      updateSlider();
+      resetTimer();
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goToSlide(currentIndex - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+    function startTimer() {
+      timer = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 5500);
+    }
+
+    function resetTimer() {
+      if (timer) clearInterval(timer);
+      startTimer();
+    }
+
+    startTimer();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BYD Hero KV Slideshow",
+  "tag": "section",
+  "class": "byd-section-hero",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable Auto Slide",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Auto Slide Interval (Seconds)",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 5
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Banner Slide",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "Slide Image"
+        },
+        {
+          "type": "text",
+          "id": "default_asset",
+          "label": "Default Asset Filename (Fallback)",
+          "info": "Contoh: byd-kv-seal.jpg"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Slide Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Slide Subtitle"
+        },
+        {
+          "type": "select",
+          "id": "text_color",
+          "label": "Text Color",
+          "options": [
+            { "value": "#ffffff", "label": "White" },
+            { "value": "#000000", "label": "Black" }
+          ],
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "cta_label",
+          "label": "CTA Button Label"
+        },
+        {
+          "type": "url",
+          "id": "cta_link",
+          "label": "CTA Button Link"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "Button Style",
+          "options": [
+            { "value": "white", "label": "White (Outlined/Blur)" },
+            { "value": "black", "label": "Solid Black" }
+          ],
+          "default": "white"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Hero KV Slideshow"
+    }
+  ]
+}
+{% endschema %}

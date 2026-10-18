@@ -26,3 +26,7 @@ yarn-error.log*
 # Temporary & log files
 *.log
 tmp/
+
+# Reference materials & network logs
+Referensi/
+*.har

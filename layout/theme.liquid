@@ -28,6 +28,13 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
+    {%- if template.name == 'index' -%}
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+      {{ 'byd-styles.css' | asset_url | stylesheet_tag }}
+    {%- endif -%}
+
     {{ content_for_header }}
   </head>
 
@@ -37,9 +44,11 @@
     {% render 'chat-drawer' %}
 
     <div class="page-wrapper">
-      <div id="header-group">
-        {% sections 'header-group' %}
-      </div>
+      {%- unless template.name == 'index' -%}
+        <div id="header-group">
+          {% sections 'header-group' %}
+        </div>
+      {%- endunless -%}
 
       <script>
         /**
@@ -159,9 +168,11 @@
         {{ content_for_layout }}
       </main>
 
-      <footer>
-        {% sections 'footer-group' %}
-      </footer>
+      {%- unless template.name == 'index' -%}
+        <footer>
+          {% sections 'footer-group' %}
+        </footer>
+      {%- endunless -%}
     </div>
 
     {% render 'cart-drawer', render_wrapper: true %}

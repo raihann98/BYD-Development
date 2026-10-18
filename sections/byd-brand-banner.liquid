@@ -1,0 +1,48 @@
+<section class="byd-brand-banner-section">
+  <div class="byd-brand-banner-media">
+    {%- if section.settings.image != blank -%}
+      {{ section.settings.image | image_url: width: 2880 | image_tag: loading: 'lazy', alt: section.settings.title | default: 'Technology Green Future' }}
+    {%- else -%}
+      <img src="{{ 'byd-banner-bottom.jpg' | asset_url }}" alt="Technology Green Future" loading="lazy">
+    {%- endif -%}
+  </div>
+
+  {%- if section.settings.title != blank -%}
+    <div class="byd-brand-banner-text-overlay">
+      <h2 class="byd-h2">{{ section.settings.title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="byd-desc">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "BYD Brand Banner",
+  "tag": "section",
+  "class": "byd-section-brand-banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Banner Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading Text (Optional)"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle Text (Optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Brand Banner"
+    }
+  ]
+}
+{% endschema %}

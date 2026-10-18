@@ -1,0 +1,93 @@
+<footer class="byd-footer">
+  <div class="byd-footer-inner">
+    <div class="byd-footer-top">
+      <!-- Legal & Policy Links -->
+      <ul class="byd-footer-nav">
+        <li><a href="{{ section.settings.link_privacy | default: '/pages/contact' }}">Kebijakan Privasi</a></li>
+        <li><a href="{{ section.settings.link_terms | default: '/pages/contact' }}">Ketentuan Penggunaan</a></li>
+        <li><a href="{{ section.settings.link_cookies | default: '/pages/contact' }}">Kuki</a></li>
+      </ul>
+
+      <!-- Social Media Links -->
+      <div class="byd-footer-social">
+        <span class="byd-social-label">IKUTI KAMI</span>
+        <div class="byd-social-links">
+          <a href="{{ section.settings.social_fb | default: 'https://www.facebook.com/IndonesiaBYD/' }}" target="_blank" rel="noopener" class="byd-social-link" aria-label="Facebook">
+            <img src="{{ 'byd-facebook.svg' | asset_url }}" alt="Facebook" width="16" height="16">
+          </a>
+          <a href="{{ section.settings.social_ig | default: 'https://www.instagram.com/byd_indonesia/' }}" target="_blank" rel="noopener" class="byd-social-link" aria-label="Instagram">
+            <img src="{{ 'byd-instagram.svg' | asset_url }}" alt="Instagram" width="16" height="16">
+          </a>
+          <a href="{{ section.settings.social_yt | default: 'https://www.youtube.com/channel/UCIX-Iq7BHJ7kZQvEoVDTVQw' }}" target="_blank" rel="noopener" class="byd-social-link" aria-label="YouTube">
+            <img src="{{ 'byd-youtube.svg' | asset_url }}" alt="YouTube" width="16" height="16">
+          </a>
+          <a href="{{ section.settings.social_tt | default: 'https://www.tiktok.com/@byd_indonesia' }}" target="_blank" rel="noopener" class="byd-social-link" aria-label="TikTok">
+            <img src="{{ 'byd-tiktok.svg' | asset_url }}" alt="TikTok" width="16" height="16">
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="byd-footer-bottom">
+      <div class="byd-copyright">
+        {{ section.settings.copyright | default: 'PT BYD Motor Indonesia. Hak cipta dilindungi undang-undang.' }}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "BYD Footer",
+  "tag": "section",
+  "class": "byd-section-footer",
+  "settings": [
+    {
+      "type": "text",
+      "id": "copyright",
+      "label": "Copyright Text",
+      "default": "PT BYD Motor Indonesia. Hak cipta dilindungi undang-undang."
+    },
+    {
+      "type": "url",
+      "id": "link_privacy",
+      "label": "Kebijakan Privasi URL"
+    },
+    {
+      "type": "url",
+      "id": "link_terms",
+      "label": "Ketentuan Penggunaan URL"
+    },
+    {
+      "type": "url",
+      "id": "link_cookies",
+      "label": "Kuki URL"
+    },
+    {
+      "type": "url",
+      "id": "social_fb",
+      "label": "Facebook URL"
+    },
+    {
+      "type": "url",
+      "id": "social_ig",
+      "label": "Instagram URL"
+    },
+    {
+      "type": "url",
+      "id": "social_yt",
+      "label": "YouTube URL"
+    },
+    {
+      "type": "url",
+      "id": "social_tt",
+      "label": "TikTok URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Footer"
+    }
+  ]
+}
+{% endschema %}

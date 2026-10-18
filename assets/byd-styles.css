@@ -1,0 +1,1227 @@
+/* BYD Indonesia Homepage Stylesheet — Scoped for BYD Theme Sections */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --byd-font: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --byd-black: #000000;
+  --byd-dark: #252728;
+  --byd-white: #ffffff;
+  --byd-gray-bg: #f5f6f8;
+  --byd-gray-border: #d9d9d9;
+  --byd-gray-text: #62686b;
+  --byd-header-height: 68px;
+  --byd-transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Global Reset for BYD components */
+.byd-page-wrapper,
+.byd-page-wrapper * {
+  box-sizing: border-box;
+  font-family: var(--byd-font);
+}
+
+.byd-page-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+  background-color: var(--byd-black);
+  color: var(--byd-white);
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+/* Typography Helpers */
+.byd-h2 {
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.byd-desc {
+  font-size: clamp(14px, 1.6vw, 20px);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Buttons */
+.byd-btn-group {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.byd-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  height: 48px;
+  padding: 0 24px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  border-radius: 0px;
+  transition: var(--byd-transition);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.byd-btn-white {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--byd-white);
+  color: var(--byd-white);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.byd-btn-white:hover {
+  background: var(--byd-white);
+  color: var(--byd-black);
+}
+
+.byd-btn-black {
+  background: var(--byd-black);
+  border: 1px solid var(--byd-black);
+  color: var(--byd-white);
+}
+
+.byd-btn-black:hover {
+  background: transparent;
+  color: var(--byd-white);
+  border-color: var(--byd-white);
+}
+
+/* ==========================================================================
+   1. BYD Header & Navigation
+   ========================================================================== */
+.byd-header,
+.byd-header * {
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  box-sizing: border-box;
+}
+
+.byd-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 68px;
+  background-color: #252728 !important;
+  z-index: 1000;
+  border-bottom: none;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: var(--byd-transition);
+}
+
+.byd-header-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 clamp(16px, 2.5vw, 40px);
+}
+
+.byd-header-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-decoration: none;
+  margin-right: clamp(36px, 3.8vw, 64px);
+  flex-shrink: 0;
+}
+
+.byd-header-logo {
+  height: 22px;
+  width: auto;
+  display: block;
+}
+
+.byd-header-nav-wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.byd-header-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 1.6vw, 30px);
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.byd-nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.byd-nav-link {
+  color: #ffffff !important;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 68px;
+  letter-spacing: 0.015em;
+  text-decoration: none !important;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.byd-nav-link.byd-nav-dm {
+  text-transform: none !important;
+}
+
+.byd-nav-link:hover,
+.byd-nav-item:hover > .byd-nav-link {
+  color: #ffffff !important;
+  border-bottom-color: #ffffff;
+}
+
+/* Header Right Utilities */
+.byd-header-utilities {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.6vw, 24px);
+  height: 100%;
+  margin-left: clamp(12px, 1.8vw, 28px);
+  flex-shrink: 0;
+}
+
+.byd-util-link {
+  color: #ffffff !important;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 68px;
+  letter-spacing: 0.015em;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 0 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom-color 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.byd-util-link:hover {
+  color: #ffffff !important;
+  border-bottom-color: #ffffff;
+}
+
+.byd-util-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  color: #ffffff;
+}
+
+.byd-globe-link .byd-util-icon {
+  width: 22px;
+  height: 22px;
+}
+
+/* Mega Menu Dropdown for MODEL (Pure White Full-Width per reference screenshot) */
+.byd-mega-menu {
+  position: fixed !important;
+  top: 68px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 48px clamp(32px, 5vw, 90px) 64px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 999;
+}
+
+.byd-nav-item-model:hover .byd-mega-menu,
+.byd-nav-item-model.open .byd-mega-menu,
+.byd-nav-item-model:focus-within .byd-mega-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.byd-nav-item-model:hover > .byd-nav-link,
+.byd-nav-item-model.open > .byd-nav-link {
+  color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+
+.byd-models-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 48px clamp(16px, 2.8vw, 44px);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.byd-model-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  text-decoration: none !important;
+  color: #252728 !important;
+  padding: 8px 4px;
+  transition: transform 0.25s ease;
+  cursor: pointer;
+}
+
+.byd-model-card:hover {
+  transform: translateY(-4px);
+}
+
+.byd-model-name {
+  font-family: Montserrat, Arial, sans-serif !important;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #252728 !important;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  transition: color 0.2s ease;
+}
+
+.byd-model-card:hover .byd-model-name {
+  color: #000000 !important;
+}
+
+.byd-model-thumb-wrap {
+  width: 100%;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.byd-model-thumb {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.byd-model-card:hover .byd-model-thumb {
+  transform: scale(1.04);
+}
+
+/* Full-Width Dropdown Menu for AFTERSALES (Pure White per reference screenshot) */
+.byd-aftersales-menu {
+  position: fixed !important;
+  top: 68px !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 50px clamp(32px, 6vw, 100px) 70px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  z-index: 999;
+}
+
+.byd-nav-item-aftersales:hover .byd-aftersales-menu,
+.byd-nav-item-aftersales.open .byd-aftersales-menu,
+.byd-nav-item-aftersales:focus-within .byd-aftersales-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.byd-nav-item-aftersales:hover > .byd-nav-link,
+.byd-nav-item-aftersales.open > .byd-nav-link {
+  color: #ffffff !important;
+  border-bottom-color: #ffffff !important;
+}
+
+.byd-aftersales-container {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(40px, 8vw, 140px);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.byd-aftersales-title {
+  font-family: Montserrat, Arial, sans-serif !important;
+  font-size: 20px;
+  font-weight: 700;
+  color: #252728 !important;
+  white-space: nowrap;
+  min-width: 140px;
+  padding-top: 2px;
+}
+
+.byd-aftersales-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.byd-aftersales-item a {
+  font-family: Montserrat, Arial, sans-serif !important;
+  font-size: 16px;
+  font-weight: 600;
+  color: #252728 !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.byd-aftersales-item a:hover {
+  color: #000000 !important;
+}
+
+/* Mobile Toggle Hamburger */
+.byd-mobile-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.byd-mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--byd-white);
+  margin: 5px 0;
+  transition: var(--byd-transition);
+}
+
+/* Mobile Drawer (Hidden on Desktop) */
+.byd-mobile-drawer {
+  display: none;
+}
+
+/* ==========================================================================
+   2. Hero KV Banner Slideshow (100vh)
+   ========================================================================== */
+.byd-hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--byd-black);
+}
+
+.byd-slides-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.byd-slide-item {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.byd-slide-media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.byd-slide-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Hero Slide Car Background Alignments - Desktop */
+.byd-slide-m6dm .byd-slide-media img {
+  object-position: 38% center !important;
+}
+.byd-slide-atto1 .byd-slide-media img {
+  object-position: 68% center !important;
+}
+.byd-slide-seal .byd-slide-media img {
+  object-position: 44% center !important;
+}
+.byd-slide-atto3 .byd-slide-media img {
+  object-position: 52% center !important;
+}
+.byd-slide-dealer .byd-slide-media img {
+  object-position: 48% center !important;
+}
+.byd-slide-dolphin .byd-slide-media img {
+  object-position: 46% center !important;
+}
+.byd-slide-sealion7 .byd-slide-media img {
+  object-position: 58% center !important;
+}
+
+.byd-slide-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 24px 64px;
+  text-align: center;
+}
+
+.byd-slide-header {
+  max-width: 900px;
+}
+
+.byd-slide-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.byd-slide-footer .byd-btn,
+.byd-hero-slider .byd-btn {
+  background: rgba(0, 0, 0, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.04em !important;
+  min-width: clamp(180px, 15vw, 240px) !important;
+  height: 42px !important;
+  padding: 0 24px !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(2.5px) !important;
+  -webkit-backdrop-filter: blur(2.5px) !important;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.byd-slide-footer .byd-btn:hover,
+.byd-hero-slider .byd-btn:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+/* Slider Controls & Bullets */
+.byd-slider-pagination {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  z-index: 10;
+}
+
+.byd-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--byd-white);
+  opacity: 0.45;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.byd-dot.active {
+  opacity: 1;
+  transform: scale(2.6);
+  border-radius: 2px;
+}
+
+.byd-slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--byd-white);
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  transition: var(--byd-transition);
+}
+
+.byd-slider-arrow:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.byd-arrow-prev {
+  left: clamp(16px, 3vw, 40px);
+}
+
+.byd-arrow-next {
+  right: clamp(16px, 3vw, 40px);
+}
+
+/* ==========================================================================
+   3. Model Showcase Sections (Full-screen Visual Sections)
+   ========================================================================== */
+.byd-showcase-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 650px;
+  overflow: hidden;
+  background-color: var(--byd-black);
+}
+
+.byd-showcase-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.byd-showcase-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.byd-showcase-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 110px 24px 64px;
+  text-align: center;
+}
+
+.byd-showcase-title-wrap {
+  max-width: 900px;
+}
+
+.byd-showcase-actions {
+  display: flex;
+  gap: clamp(20px, 2.5vw, 40px);
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: clamp(16px, 3vh, 36px);
+  width: 100%;
+}
+
+.byd-showcase-actions .byd-btn,
+.byd-showcase-actions .byd-btn-white {
+  background: rgba(0, 0, 0, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  min-width: clamp(200px, 18vw, 260px);
+  height: 48px;
+  padding: 0 28px;
+  border-radius: 0px !important;
+  box-shadow: none;
+  backdrop-filter: blur(2.5px) !important;
+  -webkit-backdrop-filter: blur(2.5px) !important;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.byd-showcase-actions .byd-btn:hover,
+.byd-showcase-actions .byd-btn-white:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+/* Car Background Alignment - Default Desktop */
+#showcase-atto1 .byd-showcase-bg img {
+  object-position: 68% center !important;
+}
+#showcase-dolphin .byd-showcase-bg img {
+  object-position: 68% center !important;
+}
+#showcase-seal .byd-showcase-bg img {
+  object-position: 45% center !important;
+}
+#showcase-atto3 .byd-showcase-bg img {
+  object-position: 44% center !important;
+}
+#showcase-m6 .byd-showcase-bg img {
+  object-position: 48% center !important;
+}
+
+/* ==========================================================================
+   4. Explore More Cards (Grid 2 Kolom)
+   ========================================================================== */
+.byd-explore-section {
+  width: 100%;
+  background: var(--byd-black);
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.byd-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 !important;
+  width: 100%;
+  max-width: 100% !important;
+  margin: 0;
+}
+
+.byd-explore-card {
+  position: relative;
+  height: clamp(480px, 50vh, 560px);
+  overflow: hidden;
+  text-decoration: none;
+  background-color: #161616;
+  display: block;
+}
+
+.byd-explore-card:last-child {
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.byd-explore-card-media {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.byd-explore-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.byd-explore-card:hover .byd-explore-card-media img {
+  transform: scale(1.05);
+}
+
+.byd-explore-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 60px 24px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.82) 100%);
+  z-index: 2;
+}
+
+.byd-explore-card-title {
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: clamp(32px, 3.2vw, 46px);
+  font-weight: 700;
+  color: #ffffff !important;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.byd-explore-card-content .byd-btn {
+  background: rgba(0, 0, 0, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  color: #ffffff !important;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0.02em !important;
+  min-width: 170px;
+  height: 44px;
+  padding: 0 28px;
+  border-radius: 0px !important;
+  backdrop-filter: blur(2.5px) !important;
+  -webkit-backdrop-filter: blur(2.5px) !important;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.byd-explore-card-content .byd-btn:hover {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border-color: #ffffff !important;
+}
+
+/* ==========================================================================
+   5. Bottom Brand Banner ("Technology Green Future")
+   ========================================================================== */
+.byd-brand-banner-section {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  background-color: var(--byd-black);
+}
+
+.byd-brand-banner-media {
+  width: 100%;
+  height: auto;
+}
+
+.byd-brand-banner-media img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.byd-brand-banner-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: clamp(20px, 6vw, 120px);
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 600px;
+}
+
+/* ==========================================================================
+   6. BYD Footer & Legal
+   ========================================================================== */
+.byd-footer {
+  width: 100%;
+  background: #111111;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 60px clamp(16px, 4vw, 60px) 40px;
+}
+
+.byd-footer-inner {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.byd-footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.byd-footer-nav {
+  display: flex;
+  gap: clamp(16px, 2.5vw, 32px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.byd-footer-nav a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: color 0.2s;
+}
+
+.byd-footer-nav a:hover {
+  color: var(--byd-white);
+}
+
+.byd-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.byd-social-label {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+
+.byd-social-links {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.byd-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.25s, transform 0.25s;
+}
+
+.byd-social-link:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+}
+
+.byd-social-link img {
+  width: 16px;
+  height: 16px;
+  filter: invert(1);
+}
+
+.byd-footer-bottom {
+  padding-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.45);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   7. Floating WhatsApp Contact Widget ("Let's Connect!")
+   ========================================================================== */
+.byd-floating-whatsapp {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #ffffff;
+  padding: 10px 20px 10px 14px;
+  border-radius: 36px;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.25s ease;
+}
+
+.byd-floating-whatsapp:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+  color: #ffffff;
+}
+
+.byd-whatsapp-icon {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+}
+
+/* ==========================================================================
+   RESPONSIVE RULES (Project Breakpoint: 990px)
+   ========================================================================== */
+
+/* Mobile / Tablet Styles (<= 990px) */
+@media screen and (max-width: 990px) {
+  :root {
+    --byd-header-height: 64px;
+  }
+
+  .byd-header-nav,
+  .byd-header-utilities {
+    display: none;
+  }
+
+  .byd-mobile-toggle {
+    display: block;
+  }
+
+  /* Mobile Drawer */
+  .byd-mobile-drawer {
+    display: block;
+    position: fixed;
+    top: var(--byd-header-height);
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - var(--byd-header-height));
+    background: #0d0d0d;
+    padding: 24px;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 998;
+  }
+
+  .byd-mobile-drawer.open {
+    transform: translateX(0);
+  }
+
+  .byd-mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .byd-mobile-nav-item a {
+    color: var(--byd-white);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Hero & Showcase Buttons on Mobile */
+  .byd-btn-group,
+  .byd-showcase-actions {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    gap: 10px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .byd-showcase-actions .byd-btn,
+  .byd-showcase-actions .byd-btn-white,
+  .byd-slide-footer .byd-btn,
+  .byd-hero-slider .byd-btn {
+    width: 100% !important;
+    max-width: 290px !important;
+    min-width: 0 !important;
+    height: 42px !important;
+    font-size: 13.5px !important;
+    padding: 0 16px !important;
+    background: rgba(0, 0, 0, 0.22) !important;
+    backdrop-filter: blur(2.5px) !important;
+    -webkit-backdrop-filter: blur(2.5px) !important;
+    border-radius: 0px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .byd-btn {
+    width: 100%;
+    min-width: unset;
+    height: 42px;
+    font-size: 13px;
+  }
+
+  .byd-showcase-section {
+    height: 100vh !important;
+    min-height: 560px !important;
+  }
+
+  .byd-showcase-overlay {
+    padding: 85px 16px 36px !important;
+  }
+
+  .byd-h2 {
+    font-size: clamp(26px, 7vw, 36px) !important;
+  }
+
+  /* Hero Slides on Mobile - Center car front and BYD logo */
+  .byd-slide-m6dm .byd-slide-media img {
+    object-position: 33% center !important;
+  }
+  .byd-slide-atto1 .byd-slide-media img {
+    object-position: 72% center !important;
+  }
+  .byd-slide-seal .byd-slide-media img {
+    object-position: 42% center !important;
+  }
+  .byd-slide-atto3 .byd-slide-media img {
+    object-position: 58% center !important;
+  }
+  .byd-slide-dealer .byd-slide-media img {
+    object-position: 45% center !important;
+  }
+  .byd-slide-dolphin .byd-slide-media img {
+    object-position: 56% center !important;
+  }
+  .byd-slide-sealion7 .byd-slide-media img {
+    object-position: 60% center !important;
+  }
+
+  /* Showcase Backgrounds on Mobile - Shift so front of car & BYD logo are prominent */
+  #showcase-atto1 .byd-showcase-bg img {
+    object-position: 74% center !important;
+  }
+  #showcase-dolphin .byd-showcase-bg img {
+    object-position: 72% center !important;
+  }
+  #showcase-seal .byd-showcase-bg img {
+    object-position: 45% center !important;
+  }
+  #showcase-atto3 .byd-showcase-bg img {
+    object-position: 42% center !important;
+  }
+  #showcase-m6 .byd-showcase-bg img {
+    object-position: 46% center !important;
+  }
+
+  /* Bottom Brand Banner - Ensure entire image and text are 100% visible, never cropped */
+  .byd-brand-banner-section {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: var(--byd-black) !important;
+  }
+
+  .byd-brand-banner-media {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .byd-brand-banner-media img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+
+  /* Explore Cards on Mobile */
+  .byd-explore-section {
+    padding: 0 !important;
+  }
+
+  .byd-explore-grid {
+    grid-template-columns: 1fr;
+    gap: 0 !important;
+  }
+
+  .byd-explore-card {
+    height: 380px;
+  }
+
+  .byd-explore-card:last-child {
+    border-left: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+  }
+
+  .byd-explore-card-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 16px 36px;
+  }
+
+  .byd-explore-card-content .byd-btn {
+    width: auto;
+    min-width: 180px;
+  }
+
+  /* Footer on Mobile */
+  .byd-footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .byd-footer-nav {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .byd-floating-whatsapp {
+    bottom: 20px;
+    right: 20px;
+    padding: 8px 16px 8px 12px;
+    font-size: 13px;
+  }
+
+  .byd-floating-whatsapp span {
+    display: inline;
+  }
+}
+
+/* Global Overflow Protection */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}

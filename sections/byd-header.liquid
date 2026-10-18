@@ -1,0 +1,287 @@
+{{ 'byd-styles.css' | asset_url | stylesheet_tag }}
+
+<header class="byd-header" id="bydHeader">
+  <div class="byd-header-container">
+    <!-- Brand Logo -->
+    <a href="{{ routes.root_url }}" class="byd-header-logo-link" aria-label="BYD Indonesia">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 240 | image_tag: class: 'byd-header-logo', alt: 'BYD' }}
+      {%- else -%}
+        <img src="{{ 'byd-logo.svg' | asset_url }}" alt="BYD" class="byd-header-logo" width="105" height="22">
+      {%- endif -%}
+    </a>
+
+    <!-- Desktop Navigation Menu -->
+    <nav class="byd-header-nav-wrap" aria-label="Primary Navigation">
+      <ul class="byd-header-nav">
+        <!-- Mega Menu: MODEL -->
+        <li class="byd-nav-item byd-nav-item-model">
+          <a href="javascript:void(0)" class="byd-nav-link" id="bydModelTrigger" aria-expanded="false" aria-haspopup="true">
+            MODEL
+          </a>
+          <div class="byd-mega-menu">
+            <div class="byd-models-grid">
+              <!-- Row 1 (5 items) -->
+              <!-- SEAL -->
+              <a href="{{ section.settings.link_seal | default: '#showcase-seal' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD SEAL</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-seal.png' | asset_url }}" alt="BYD SEAL" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+              <!-- ATTO 3 -->
+              <a href="{{ section.settings.link_atto3 | default: '#showcase-atto3' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD ATTO 3</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-atto3.png' | asset_url }}" alt="BYD ATTO 3" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+              <!-- DOLPHIN -->
+              <a href="{{ section.settings.link_dolphin | default: '#showcase-dolphin' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD DOLPHIN</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-dolphin.png' | asset_url }}" alt="BYD DOLPHIN" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+              <!-- M6 EV -->
+              <a href="{{ section.settings.link_m6 | default: '#showcase-m6' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD M6 EV</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-m6.png' | asset_url }}" alt="BYD M6 EV" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+              <!-- SEALION 7 -->
+              <a href="{{ section.settings.link_sealion7 | default: '#showcase-sealion7' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD SEALION 7</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-sealion7.png' | asset_url }}" alt="BYD SEALION 7" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+
+              <!-- Row 2 (2 items) -->
+              <!-- ATTO 1 -->
+              <a href="{{ section.settings.link_atto1 | default: '#showcase-atto1' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD ATTO 1</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-atto1.png' | asset_url }}" alt="BYD ATTO 1" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+              <!-- M6 DM -->
+              <a href="{{ section.settings.link_m6_dm | default: '#showcase-m6dm' }}" class="byd-model-card">
+                <span class="byd-model-name">BYD M6 DM</span>
+                <div class="byd-model-thumb-wrap">
+                  <img src="{{ 'byd-menu-m6-dm.png' | asset_url }}" alt="BYD M6 DM" class="byd-model-thumb" loading="lazy">
+                </div>
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="byd-nav-item">
+          <a href="{{ section.settings.link_dm_tech | default: 'https://www.byd.com/id/byd-dm-technology' }}" class="byd-nav-link byd-nav-dm" target="_blank">DM Technology</a>
+        </li>
+
+        <!-- Dropdown: AFTERSALES -->
+        <li class="byd-nav-item byd-nav-item-aftersales">
+          <a href="javascript:void(0)" class="byd-nav-link" id="bydAftersalesTrigger" aria-expanded="false" aria-haspopup="true">
+            AFTERSALES
+          </a>
+          <div class="byd-aftersales-menu">
+            <div class="byd-aftersales-container">
+              <div class="byd-aftersales-title">Aftersales</div>
+              <ul class="byd-aftersales-list">
+                <li class="byd-aftersales-item"><a href="{{ section.settings.link_service | default: '/pages/contact' }}">Service and Maintenance</a></li>
+                <li class="byd-aftersales-item"><a href="{{ section.settings.link_warranty | default: '/pages/contact' }}">BYD Warranty</a></li>
+                <li class="byd-aftersales-item"><a href="{{ section.settings.link_roadside | default: '/pages/contact' }}">BYD Roadside Assistance</a></li>
+                <li class="byd-aftersales-item"><a href="{{ section.settings.link_apps | default: '/pages/contact' }}">BYD Apps</a></li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <li class="byd-nav-item"><a href="{{ section.settings.link_about | default: '/pages/about' }}" class="byd-nav-link">TENTANG BYD</a></li>
+        <li class="byd-nav-item"><a href="{{ section.settings.link_contact | default: '/pages/contact' }}" class="byd-nav-link">HUBUNGI</a></li>
+        <li class="byd-nav-item"><a href="{{ section.settings.link_pricelist | default: '/pages/contact' }}" class="byd-nav-link">DAFTAR HARGA</a></li>
+        <li class="byd-nav-item"><a href="{{ section.settings.link_events | default: '/pages/contact' }}" class="byd-nav-link">EVENT REGISTRATION</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right Utilities -->
+    <div class="byd-header-utilities">
+      <a href="{{ section.settings.link_store | default: '/pages/contact' }}" class="byd-util-link">
+        <svg class="byd-util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+          <circle cx="12" cy="9" r="2.5"></circle>
+        </svg>
+        <span>TEMUKAN KAMI</span>
+      </a>
+
+      <a href="javascript:void(0)" class="byd-util-link byd-globe-link" title="Negara / Wilayah">
+        <img src="{{ 'byd-network.svg' | asset_url }}" alt="Region" class="byd-util-icon" width="22" height="22">
+      </a>
+    </div>
+
+    <!-- Mobile Burger Toggle Button -->
+    <button class="byd-mobile-toggle" id="bydMobileToggle" aria-label="Toggle Menu" type="button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer Menu (<= 990px) -->
+  <div class="byd-mobile-drawer" id="bydMobileDrawer">
+    <ul class="byd-mobile-nav-list">
+      <li class="byd-mobile-nav-item"><a href="#showcase-seal">BYD SEAL</a></li>
+      <li class="byd-mobile-nav-item"><a href="#showcase-atto3">BYD ATTO 3</a></li>
+      <li class="byd-mobile-nav-item"><a href="#showcase-dolphin">BYD DOLPHIN</a></li>
+      <li class="byd-mobile-nav-item"><a href="#showcase-m6">BYD M6</a></li>
+      <li class="byd-mobile-nav-item"><a href="#showcase-atto1">BYD ATTO 1</a></li>
+      <li class="byd-mobile-nav-item"><a href="https://www.byd.com/id/byd-dm-technology" target="_blank">DM Technology</a></li>
+      <li class="byd-mobile-nav-item"><a href="/pages/contact">Aftersales</a></li>
+      <li class="byd-mobile-nav-item"><a href="/pages/about">Tentang BYD</a></li>
+      <li class="byd-mobile-nav-item"><a href="/pages/contact">Hubungi</a></li>
+      <li class="byd-mobile-nav-item"><a href="/pages/contact">Temukan Kami</a></li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  (function() {
+    // Mobile Drawer Toggle
+    const toggle = document.getElementById('bydMobileToggle');
+    const drawer = document.getElementById('bydMobileDrawer');
+    if (toggle && drawer) {
+      toggle.addEventListener('click', function() {
+        drawer.classList.toggle('open');
+      });
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => drawer.classList.remove('open'));
+      });
+    }
+
+    // MODEL Mega Menu Click Toggle
+    const modelItem = document.querySelector('.byd-nav-item-model');
+    const modelTrigger = document.getElementById('bydModelTrigger');
+    const aftersalesItem = document.querySelector('.byd-nav-item-aftersales');
+    const aftersalesTrigger = document.getElementById('bydAftersalesTrigger');
+
+    if (modelTrigger && modelItem) {
+      modelTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (aftersalesItem) aftersalesItem.classList.remove('open');
+        modelItem.classList.toggle('open');
+      });
+    }
+
+    if (aftersalesTrigger && aftersalesItem) {
+      aftersalesTrigger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (modelItem) modelItem.classList.remove('open');
+        aftersalesItem.classList.toggle('open');
+      });
+    }
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (modelItem && !modelItem.contains(e.target)) {
+        modelItem.classList.remove('open');
+      }
+      if (aftersalesItem && !aftersalesItem.contains(e.target)) {
+        aftersalesItem.classList.remove('open');
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BYD Navigation Header",
+  "tag": "section",
+  "class": "byd-section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Custom BYD Logo"
+    },
+    {
+      "type": "url",
+      "id": "link_seal",
+      "label": "SEAL Link"
+    },
+    {
+      "type": "url",
+      "id": "link_atto3",
+      "label": "ATTO 3 Link"
+    },
+    {
+      "type": "url",
+      "id": "link_dolphin",
+      "label": "DOLPHIN Link"
+    },
+    {
+      "type": "url",
+      "id": "link_m6",
+      "label": "M6 Link"
+    },
+    {
+      "type": "url",
+      "id": "link_sealion7",
+      "label": "SEALION 7 Link"
+    },
+    {
+      "type": "url",
+      "id": "link_atto1",
+      "label": "ATTO 1 Link"
+    },
+    {
+      "type": "url",
+      "id": "link_m6_dm",
+      "label": "M6 DM Link"
+    },
+    {
+      "type": "url",
+      "id": "link_test_drive",
+      "label": "Test Drive URL"
+    },
+    {
+      "type": "url",
+      "id": "link_dm_tech",
+      "label": "DM Technology URL"
+    },
+    {
+      "type": "url",
+      "id": "link_about",
+      "label": "Tentang BYD URL"
+    },
+    {
+      "type": "url",
+      "id": "link_contact",
+      "label": "Hubungi URL"
+    },
+    {
+      "type": "url",
+      "id": "link_pricelist",
+      "label": "Daftar Harga URL"
+    },
+    {
+      "type": "url",
+      "id": "link_events",
+      "label": "Event Registration URL"
+    },
+    {
+      "type": "url",
+      "id": "link_store",
+      "label": "Temukan Kami URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Navigation Header"
+    }
+  ]
+}
+{% endschema %}

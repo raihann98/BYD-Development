@@ -1,0 +1,443 @@
+{% comment %}
+  BYD SEAL Vehicle Detail & Marketing Showcase
+  Follows Shopify Online Store 2.0 conventions
+  Strictly compliant with AGENTS.md rules & reference
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-seal-detail">
+  <!-- ==========================================
+       SECTION 1: HERO BANNER & SPECIFICATION BAR
+       ========================================== -->
+  <section class="byd-seal-hero" id="seal-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-seal-hero.png' | asset_url }}" alt="{{ section.settings.model_title }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD SEAL' }}</h1>
+    </div>
+
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Hingga 650km*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Jarak (NEDC)' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: '82.56 kWh*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Kapasitas Baterai' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '670 Nm*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: 'AWD*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: 'Penggerak Roda' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 2: TIM DESAINER KELAS INTERNASIONAL
+       ========================================== -->
+  <section class="byd-seal-feature text-dark align-top" id="seal-designers">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-designers.jpg' | asset_url }}" alt="{{ section.settings.designer_title | default: 'Tim Desainer Kelas Internasional' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay light"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.designer_title | default: 'Tim Desainer Kelas Internasional' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.designer_desc | default: 'Dipimpin oleh Kepala Desainer Otomotif Wolfgang Egger, tim desain kelas dunia mengintegrasikan inovasi dengan kualitas dan keandalan dalam kreasi otomotif mereka. Lebih dari 200 desainer dari lebih dari 10 negara termasuk Italia, Spanyol, Swiss, dan Jerman, desain BYD dieksekusi secara bersamaan di berbagai lokasi di seluruh dunia.' }}
+      </p>
+      <div class="byd-seal-btn-group">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-black">
+          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+        </a>
+        <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">
+          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: ESTETIKA LAUT
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="seal-aesthetic">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-aesthetic.png' | asset_url }}" alt="{{ section.settings.aesthetic_title | default: 'Estetika Laut' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.aesthetic_title | default: 'Estetika Laut' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.aesthetic_desc | default: 'BYD SEAL dibangun berdasarkan konsep desain "estetika laut". Proporsi bodi yang eksklusif berasal dari perburuan sampai akhir akan keindahan. Mencari inspirasi antara gerakan dan ketenangan laut serta mewujudkan keanggunan dan keindahan unik BYD SEAL.' }}
+      </p>
+      <div class="byd-seal-btn-group">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-white">
+          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+        </a>
+        <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: POSTUR BELAKANG & 6 COCKPIT CARDS
+       ========================================== -->
+  <section class="byd-seal-cockpit-section" id="seal-cockpit">
+    <div class="byd-seal-rear-banner">
+      <img src="{{ 'byd-seal-rear.png' | asset_url }}" alt="BYD SEAL Rear Light" loading="lazy">
+      <div class="byd-seal-rear-content">
+        <p class="byd-seal-rear-desc">
+          {{ section.settings.rear_desc | default: 'Postur yang mempesona mencuri perhatian ketika mobil berada di depan. Lampu belakang berbentuk kisi seperti tetesan air yang jatuh ke dalam air, menciptakan lapisan cahaya berkilauan. Bersama dengan sumber cahaya tiga dimensi dan gradasi penuh, kilatan ini mengungkap keindahan yang megah.' }}
+        </p>
+      </div>
+    </div>
+
+    <div class="byd-seal-cockpit-grid-container">
+      <div class="byd-seal-cockpit-grid">
+        <!-- 1. Layar Sentuh -->
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="Layar sentuh yang dapat diputar" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Layar sentuh yang dapat diputar</h3>
+            <p class="byd-seal-cockpit-card-desc">
+              Konsol tengah dilengkapi dengan layar besar berukuran 15,6 inci yang dapat diputar, sehingga dapat diputar sesuai dengan konten halaman, memungkinkan pengguna untuk menikmati kehidupan cerdas dan menarik.
+            </p>
+          </div>
+        </div>
+
+        <!-- 2. W-HUD -->
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-hud.jpg' | asset_url }}" alt="W-HUD tampilan cerdas di hadapan" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">W-HUD tampilan cerdas di hadapan</h3>
+            <p class="byd-seal-cockpit-card-desc">
+              Dengan pengemudi sebagai pusatnya, semua informasi mengemudi dapat dilihat dengan jelas tanpa perlu mengalihkan pandangan. Konten tampilan juga dapat disesuaikan untuk memberikan nuansa teknologi.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. Sunroof Panoramik -->
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-sunroof.png' | asset_url }}" alt="Sunroof Panoramik" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Sunroof Panoramik</h3>
+            <p class="byd-seal-cockpit-card-desc">
+              Nikmati keindahan alam dengan sunroof panoramik. Rasakan kebebasan langit terbuka, dan nikmati cahaya alami yang mengisi interior kendaraan Anda.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4. Teater Musikal Dynaudio -->
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-audio.jpg' | asset_url }}" alt="Teater musikal dalam mobil" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Teater musikal dalam mobil</h3>
+            <p class="byd-seal-cockpit-card-desc">
+              Rasakan pengalaman teater musikal yang benar-benar memikat dengan sistem suara berkualitas tinggi. Sistem Suara Premium HIFI Dynaudio kami menyediakan suara surround tiga dimensi, menciptakan pesta pendengaran yang memikat.
+            </p>
+          </div>
+        </div>
+
+        <!-- 5. Kursi Sport Terintegrasi -->
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-seats.png' | asset_url }}" alt="Kursi Sport Terintegrasi" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Kursi Sport Terintegrasi</h3>
+            <p class="byd-seal-cockpit-card-desc">
+              Kursi sport terintegrasi ini dirancang dengan prinsip ergonomi untuk memaksimalkan kenyamanan. Kursi ini dapat disesuaikan secara elektrik sesuai dengan kebutuhan dan preferensi Anda untuk pengalaman berkendara yang lebih menyenangkan.
+            </p>
+          </div>
+        </div>
+
+        <!-- 6. Penyimpanan Pintar -->
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-storage.jpg' | asset_url }}" alt="Penyimpanan Pintar" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Penyimpanan Pintar</h3>
+            <p class="byd-seal-cockpit-card-desc">
+              BYD SEAL tidak hanya dilengkapi dengan bagasi belakang luas berkapasitas 400L, tetapi juga menawarkan tambahan ruang penyimpanan 53L di bagasi depan dengan penutup. Ini memberikan solusi cerdas dan praktis untuk semua kebutuhan penyimpanan perjalanan Anda.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: E-PLATFORM 3.0
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="seal-eplatform">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="{{ section.settings.eplatform_title | default: 'e-Platform 3.0' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.eplatform_title | default: 'e-Platform 3.0' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.eplatform_desc | default: 'BYD SEAL dibangun dengan platform BYD e-platform 3.0, dirancang untuk generasi berikutnya dari mobil listrik pintar yang menawarkan empat keunggulan utama: kecerdasan, efisiensi, keamanan, dan estetika. Ini tidak hanya lebih mengintegrasikan dan standarisasi komponen inti, tetapi juga membangun struktur tubuh baru, arsitektur digital dan elektrik, serta sistem operasi kendaraan BYD yang diperbarui.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: TEKNOLOGI BATERAI BLADE BERPATEN ULTRA-AMAN
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="seal-blade-battery">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-blade-battery.png' | asset_url }}" alt="{{ section.settings.battery_title | default: 'Teknologi Baterai Blade Berpaten Ultra-Aman' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.battery_title | default: 'Teknologi Baterai Blade Berpaten Ultra-Aman' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.battery_desc | default: 'Selama menjalani uji penetrasi paku, Baterai Blade tidak mengeluarkan asap atau api setelah ditembus, dan suhunya hanya mencapai 30 hingga 60°C. Sel-sel Baterai Blade juga lulus uji kondisi ekstrem lainnya, seperti diremukkan, ditekuk, dipanaskan dalam tungku hingga 300°C, dan diisi daya lebih dari 260%. Tidak satu pun dari uji ini menyebabkan kebakaran atau ledakan.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: TEKNOLOGI CTB (CELL-TO-BODY)
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="seal-ctb">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-ctb.png' | asset_url }}" alt="{{ section.settings.ctb_title | default: 'Teknologi CTB (Cell-to-Body)' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.ctb_title | default: 'Teknologi CTB (Cell-to-Body)' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.ctb_desc | default: 'Penutup atas baterai dan lantai bodi digabungkan menjadi satu, membentuk struktur "sandwich" dari seluruh kendaraan. Sistem baterai daya adalah bagian energi dan komponen struktural mekanik, yang meningkatkan pemanfaatan ruang baterai dan juga meningkatkan umur baterai. Integrasi yang lebih erat antara baterai blade dan bodi memungkinkan BYD SEAL mencapai kekakuan torsi yang sangat baik sebesar 40.500 N.m/°.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 8: SISTEM ITAC
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="seal-itac">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-itac.png' | asset_url }}" alt="{{ section.settings.itac_title | default: 'Sistem iTAC (Intelligence Torque Adaption Control)' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.itac_title | default: 'Sistem iTAC (Intelligence Torque Adaption Control)' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.itac_desc | default: 'Berdasarkan respons cepat motor listrik, sensor digunakan untuk mengidentifikasi dengan cepat perubahan status kendaraan, secara efektif mengurangi slip roda dan understeer, dan secara instan menyesuaikan output torsi oleh motor penggerak kendaraan untuk menjaga posisi berkendara yang baik.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 9: WISHBONE GANDA + BANYAK-LINK
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="seal-suspension">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-suspension.jpg' | asset_url }}" alt="{{ section.settings.suspension_title | default: 'Wishbone Ganda + Banyak-Link' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.suspension_title | default: 'Wishbone Ganda + Banyak-Link' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.suspension_desc | default: 'Konfigurasi suspensi tingkat tinggi menciptakan pengalaman berkendara ultimate, mewujudkan integrasi sejati antara manusia dan kendaraan, dan sepenuhnya mengaktifkan gen olahraga.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 10: BOTTOM BANNER & BROCHURE CTA
+       ========================================== -->
+  <section class="byd-seal-appointment" id="seal-brochure">
+    <div class="byd-seal-appointment-bg">
+      <img src="{{ 'byd-seal-brochure.png' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD SEAL' }}" loading="lazy">
+    </div>
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">{{ section.settings.model_title | default: 'BYD SEAL' }}</h2>
+      <div class="byd-seal-btn-group">
+        <a href="{{ section.settings.brochure_url | default: 'https://www.byd.com/material/byd-site/id/brochure/SEAL-BROCHURE.pdf' }}" target="_blank" rel="noopener" class="byd-seal-btn byd-seal-btn-white">
+          {{ section.settings.brochure_label | default: 'Download Brosur' }}
+        </a>
+        <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 11: STICKY SUB-BAR (FLOATING AT BOTTOM ON SCROLL)
+       ========================================== -->
+  <div class="byd-seal-sticky-bar" id="byd-seal-sticky-bar">
+    <div class="byd-seal-sticky-model">{{ section.settings.model_title | default: 'BYD SEAL' }}</div>
+    <div class="byd-seal-sticky-actions">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-white">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const stickyBar = document.getElementById('byd-seal-sticky-bar');
+    const heroSection = document.getElementById('seal-hero');
+    if (!stickyBar || !heroSection) return;
+
+    function handleScroll() {
+      const heroBottom = heroSection.getBoundingClientRect().bottom;
+      if (heroBottom < 100) {
+        stickyBar.classList.add('is-visible');
+      } else {
+        stickyBar.classList.remove('is-visible');
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BYD Seal Detail Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Model Title",
+      "default": "BYD SEAL"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Key Specifications"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spec 1 Value",
+      "default": "Hingga 650km*"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spec 1 Label",
+      "default": "Jarak (NEDC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spec 2 Value",
+      "default": "82.56 kWh*"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spec 2 Label",
+      "default": "Kapasitas Baterai"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spec 3 Value",
+      "default": "670 Nm*"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spec 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spec 4 Value",
+      "default": "AWD*"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spec 4 Label",
+      "default": "Penggerak Roda"
+    },
+    {
+      "type": "header",
+      "content": "Main Calls to Action"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Test Drive Button Label",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Test Drive URL"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Quote / Configurator Button Label",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Quote / Configurator URL"
+    },
+    {
+      "type": "header",
+      "content": "Brochure Settings"
+    },
+    {
+      "type": "text",
+      "id": "brochure_label",
+      "label": "Brochure Button Label",
+      "default": "Download Brosur"
+    },
+    {
+      "type": "text",
+      "id": "brochure_url",
+      "label": "Brochure PDF URL",
+      "default": "https://www.byd.com/material/byd-site/id/brochure/SEAL-BROCHURE.pdf"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Seal Detail Showcase"
+    }
+  ]
+}
+{% endschema %}

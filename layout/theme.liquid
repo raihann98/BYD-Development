@@ -28,11 +28,12 @@
       {%- render 'theme-editor' -%}
     {% endif %}
 
-    {%- if template.name == 'index' -%}
+    {%- if template.name == 'index' or template.name == 'product' or template.name == 'page' -%}
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
       {{ 'byd-styles.css' | asset_url | stylesheet_tag }}
+      {{ 'byd-seal-detail.css' | asset_url | stylesheet_tag }}
     {%- endif -%}
 
     {{ content_for_header }}
@@ -44,7 +45,7 @@
     {% render 'chat-drawer' %}
 
     <div class="page-wrapper">
-      {%- unless template.name == 'index' -%}
+      {%- unless template.name == 'index' or template.name == 'product' or template.name == 'page' -%}
         <div id="header-group">
           {% sections 'header-group' %}
         </div>
@@ -168,7 +169,7 @@
         {{ content_for_layout }}
       </main>
 
-      {%- unless template.name == 'index' -%}
+      {%- unless template.name == 'index' or template.name == 'product' or template.name == 'page' -%}
         <footer>
           {% sections 'footer-group' %}
         </footer>

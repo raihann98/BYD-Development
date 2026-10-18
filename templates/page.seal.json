@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "byd_header": {
+      "type": "byd-header",
+      "settings": {
+        "link_seal": "/products/byd-seal",
+        "link_atto3": "/#showcase-atto3",
+        "link_dolphin": "/#showcase-dolphin",
+        "link_m6": "/#showcase-m6",
+        "link_sealion7": "/pages/contact",
+        "link_atto1": "/#showcase-atto1",
+        "link_m6_dm": "/pages/contact",
+        "link_test_drive": "/pages/contact",
+        "link_dm_tech": "https://www.byd.com/id/byd-dm-technology",
+        "link_about": "/pages/about",
+        "link_contact": "/pages/contact",
+        "link_pricelist": "/pages/contact",
+        "link_events": "/pages/contact",
+        "link_store": "/pages/contact"
+      }
+    },
+    "byd_seal_showcase": {
+      "type": "byd-seal-showcase",
+      "settings": {
+        "model_title": "BYD SEAL",
+        "spec_1_val": "Hingga 650km*",
+        "spec_1_lbl": "Jarak (NEDC)",
+        "spec_2_val": "82.56 kWh*",
+        "spec_2_lbl": "Kapasitas Baterai",
+        "spec_3_val": "670 Nm*",
+        "spec_3_lbl": "Torsi Maksimum",
+        "spec_4_val": "AWD*",
+        "spec_4_lbl": "Penggerak Roda",
+        "label_test_drive": "Uji Kendaraan",
+        "url_test_drive": "/pages/contact",
+        "label_quote": "Dapatkan Penawaran",
+        "url_quote": "/pages/order-seal",
+        "brochure_label": "Download Brosur",
+        "brochure_url": "https://www.byd.com/material/byd-site/id/brochure/SEAL-BROCHURE.pdf"
+      }
+    },
+    "byd_footer": {
+      "type": "byd-footer",
+      "settings": {
+        "copyright": "PT BYD Motor Indonesia. Hak cipta dilindungi undang-undang.",
+        "link_privacy": "/pages/contact",
+        "link_terms": "/pages/contact",
+        "link_cookies": "/pages/contact",
+        "social_fb": "https://www.facebook.com/IndonesiaBYD/",
+        "social_ig": "https://www.instagram.com/byd_indonesia/",
+        "social_yt": "https://www.youtube.com/channel/UCIX-Iq7BHJ7kZQvEoVDTVQw",
+        "social_tt": "https://www.tiktok.com/@byd_indonesia"
+      }
+    },
+    "byd_floating_contact": {
+      "type": "byd-floating-contact",
+      "settings": {
+        "label": "Let's Connect!",
+        "whatsapp_url": "https://api.whatsapp.com/send?phone=6281188000333"
+      }
+    }
+  },
+  "order": [
+    "byd_header",
+    "byd_seal_showcase",
+    "byd_footer",
+    "byd_floating_contact"
+  ]
+}

@@ -114,12 +114,8 @@
 .byd-seal-hero {
   position: relative;
   width: 100%;
-  height: clamp(620px, 56.25vw, 100vh);
-  min-height: 600px;
-  background-color: #000000;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  height: clamp(520px, 56.25vw, 880px);
+  background-color: #0b0d10;
   overflow: hidden;
 }
 
@@ -136,7 +132,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center bottom;
+  object-position: center 46%;
   display: block;
 }
 
@@ -146,81 +142,92 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 35%, rgba(0, 0, 0, 0.85) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0) 65%, rgba(0, 0, 0, 0.4) 100%);
   z-index: 2;
   pointer-events: none;
 }
 
 .byd-seal-hero-content {
-  position: relative;
+  position: absolute;
+  top: clamp(28px, 5vw, 68px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   z-index: 3;
   width: 100%;
-  padding-top: clamp(80px, 10vh, 120px);
   text-align: center;
+  pointer-events: none;
 }
 
 .byd-seal-hero-title {
   font-family: var(--byd-seal-font);
-  font-size: clamp(38px, 5.2vw, 72px);
-  font-weight: 300;
-  letter-spacing: 4px;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 600;
+  letter-spacing: 2px;
   color: #ffffff;
   margin: 0;
   text-transform: uppercase;
+  line-height: 1.25;
 }
 
 .byd-seal-specs-bar {
-  position: relative;
+  position: absolute;
+  bottom: clamp(24px, 4.2vw, 56px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   z-index: 3;
   width: 100%;
-  padding: 30px clamp(20px, 5vw, 80px) clamp(24px, 3vh, 40px);
+  max-width: 1320px;
+  padding: 0 clamp(16px, 3vw, 40px);
 }
 
 .byd-seal-specs-list {
   display: flex;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  max-width: 1200px;
   margin: 0 auto;
-  list-style: none;
   padding: 0;
-  gap: clamp(12px, 3vw, 40px);
+  list-style: none;
+  width: 100%;
 }
 
 .byd-seal-spec-item {
   flex: 1;
   text-align: center;
   position: relative;
-  padding: 8px 12px;
+  padding: 0 16px;
 }
 
 .byd-seal-spec-item:not(:last-child)::after {
   content: "";
   position: absolute;
-  right: - clamp(6px, 1.5vw, 20px);
+  right: 0;
   top: 15%;
   height: 70%;
   width: 1px;
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .byd-seal-spec-val {
   font-family: var(--byd-seal-font);
-  font-size: clamp(22px, 2.5vw, 36px);
+  font-size: clamp(22px, 2.2vw, 32px);
   font-weight: 600;
   color: #ffffff;
-  line-height: 1.2;
-  margin: 0 0 6px 0;
+  line-height: 1.25;
+  margin: 0 0 8px 0;
   letter-spacing: 0.5px;
 }
 
 .byd-seal-spec-lbl {
   font-family: var(--byd-seal-font);
-  font-size: clamp(11px, 0.9vw, 13.5px);
+  font-size: clamp(12px, 0.95vw, 15px);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
+  line-height: 1.35;
+  white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -272,7 +279,191 @@
 }
 
 .byd-seal-feature-overlay.light {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.45) 45%, rgba(255, 255, 255, 0.88) 100%);
+  display: none !important;
+}
+
+/* Specific styling for Section 2: Designers (Tim Desainer Kelas Internasional) */
+#seal-designers {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 56.25vw, 920px);
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+#seal-designers .byd-seal-feature-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#seal-designers .byd-seal-feature-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 38%;
+  display: block;
+}
+
+#seal-designers .byd-seal-feature-content {
+  position: absolute;
+  top: clamp(24px, 4.2vw, 62px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 92%;
+  max-width: 1080px;
+  text-align: center;
+  z-index: 3;
+}
+
+#seal-designers .byd-seal-feature-title {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+#seal-designers .byd-seal-feature-desc {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(12.5px, 0.95vw, 15px);
+  line-height: 1.65;
+  color: #222222;
+  font-weight: 400;
+  max-width: 980px;
+  margin: 0 auto;
+  letter-spacing: 0.2px;
+}
+
+#seal-designers .byd-seal-btn-group {
+  position: absolute;
+  bottom: clamp(24px, 3.5vw, 48px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+#seal-designers .byd-seal-btn {
+  min-width: clamp(170px, 14vw, 230px);
+  height: 46px;
+  border: 1px solid #141414;
+  background: transparent;
+  color: #141414 !important;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  border-radius: 0;
+}
+
+#seal-designers .byd-seal-btn:hover {
+  background: #141414;
+  color: #ffffff !important;
+}
+
+/* Specific styling for Section 3: Estetika Laut */
+#seal-aesthetic {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 56.25vw, 920px);
+  background-color: #0b0d10;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+#seal-aesthetic .byd-seal-feature-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#seal-aesthetic .byd-seal-feature-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+#seal-aesthetic .byd-seal-feature-overlay {
+  display: none !important;
+}
+
+#seal-aesthetic .byd-seal-feature-content {
+  position: absolute;
+  top: clamp(24px, 4.2vw, 62px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 92%;
+  max-width: 1080px;
+  text-align: center;
+  z-index: 3;
+}
+
+#seal-aesthetic .byd-seal-feature-title {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+#seal-aesthetic .byd-seal-feature-desc {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(12.5px, 0.95vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 400;
+  max-width: 980px;
+  margin: 0 auto;
+  letter-spacing: 0.2px;
+}
+
+#seal-aesthetic .byd-seal-btn-group {
+  position: absolute;
+  bottom: clamp(24px, 3.5vw, 48px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+#seal-aesthetic .byd-seal-btn {
+  min-width: clamp(170px, 14vw, 230px);
+  height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  background: transparent;
+  color: #ffffff !important;
+  font-size: 13.5px;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  border-radius: 0;
+}
+
+#seal-aesthetic .byd-seal-btn:hover {
+  background: #ffffff;
+  color: #000000 !important;
 }
 
 .byd-seal-feature-content {
@@ -327,6 +518,222 @@
 }
 
 /* ==========================================================================
+   e-Platform, Blade Battery, iTAC: Light/white background & Black text
+   Reference: https://www.byd.com/id/car/seal
+   ========================================================================== */
+#seal-eplatform,
+#seal-blade-battery,
+#seal-itac {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 56.25vw, 920px);
+  background-color: #ffffff;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+#seal-eplatform .byd-seal-feature-bg,
+#seal-blade-battery .byd-seal-feature-bg,
+#seal-itac .byd-seal-feature-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#seal-eplatform .byd-seal-feature-bg img,
+#seal-blade-battery .byd-seal-feature-bg img,
+#seal-itac .byd-seal-feature-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+#seal-eplatform .byd-seal-feature-overlay,
+#seal-blade-battery .byd-seal-feature-overlay,
+#seal-itac .byd-seal-feature-overlay {
+  display: none !important;
+}
+
+#seal-eplatform .byd-seal-feature-content,
+#seal-blade-battery .byd-seal-feature-content,
+#seal-itac .byd-seal-feature-content {
+  position: absolute;
+  top: clamp(24px, 4.2vw, 62px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 92%;
+  max-width: 1080px;
+  text-align: center;
+  z-index: 3;
+}
+
+#seal-eplatform .byd-seal-feature-title,
+#seal-blade-battery .byd-seal-feature-title,
+#seal-itac .byd-seal-feature-title {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  color: #000000 !important;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+#seal-eplatform .byd-seal-feature-desc,
+#seal-blade-battery .byd-seal-feature-desc,
+#seal-itac .byd-seal-feature-desc {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(12.5px, 0.95vw, 15px);
+  line-height: 1.65;
+  color: #222222 !important;
+  font-weight: 400;
+  max-width: 980px;
+  margin: 0 auto;
+  letter-spacing: 0.2px;
+}
+
+/* ==========================================================================
+   Section 7: Teknologi CTB (White text & overlay off, matching reference)
+   ========================================================================== */
+#seal-ctb {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 56.25vw, 920px);
+  background-color: #0b0d10;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+#seal-ctb .byd-seal-feature-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#seal-ctb .byd-seal-feature-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+#seal-ctb .byd-seal-feature-overlay {
+  display: none !important;
+}
+
+#seal-ctb .byd-seal-feature-content {
+  position: absolute;
+  top: clamp(24px, 4.2vw, 62px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 92%;
+  max-width: 1080px;
+  text-align: center;
+  z-index: 3;
+}
+
+#seal-ctb .byd-seal-feature-title {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  color: #ffffff !important;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+#seal-ctb .byd-seal-feature-desc {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(12.5px, 0.95vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 400;
+  max-width: 980px;
+  margin: 0 auto;
+  letter-spacing: 0.2px;
+}
+
+/* ==========================================================================
+   Section 9: Wishbone Ganda + Banyak-Link (Overlay off & 1:1 scaled typography)
+   ========================================================================== */
+#seal-suspension {
+  position: relative;
+  width: 100%;
+  height: clamp(540px, 56.25vw, 920px);
+  background-color: #0b0d10;
+  overflow: hidden;
+  padding: 0;
+  display: block;
+}
+
+#seal-suspension .byd-seal-feature-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#seal-suspension .byd-seal-feature-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+#seal-suspension .byd-seal-feature-overlay {
+  display: none !important;
+}
+
+#seal-suspension .byd-seal-feature-content {
+  position: absolute;
+  top: clamp(24px, 4.2vw, 62px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 92%;
+  max-width: 1080px;
+  text-align: center;
+  z-index: 3;
+}
+
+#seal-suspension .byd-seal-feature-title {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(26px, 2.6vw, 38px);
+  font-weight: 600;
+  color: #ffffff !important;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+  letter-spacing: 0.5px;
+}
+
+#seal-suspension .byd-seal-feature-desc {
+  font-family: var(--byd-seal-font);
+  font-size: clamp(12.5px, 0.95vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92) !important;
+  font-weight: 400;
+  max-width: 980px;
+  margin: 0 auto;
+  letter-spacing: 0.2px;
+}
+
+/* ==========================================================================
    4. SECTION 4: REAR LIGHTING & COCKPIT 6-FEATURE GRID
    ========================================================================== */
 .byd-seal-cockpit-section {
@@ -339,13 +746,10 @@
 .byd-seal-rear-banner {
   position: relative;
   width: 100%;
-  height: clamp(500px, 50vw, 750px);
-  min-height: 480px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  height: clamp(520px, 56.25vw, 880px);
+  background-color: #0b0d10;
   overflow: hidden;
-  padding: clamp(40px, 6vh, 80px) clamp(20px, 4vw, 60px);
+  display: block;
 }
 
 .byd-seal-rear-banner img {
@@ -355,28 +759,36 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center bottom;
   display: block;
 }
 
 .byd-seal-rear-content {
-  position: relative;
+  position: absolute;
+  top: clamp(28px, 5.5vw, 75px);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   z-index: 2;
-  max-width: 860px;
+  width: 90%;
+  max-width: 1040px;
   text-align: center;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: clamp(20px, 3vh, 32px) clamp(20px, 4vw, 40px);
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  padding: 0;
+  border-radius: 0;
+  border: none;
 }
 
 .byd-seal-rear-desc {
-  font-size: clamp(14px, 1.1vw, 16px);
-  line-height: 1.8;
-  font-weight: 300;
-  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--byd-seal-font);
+  font-size: clamp(13px, 1.05vw, 16px);
+  line-height: 1.65;
+  font-weight: 400;
+  color: #ffffff;
   margin: 0;
+  letter-spacing: 0.2px;
 }
 
 .byd-seal-cockpit-grid-container {
@@ -458,15 +870,11 @@
 .byd-seal-appointment {
   position: relative;
   width: 100%;
-  height: clamp(420px, 45vw, 680px);
-  min-height: 420px;
+  height: clamp(480px, 56.25vw, 850px);
+  min-height: 440px;
   background: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   overflow: hidden;
-  padding: clamp(60px, 8vh, 100px) clamp(20px, 4vw, 60px);
+  display: block;
 }
 
 .byd-seal-appointment-bg {
@@ -487,18 +895,48 @@
 }
 
 .byd-seal-appointment-content {
-  position: relative;
+  position: absolute;
+  top: 52%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1440px;
   z-index: 2;
-  max-width: 800px;
+  text-align: left;
 }
 
 .byd-seal-appointment-title {
   font-family: var(--byd-seal-font);
-  font-size: clamp(32px, 4.5vw, 60px);
-  font-weight: 300;
+  font-size: clamp(32px, 3.2vw, 44px);
+  font-weight: 600;
   letter-spacing: 2px;
   color: #ffffff;
-  margin: 0 0 24px 0;
+  margin: 0 0 clamp(24px, 3.5vw, 48px) 0;
+  text-align: left;
+}
+
+.byd-seal-appointment-btns {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.byd-seal-appointment-btns .byd-seal-btn {
+  min-width: 200px;
+  height: 48px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 0;
+  transition: all 0.25s ease;
+}
+
+.byd-seal-appointment-btns .byd-seal-btn:hover {
+  background: #ffffff;
+  color: #000000 !important;
 }
 
 /* ==========================================================================
@@ -558,28 +996,53 @@
    ========================================================================== */
 @media (max-width: 990px) {
   .byd-seal-hero {
-    height: auto;
-    min-height: 560px;
-    padding-bottom: 24px;
+    height: 140vw;
+    min-height: 520px;
+    position: relative;
+  }
+
+  .byd-seal-hero-content {
+    top: 36px;
+  }
+
+  .byd-seal-hero-title {
+    font-size: 26px;
+    letter-spacing: 1px;
+  }
+
+  .byd-seal-specs-bar {
+    bottom: 24px;
+    padding: 0 16px;
   }
 
   .byd-seal-specs-list {
     flex-wrap: wrap;
-    gap: 16px 0;
+    gap: 14px 0;
   }
 
   .byd-seal-spec-item {
     flex: 0 0 50%;
+    padding: 0 8px;
   }
 
   .byd-seal-spec-item:nth-child(1)::after,
   .byd-seal-spec-item:nth-child(3)::after {
     display: block;
+    right: 0;
   }
 
   .byd-seal-spec-item:nth-child(2)::after,
   .byd-seal-spec-item:nth-child(4)::after {
     display: none;
+  }
+
+  .byd-seal-spec-val {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .byd-seal-spec-lbl {
+    font-size: 11.5px;
   }
 
   .byd-seal-cockpit-grid {
@@ -592,22 +1055,177 @@
     padding: 60px 20px;
   }
 
-  .byd-seal-rear-banner {
+  #seal-designers {
     height: auto;
-    min-height: 420px;
+    min-height: 580px;
+    padding: 36px 16px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #seal-designers .byd-seal-feature-content {
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #seal-designers .byd-seal-feature-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  #seal-designers .byd-seal-feature-desc {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  #seal-designers .byd-seal-btn-group {
+    position: relative;
+    bottom: auto;
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  #seal-designers .byd-seal-btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  #seal-aesthetic {
+    height: auto;
+    min-height: 580px;
+    padding: 36px 16px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  #seal-aesthetic .byd-seal-feature-content {
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #seal-aesthetic .byd-seal-feature-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  #seal-aesthetic .byd-seal-feature-desc {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  #seal-aesthetic .byd-seal-btn-group {
+    position: relative;
+    bottom: auto;
+    margin-top: 24px;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  #seal-aesthetic .byd-seal-btn {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .byd-seal-rear-banner {
+    height: 120vw;
+    min-height: 440px;
+    position: relative;
+    padding: 0;
+  }
+
+  .byd-seal-rear-content {
+    top: 28px;
+    width: 92%;
+    padding: 0;
+  }
+
+  .byd-seal-rear-desc {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  #seal-eplatform,
+  #seal-blade-battery,
+  #seal-ctb,
+  #seal-itac,
+  #seal-suspension {
+    height: auto;
+    min-height: 520px;
+    padding: 36px 16px 28px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #seal-eplatform .byd-seal-feature-content,
+  #seal-blade-battery .byd-seal-feature-content,
+  #seal-ctb .byd-seal-feature-content,
+  #seal-itac .byd-seal-feature-content,
+  #seal-suspension .byd-seal-feature-content {
+    position: relative;
+    top: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #seal-eplatform .byd-seal-feature-title,
+  #seal-blade-battery .byd-seal-feature-title,
+  #seal-ctb .byd-seal-feature-title,
+  #seal-itac .byd-seal-feature-title,
+  #seal-suspension .byd-seal-feature-title {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+
+  #seal-eplatform .byd-seal-feature-desc,
+  #seal-blade-battery .byd-seal-feature-desc,
+  #seal-ctb .byd-seal-feature-desc,
+  #seal-itac .byd-seal-feature-desc,
+  #seal-suspension .byd-seal-feature-desc {
+    font-size: 13px;
+    line-height: 1.55;
   }
 
   .byd-seal-appointment {
     height: auto;
     min-height: 380px;
+    padding: 48px 20px;
+    display: flex;
+    align-items: center;
   }
 
-  .byd-seal-btn-group {
-    flex-direction: column;
+  .byd-seal-appointment-content {
+    position: relative;
+    top: auto;
+    transform: none;
     width: 100%;
-    max-width: 320px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .byd-seal-appointment-title {
+    font-size: 26px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .byd-seal-appointment-btns {
+    justify-content: flex-start;
+  }
+
+  .byd-seal-appointment-btns .byd-seal-btn {
+    width: 100%;
+    max-width: 260px;
   }
 
   .byd-seal-btn {

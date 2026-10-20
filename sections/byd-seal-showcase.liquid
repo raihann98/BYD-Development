@@ -51,20 +51,19 @@
     <div class="byd-seal-feature-bg">
       <img src="{{ 'byd-seal-designers.jpg' | asset_url }}" alt="{{ section.settings.designer_title | default: 'Tim Desainer Kelas Internasional' }}" loading="lazy">
     </div>
-    <div class="byd-seal-feature-overlay light"></div>
     <div class="byd-seal-feature-content">
       <h2 class="byd-seal-feature-title">{{ section.settings.designer_title | default: 'Tim Desainer Kelas Internasional' }}</h2>
       <p class="byd-seal-feature-desc">
         {{ section.settings.designer_desc | default: 'Dipimpin oleh Kepala Desainer Otomotif Wolfgang Egger, tim desain kelas dunia mengintegrasikan inovasi dengan kualitas dan keandalan dalam kreasi otomotif mereka. Lebih dari 200 desainer dari lebih dari 10 negara termasuk Italia, Spanyol, Swiss, dan Jerman, desain BYD dieksekusi secara bersamaan di berbagai lokasi di seluruh dunia.' }}
       </p>
-      <div class="byd-seal-btn-group">
-        <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-black">
-          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
-        </a>
-        <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">
-          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
-        </a>
-      </div>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-outline-black">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
     </div>
   </section>
 
@@ -75,20 +74,19 @@
     <div class="byd-seal-feature-bg">
       <img src="{{ 'byd-seal-aesthetic.png' | asset_url }}" alt="{{ section.settings.aesthetic_title | default: 'Estetika Laut' }}" loading="lazy">
     </div>
-    <div class="byd-seal-feature-overlay dark"></div>
     <div class="byd-seal-feature-content">
       <h2 class="byd-seal-feature-title">{{ section.settings.aesthetic_title | default: 'Estetika Laut' }}</h2>
       <p class="byd-seal-feature-desc">
         {{ section.settings.aesthetic_desc | default: 'BYD SEAL dibangun berdasarkan konsep desain "estetika laut". Proporsi bodi yang eksklusif berasal dari perburuan sampai akhir akan keindahan. Mencari inspirasi antara gerakan dan ketenangan laut serta mewujudkan keanggunan dan keindahan unik BYD SEAL.' }}
       </p>
-      <div class="byd-seal-btn-group">
-        <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-white">
-          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
-        </a>
-        <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
-          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
-        </a>
-      </div>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
     </div>
   </section>
 
@@ -277,12 +275,9 @@
     </div>
     <div class="byd-seal-appointment-content">
       <h2 class="byd-seal-appointment-title">{{ section.settings.model_title | default: 'BYD SEAL' }}</h2>
-      <div class="byd-seal-btn-group">
+      <div class="byd-seal-appointment-btns">
         <a href="{{ section.settings.brochure_url | default: 'https://www.byd.com/material/byd-site/id/brochure/SEAL-BROCHURE.pdf' }}" target="_blank" rel="noopener" class="byd-seal-btn byd-seal-btn-white">
           {{ section.settings.brochure_label | default: 'Download Brosur' }}
-        </a>
-        <a href="{{ section.settings.url_quote | default: '/pages/order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
-          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
         </a>
       </div>
     </div>

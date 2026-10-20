@@ -3,7 +3,7 @@
     "byd_header": {
       "type": "byd-header",
       "settings": {
-        "link_seal": "#showcase-seal",
+        "link_seal": "/products/byd-seal",
         "link_atto3": "#showcase-atto3",
         "link_dolphin": "#showcase-dolphin",
         "link_m6": "#showcase-m6",
@@ -34,7 +34,7 @@
         "default_asset": "byd-showcase-seal.jpg",
         "text_color": "#ffffff",
         "label_explore": "Jelajahi",
-        "url_explore": "/collections/all",
+        "url_explore": "/products/byd-seal",
         "label_test_drive": "Uji Kendaraan",
         "url_test_drive": "/pages/contact",
         "label_quote": "Dapatkan Penawaran",

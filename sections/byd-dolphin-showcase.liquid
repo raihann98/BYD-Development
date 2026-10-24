@@ -1,0 +1,293 @@
+{% comment %}
+  BYD DOLPHIN Vehicle Detail & Marketing Showcase
+  Full 9-Section Implementation matching reference: https://www.byd.com/id/car/dolphin
+  Follows Shopify Online Store 2.0 conventions & AGENTS.md rules
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-dolphin-detail">
+  <!-- SECTION 1: HERO BANNER & SPECIFICATION BAR -->
+  <section class="byd-seal-hero" id="dolphin-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-dolphin-hero.jpg' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD DOLPHIN' }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD DOLPHIN' }}</h1>
+      <p style="font-size: clamp(16px, 1.8vw, 24px); color: #ffffff; margin-top: 8px; font-weight: 400; letter-spacing: 1px;">Lincah & Serbaguna</p>
+    </div>
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Hingga 490 km*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Jarak (NEDC)' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: '60.48 kWh*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Kapasitas Baterai' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '310 Nm*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: '7.0 s*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: '0-100 km/h' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TIM DESAIN KELAS DUNIA -->
+  <section class="byd-seal-feature text-dark align-top" id="dolphin-designers">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-dolphin-worldclass.png' | asset_url }}" alt="Tim Desain Kelas Dunia" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Tim Desain Kelas Dunia</h2>
+      <p class="byd-seal-feature-desc">Di bawah arahan desainer legendaris Wolfgang Egger, BYD DOLPHIN memadukan keindahan gerakan lumba-lumba melompat di atas ombak dengan estetika futuristik yang lincah dan berjiwa muda.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 3: ESTETIKA LAUT -->
+  <section class="byd-seal-feature text-light align-top" id="dolphin-aesthetic">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-dolphin-hero.jpg' | asset_url }}" alt="Estetika Laut" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Estetika Laut</h2>
+      <p class="byd-seal-feature-desc">Konsep desain Ocean Aesthetics menghadirkan garis bodi mengalir bebas dari depan hingga ke belakang, menciptakan siluet aerodinamis yang memancarkan energi segar di jalan perkotaan.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: PENCAHAYAAN LED DINAMIS -->
+  <section class="byd-seal-feature text-dark align-top" id="dolphin-lighting">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-dolphin-worldclass.png' | asset_url }}" alt="Pencahayaan" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Pencahayaan Cerdas</h2>
+      <p class="byd-seal-feature-desc">Lampu depan LED dan lampu belakang geometris melintang menyala layaknya riak air laut di malam hari, memberikan visibilitas tinggi dan identitas khas yang mudah dikenali.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 5: KONSOL TENGAH MENGAMBANG & KABIN INTERIOR -->
+  <section class="byd-seal-cockpit-section" id="dolphin-interior" style="background: #0d0d0d; padding: 60px 20px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <h2 class="byd-seal-feature-title" style="text-align: center; margin-bottom: 12px; color: #fff;">Konsol Tengah Mengambang</h2>
+      <p style="text-align: center; color: #aaa; max-width: 700px; margin: 0 auto 40px; font-size: 15px;">Kabin lapang berkonsep modern dengan ruang kaki lega, material ramah lingkungan, dan kepraktisan penyimpanan tanpa batas.</p>
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="Layar Sentuh 12.8 Inci" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Layar Sentuh 12.8" Berputar</h3>
+            <p class="byd-seal-cockpit-card-desc">Layar konsol adaptif dengan kendali sentuh halus, kompatibel dengan Apple CarPlay & Android Auto nirkabel.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-seats.png' | asset_url }}" alt="Kursi Kulit Vegan" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Kursi Kulit Vegan Berkelanjutan</h3>
+            <p class="byd-seal-cockpit-card-desc">Jok dua warna berbahan kulit sintetis ramah lingkungan memberikan sentuhan lembut, empuk, dan mudah dibersihkan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-storage.jpg' | asset_url }}" alt="Ruang Penumpang Belakang Nyaman" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Ruang Penumpang Belakang Nyaman</h3>
+            <p class="byd-seal-cockpit-card-desc">Wheelbase panjang 2.700 mm menghasilkan ruang lutut ekstra luas bagi penumpang belakang, serasa di kabin mobil kelas atas.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-hud.jpg' | asset_url }}" alt="Area Penyimpanan Luas" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Area Penyimpanan Luas & Cerdas</h3>
+            <p class="byd-seal-cockpit-card-desc">Beragam kompartemen penyimpanan cerdas di bawah konsol floating untuk botol, ponsel, tas belanja, dan barang esensial.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: TEKNOLOGI MUTAKHIR -->
+  <section class="byd-seal-feature text-light align-top" id="dolphin-tech">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-ctb.png' | asset_url }}" alt="Teknologi Mutakhir" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi Mutakhir</h2>
+      <p class="byd-seal-feature-desc">Dilengkapi rangkaian fitur keselamatan cerdas DiPilot, termasuk kamera panorama 360 derajat dan radar presisi untuk kemudahan parkir dan manuver di area sempit perkotaan.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 7: E-PLATFORM 3.0 -->
+  <section class="byd-seal-feature text-light align-top" id="dolphin-eplatform">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="e-Platform 3.0" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">e-Platform 3.0</h2>
+      <p class="byd-seal-feature-desc">Arsitektur kendaraan listrik murni pertama dengan penggerak 8-in-1 berdaya guna tinggi yang memaksimalkan efisiensi konsumsi daya dan kelegaan ruang dalam mobil.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 8: TEKNOLOGI BATERAI BLADE PATEN ULTRA-AMAN -->
+  <section class="byd-seal-feature text-light align-top" id="dolphin-blade">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-blade-battery.png' | asset_url }}" alt="Teknologi Baterai Blade Paten Ultra-Aman" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi Baterai Blade Paten Ultra-Aman</h2>
+      <p class="byd-seal-feature-desc">Kekuatan dan ketahanan baterai tanpa tanding yang telah lolos uji penetrasi paku ekstrem tanpa api, menjamin keamanan berkendara tanpa kompromi bersama orang tercinta.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 9: APPOINTMENT & DOWNLOAD BROSUR -->
+  <section class="byd-seal-appointment" id="dolphin-bottom">
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">BYD DOLPHIN</h2>
+      <p style="font-size: 16px; color: #d4d4d4; margin-bottom: 28px;">Mobil listrik hatchback lincah yang siap menemani setiap momen ceria Anda.</p>
+      <div class="byd-seal-appointment-btns">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+        <a href="https://www.byd.com" target="_blank" class="byd-seal-btn byd-seal-btn-outline-white">Download Brosur</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ACTION BAR -->
+  <div class="byd-seal-sticky-bar" id="dolphin-sticky-bar">
+    <div class="byd-seal-sticky-container">
+      <div class="byd-seal-sticky-model">BYD DOLPHIN</div>
+      <div class="byd-seal-sticky-actions">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-white">Dapatkan Penawaran</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BYD DOLPHIN Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Judul Model",
+      "default": "BYD DOLPHIN"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spesifikasi 1 Nilai",
+      "default": "Hingga 490 km*"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spesifikasi 1 Label",
+      "default": "Jarak (NEDC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spesifikasi 2 Nilai",
+      "default": "60.48 kWh*"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spesifikasi 2 Label",
+      "default": "Kapasitas Baterai"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spesifikasi 3 Nilai",
+      "default": "310 Nm*"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spesifikasi 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spesifikasi 4 Nilai",
+      "default": "7.0 s*"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spesifikasi 4 Label",
+      "default": "0-100 km/h"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Label Tombol Uji Kendaraan",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Link Uji Kendaraan"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Label Tombol Dapatkan Penawaran",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Link Dapatkan Penawaran"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD DOLPHIN Showcase"
+    }
+  ]
+}
+{% endschema %}

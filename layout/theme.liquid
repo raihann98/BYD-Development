@@ -184,5 +184,29 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
-  </body>
+    <script>
+    (function() {
+      var p = window.location.pathname;
+      if (p === '/pages/test-drive' || p === '/pages/test-drive/') {
+        window.location.replace('/pages/contact?view=test-drive');
+      } else if (p === '/pages/order-seal' || p === '/pages/order-seal/' || p === '/pages/dapatkan-penawaran' || p === '/pages/dapatkan-penawaran/') {
+        window.location.replace('/pages/contact?view=order-seal');
+      } else if (p === '/pages/pricelist' || p === '/pages/pricelist/' || p === '/pages/daftar-harga' || p === '/pages/daftar-harga/') {
+        window.location.replace('/pages/contact?view=pricelist');
+      } else if (p === '/pages/atto1' || p === '/pages/atto1/' || p === '/pages/atto-1' || p === '/pages/atto-1/') {
+        window.location.replace('/pages/contact?view=atto1');
+      } else if (p === '/pages/atto3' || p === '/pages/atto3/' || p === '/pages/atto-3' || p === '/pages/atto-3/') {
+        window.location.replace('/pages/contact?view=atto3');
+      } else if (p === '/pages/dolphin' || p === '/pages/dolphin/') {
+        window.location.replace('/pages/contact?view=dolphin');
+      } else if (p === '/pages/m6' || p === '/pages/m6/' || p === '/pages/m6-ev' || p === '/pages/m6-ev/') {
+        window.location.replace('/pages/contact?view=m6');
+      } else if (p === '/pages/sealion7' || p === '/pages/sealion7/' || p === '/pages/sealion-7' || p === '/pages/sealion-7/') {
+        window.location.replace('/pages/contact?view=sealion7');
+      } else if (p === '/pages/m6-dm' || p === '/pages/m6-dm/' || p === '/pages/m6dm' || p === '/pages/m6dm/') {
+        window.location.replace('/pages/contact?view=m6-dm');
+      }
+    })();
+  </script>
+</body>
 </html>

@@ -4,17 +4,17 @@
       "type": "byd-header",
       "settings": {
         "link_seal": "/products/byd-seal",
-        "link_atto3": "/#showcase-atto3",
-        "link_dolphin": "/#showcase-dolphin",
-        "link_m6": "/#showcase-m6",
-        "link_sealion7": "/pages/contact",
-        "link_atto1": "/#showcase-atto1",
-        "link_m6_dm": "/pages/contact",
+        "link_atto3": "/pages/contact?view=atto3",
+        "link_dolphin": "/pages/contact?view=dolphin",
+        "link_m6": "/pages/contact?view=m6",
+        "link_sealion7": "/pages/contact?view=sealion7",
+        "link_atto1": "/pages/contact?view=atto1",
+        "link_m6_dm": "/pages/contact?view=m6-dm",
         "link_test_drive": "/pages/contact",
         "link_dm_tech": "https://www.byd.com/id/byd-dm-technology",
         "link_about": "/pages/about",
         "link_contact": "/pages/contact",
-        "link_pricelist": "/pages/contact",
+        "link_pricelist": "/pages/contact?view=pricelist",
         "link_events": "/pages/contact",
         "link_store": "/pages/contact"
       }
@@ -32,9 +32,9 @@
         "spec_4_val": "AWD*",
         "spec_4_lbl": "Penggerak Roda",
         "label_test_drive": "Uji Kendaraan",
-        "url_test_drive": "/pages/contact",
+        "url_test_drive": "/pages/contact?view=test-drive",
         "label_quote": "Dapatkan Penawaran",
-        "url_quote": "/pages/order-seal",
+        "url_quote": "/pages/contact?view=order-seal",
         "brochure_label": "Download Brosur",
         "brochure_url": "https://www.byd.com/material/byd-site/id/brochure/SEAL-BROCHURE.pdf"
       }

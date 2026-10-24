@@ -1,0 +1,309 @@
+{% comment %}
+  BYD ATTO 3 Vehicle Detail & Marketing Showcase
+  Full 10-Section Implementation matching reference: https://www.byd.com/id/car/atto3
+  Follows Shopify Online Store 2.0 conventions & AGENTS.md rules
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-atto3-detail">
+  <!-- SECTION 1: HERO BANNER & SPECIFICATION BAR -->
+  <section class="byd-seal-hero" id="atto3-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-atto3-hero.png' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD ATTO 3' }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD ATTO 3' }}</h1>
+      <p style="font-size: clamp(16px, 1.8vw, 24px); color: #ffffff; margin-top: 8px; font-weight: 400; letter-spacing: 1px;">Kuasai Jalan dengan Kekuatan Tersembunyi</p>
+    </div>
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Hingga 480km*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Range (NEDC)' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: '60.48 kWh*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Kapasitas Baterai' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '310 Nm*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: '7.3 s*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: '0-100 km/h' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2: KUASAI JALAN DENGAN KEKUATAN TERSEMBUNYI -->
+  <section class="byd-seal-feature text-dark align-top" id="atto3-power">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-atto3-front.png' | asset_url }}" alt="Kuasai jalan dengan kekuatan tersembunyi" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Kuasai Jalan dengan Kekuatan Tersembunyi</h2>
+      <p class="byd-seal-feature-desc">Dengan bahasa desain Dragon Face 3.0 yang berani, BYD ATTO 3 memadukan lekukan dinamis dan garis atletis SUV modern untuk memberikan rasa percaya diri di segala medan perkotaan.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 3: VELG SPORTY, GAYA MODERN -->
+  <section class="byd-seal-feature text-light align-top" id="atto3-wheels">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-atto3-hero.png' | asset_url }}" alt="Velg Sporty, Gaya Modern" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Velg Sporty, Gaya Modern</h2>
+      <p class="byd-seal-feature-desc">Velg alloy 18 inci berpotongan presisi meningkatkan aerodinamika bodi sekaligus menonjolkan karakter SUV performa tinggi yang gagah dan stabil pada kecepatan tinggi.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: TIM DESAINER KELAS INTERNASIONAL -->
+  <section class="byd-seal-feature text-dark align-top" id="atto3-designers">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-designers.jpg' | asset_url }}" alt="Tim Desainer Kelas Internasional" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Tim Desainer Kelas Internasional</h2>
+      <p class="byd-seal-feature-desc">Dipimpin oleh Direktur Desain Global Wolfgang Egger, rancangan BYD ATTO 3 menyatukan keindahan seni alam dengan presisi teknik mutakhir yang diakui secara global.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 5: LAMPU DEPAN LED KOMBINASI BULU SAYAP NAGA KRISTAL -->
+  <section class="byd-seal-feature text-light align-top" id="atto3-headlamps">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-atto3-front.png' | asset_url }}" alt="Lampu Depan LED Bulu Sayap Naga Kristal" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Lampu Depan LED Kombinasi Bulu Sayap Naga Kristal</h2>
+      <p class="byd-seal-feature-desc">Pancaran cahaya kristal tajam berpadu dengan garis lampu melintang memberikan sorotan penerangan tajam di malam hari serta kehadiran visual yang memukau di jalan raya.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 6: INTERIOR DINAMIS, KARAKTER MODERN -->
+  <section class="byd-seal-cockpit-section" id="atto3-cockpit" style="background: #0a0a0a; padding: 60px 20px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <h2 class="byd-seal-feature-title" style="text-align: center; margin-bottom: 12px; color: #fff;">Interior Dinamis, Karakter Modern</h2>
+      <p style="text-align: center; color: #aaa; max-width: 700px; margin: 0 auto 40px; font-size: 15px;">Kabin revolusioner terinspirasi konsep gym & musik dengan detail senar pintu interaktif, ventilasi dumbbell, dan tuas transmisi futuristik.</p>
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="Layar Sentuh 15.6 Inci Berputar" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Layar Sentuh 15.6" Berputar</h3>
+            <p class="byd-seal-cockpit-card-desc">Layar konsol cerdas yang dapat berputar secara elektrik antara orientasi lanskap dan potret untuk kenyamanan navigasi dan hiburan maksimal.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-audio.jpg' | asset_url }}" alt="Detail Senar Pintu Musik" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Aksen Senar Musik & Audio HIFI</h3>
+            <p class="byd-seal-cockpit-card-desc">Tali senar unik pada door trim yang bisa dipetik berpadu dengan sistem suara berkualitas tinggi untuk nuansa kabin yang ceria dan ekspresif.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-sunroof.png' | asset_url }}" alt="Panoramic Sunroof Geser" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Panoramic Sunroof Elektrik</h3>
+            <p class="byd-seal-cockpit-card-desc">Atap kaca panoramik luas dengan tirai elektrik memberikan kebebasan pandangan langit dan sirkulasi udara segar di setiap perjalanan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-seats.png' | asset_url }}" alt="Kursi Sport Ergonomis" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Kursi Sport Ergonomis</h3>
+            <p class="byd-seal-cockpit-card-desc">Kursi depan dengan pengaturan elektrik multi-arah berlapis kulit sintetis premium memberikan kenyamanan dan penyangga tubuh optimal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: TEKNOLOGI MUTAKHIR -->
+  <section class="byd-seal-feature text-light align-top" id="atto3-technology">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-ctb.png' | asset_url }}" alt="Teknologi Mutakhir" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi Mutakhir</h2>
+      <p class="byd-seal-feature-desc">Struktur bodi dengan baja berkekuatan tinggi serta sistem keselamatan aktif ADAS lengkap (ACC, LKA, BSD, AEB) menjaga keselamatan seluruh anggota keluarga di setiap detik perjalanan.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 8: E-PLATFORM 3.0 -->
+  <section class="byd-seal-feature text-light align-top" id="atto3-eplatform">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="e-Platform 3.0" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">e-Platform 3.0</h2>
+      <p class="byd-seal-feature-desc">Platform murni mobil listrik generasi terbaru yang memadukan motor penggerak 8-in-1 berdaya guna tinggi, efisiensi konsumsi baterai, serta kabin lantai rata yang ekstra lega.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 9: TEKNOLOGI BATERAI BLADE BERPATEN ULTRA-AMAN -->
+  <section class="byd-seal-feature text-light align-top" id="atto3-blade">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-blade-battery.png' | asset_url }}" alt="Teknologi Baterai Blade Berpaten Ultra-Aman" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi Baterai Blade Berpaten Ultra-Aman</h2>
+      <p class="byd-seal-feature-desc">Inovasi baterai paling aman di dunia dengan struktur honeycomb tangguh, lulus uji penetrasi paku ekstrem tanpa api, serta siklus hidup panjang hingga ribuan kali pengisian daya.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 10: APPOINTMENT & DOWNLOAD BROSUR -->
+  <section class="byd-seal-appointment" id="atto3-bottom">
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">BYD ATTO 3</h2>
+      <p style="font-size: 16px; color: #d4d4d4; margin-bottom: 28px;">Rasakan ketangguhan SUV listrik pintar masa depan bersama BYD ATTO 3.</p>
+      <div class="byd-seal-appointment-btns">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+        <a href="https://www.byd.com" target="_blank" class="byd-seal-btn byd-seal-btn-outline-white">Download Brosur</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ACTION BAR -->
+  <div class="byd-seal-sticky-bar" id="atto3-sticky-bar">
+    <div class="byd-seal-sticky-container">
+      <div class="byd-seal-sticky-model">BYD ATTO 3</div>
+      <div class="byd-seal-sticky-actions">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-white">Dapatkan Penawaran</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BYD ATTO 3 Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Judul Model",
+      "default": "BYD ATTO 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spesifikasi 1 Nilai",
+      "default": "Hingga 480km*"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spesifikasi 1 Label",
+      "default": "Range (NEDC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spesifikasi 2 Nilai",
+      "default": "60.48 kWh*"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spesifikasi 2 Label",
+      "default": "Kapasitas Baterai"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spesifikasi 3 Nilai",
+      "default": "310 Nm*"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spesifikasi 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spesifikasi 4 Nilai",
+      "default": "7.3 s*"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spesifikasi 4 Label",
+      "default": "0-100 km/h"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Label Tombol Uji Kendaraan",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Link Uji Kendaraan"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Label Tombol Dapatkan Penawaran",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Link Dapatkan Penawaran"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD ATTO 3 Showcase"
+    }
+  ]
+}
+{% endschema %}

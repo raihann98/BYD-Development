@@ -33,13 +33,13 @@
       {%- endif -%}
 
       {%- if section.settings.label_test_drive != blank -%}
-        <a href="{{ section.settings.url_test_drive | default: '/pages/contact' }}" class="byd-btn byd-btn-white">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-btn byd-btn-white">
           {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
         </a>
       {%- endif -%}
 
       {%- if section.settings.label_quote != blank -%}
-        <a href="{{ section.settings.url_quote | default: '/pages/contact' }}" class="byd-btn byd-btn-white">
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-btn byd-btn-white">
           {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
         </a>
       {%- endif -%}

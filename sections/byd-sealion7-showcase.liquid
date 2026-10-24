@@ -1,0 +1,326 @@
+{% comment %}
+  BYD SEALION 7 Vehicle Detail & Marketing Showcase
+  Full 11-Section Implementation matching reference: https://www.byd.com/id/car/sealion7
+  Follows Shopify Online Store 2.0 conventions & AGENTS.md rules
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-sealion7-detail">
+  <!-- SECTION 1: HERO BANNER & SPECIFICATION BAR -->
+  <section class="byd-seal-hero" id="sealion7-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-sealion7-hero.png' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD SEALION 7' }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD SEALION 7' }}</h1>
+      <p style="font-size: clamp(16px, 1.8vw, 24px); color: #ffffff; margin-top: 8px; font-weight: 400; letter-spacing: 1px;">Inovasi Tanpa Batas</p>
+    </div>
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Hingga 567km*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Jarak (NEDC)' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: '82.56 kWh' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Kapasitas Baterai' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '690 Nm*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: 'AWD* (4.5s)' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: 'Penggerak & Akselerasi' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2: ESTETIKA LAUT DENGAN SENTUHAN DINAMIS -->
+  <section class="byd-seal-feature text-dark align-top" id="sealion7-design">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'sealion7-2.png' | asset_url }}" alt="Estetika Laut dengan Sentuhan Dinamis" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Estetika Laut dengan Sentuhan Dinamis</h2>
+      <p class="byd-seal-feature-desc">Garis-garisnya yang ramping dan mengalir serta profil aerodinamis memberikan SEALION 7 tampilan sporty dan futuristik. Wajah depan Ocean X Face memancarkan daya pikat kuat yang menarik perhatian ke mana pun Anda pergi.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 3: LEBIH BANYAK RUANG UNTUK MENIKMATI HIDUP (INTERIOR) -->
+  <section class="byd-seal-cockpit-section" id="sealion7-interior" style="background: #080808; padding: 60px 20px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <h2 class="byd-seal-feature-title" style="text-align: center; margin-bottom: 12px; color: #fff;">Lebih Banyak Ruang untuk Menikmati Hidup</h2>
+      <p style="text-align: center; color: #aaa; max-width: 750px; margin: 0 auto 40px; font-size: 15px;">Interior BYD SEALION 7 dirancang dengan sentuhan dinamis, keseimbangan sempurna, dan ruang lapang, menciptakan pengalaman berkendara yang menyatu dan imersif.</p>
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-seats.png' | asset_url }}" alt="Interior Baris Pertama Ergonomis" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Interior Baris Pertama (Ergonomis & Sporty)</h3>
+            <p class="byd-seal-cockpit-card-desc">Didesain dengan presisi untuk mengurangi kebisingan, getaran, dan ketidaknyamanan, dibalut material kulit Nappa lembut.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="Layar Sentuh 15.6 Inci" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Layar Sentuh Pintar 15.6"</h3>
+            <p class="byd-seal-cockpit-card-desc">Sistem navigasi cerdas dengan kendali suara mutakhir dan respons komputasi berkecepatan tinggi.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-audio.jpg' | asset_url }}" alt="Audio Dynaudio 12 Speaker" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Sistem Audio Dynaudio Imersif</h3>
+            <p class="byd-seal-cockpit-card-desc">Suara surround 3D akustik studio dengan 12 speaker terkalibrasi khusus untuk kabin hening SEALION 7.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-sunroof.png' | asset_url }}" alt="Panoramic Canopy Sunroof" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Panoramic Glass Canopy</h3>
+            <p class="byd-seal-cockpit-card-desc">Atap kaca raksasa dengan lapisan pelindung sinar UV dan tirai elektrik untuk kesejukan kabin maksimal.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: BEBASKAN AMBISI DENGAN PERFORMA BERKENDARA MAKSIMAL -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-performance">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-sealion7-hero.png' | asset_url }}" alt="Bebaskan Ambisi dengan Performa Berkendara Maksimal" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Bebaskan Ambisi dengan Performa Berkendara Maksimal</h2>
+      <p class="byd-seal-feature-desc">Nikmati harmoni sempurna antara tenaga dinamis dan teknologi keselamatan cerdas di setiap perjalanan. Didukung daya 390 kW dan torsi masif 690 Nm (*Eksklusif Varian Performance) yang melesatkan Anda dari 0–100 km/h dalam 4,5 detik.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 5: BAWA DAYA SELALU BERSAMAMU -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-v2l">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-hero.png' | asset_url }}" alt="Bawa Daya Selalu Bersamamu" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Bawa Daya Selalu Bersamamu</h2>
+      <p class="byd-seal-feature-desc">Dengan fitur V2L (Vehicle-to-Load), kendaraanmu bisa berubah menjadi power bank super portabel berdaya hingga 3,3 kW, siap menyuplai daya peralatan elektronik outdoor kapan saja, di mana saja!</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 6: E-PLATFORM 3.0 -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-eplatform">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="e-Platform 3.0" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">e-Platform 3.0</h2>
+      <p class="byd-seal-feature-desc">BYD SEALION 7 dibangun dengan platform BYD e-platform 3.0, dirancang untuk generasi berikutnya dari SUV listrik pintar yang menawarkan empat keunggulan utama: kecerdasan, efisiensi, keamanan, dan estetika.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 7: TEKNOLOGI BATERAI BLADE BERPATEN ULTRA-AMAN -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-blade">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-blade-battery.png' | asset_url }}" alt="Teknologi Baterai Blade Berpaten Ultra-Aman" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi Baterai Blade Berpaten Ultra-Aman</h2>
+      <p class="byd-seal-feature-desc">Selama menjalani uji penetrasi paku ekstrem, Baterai Blade tidak mengeluarkan asap atau api setelah ditembus. Lulus uji diremukkan, ditekuk, dan dipanaskan tanpa menyebabkan kebakaran atau ledakan.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 8: TEKNOLOGI CTB (CELL-TO-BODY) -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-ctb">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-ctb.png' | asset_url }}" alt="Teknologi CTB (Cell-to-Body)" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi CTB (Cell-to-Body)</h2>
+      <p class="byd-seal-feature-desc">Penutup atas baterai dan lantai bodi digabungkan menjadi satu struktur sandwich terintegrasi, menghasilkan pemanfaatan ruang kabin optimal serta kekakuan torsi luar biasa mencapai 40.500 Nm/derajat.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 9: SISTEM iTAC (INTELLIGENCE TORQUE ADAPTION CONTROL) -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-itac">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-itac.png' | asset_url }}" alt="Sistem iTAC" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Sistem iTAC (Intelligence Torque Adaption Control)</h2>
+      <p class="byd-seal-feature-desc">Berdasarkan respons cepat motor listrik, sensor mengidentifikasi perubahan status putaran roda dalam hitungan milidetik untuk mencegah slip roda dan menjaga kestabilan posisi mobil secara instan.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 10: DOUBLE WISHBONE + MULTI-LINK -->
+  <section class="byd-seal-feature text-light align-top" id="sealion7-suspension">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-suspension.jpg' | asset_url }}" alt="Double Wishbone + Multi-Link" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Double Wishbone + Multi-Link</h2>
+      <p class="byd-seal-feature-desc">Konfigurasi suspensi tingkat tinggi menciptakan pengalaman berkendara yang hebat, mewujudkan kesatuan antara manusia dan kendaraan dengan peredaman guncangan sempurna.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 11: APPOINTMENT & DOWNLOAD BROSUR -->
+  <section class="byd-seal-appointment" id="sealion7-bottom">
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">BYD SEALION 7</h2>
+      <p style="font-size: 16px; color: #d4d4d4; margin-bottom: 28px;">Bawa pengalaman berkendara SUV listrik ke tingkat tertinggi bersama BYD SEALION 7.</p>
+      <div class="byd-seal-appointment-btns">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+        <a href="https://www.byd.com" target="_blank" class="byd-seal-btn byd-seal-btn-outline-white">Download Brosur</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ACTION BAR -->
+  <div class="byd-seal-sticky-bar" id="sealion7-sticky-bar">
+    <div class="byd-seal-sticky-container">
+      <div class="byd-seal-sticky-model">BYD SEALION 7</div>
+      <div class="byd-seal-sticky-actions">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-white">Dapatkan Penawaran</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BYD SEALION 7 Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Judul Model",
+      "default": "BYD SEALION 7"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spesifikasi 1 Nilai",
+      "default": "Hingga 567km*"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spesifikasi 1 Label",
+      "default": "Jarak (NEDC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spesifikasi 2 Nilai",
+      "default": "82.56 kWh"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spesifikasi 2 Label",
+      "default": "Kapasitas Baterai"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spesifikasi 3 Nilai",
+      "default": "690 Nm*"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spesifikasi 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spesifikasi 4 Nilai",
+      "default": "AWD* (4.5s)"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spesifikasi 4 Label",
+      "default": "Penggerak & Akselerasi"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Label Tombol Uji Kendaraan",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Link Uji Kendaraan"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Label Tombol Dapatkan Penawaran",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Link Dapatkan Penawaran"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD SEALION 7 Showcase"
+    }
+  ]
+}
+{% endschema %}

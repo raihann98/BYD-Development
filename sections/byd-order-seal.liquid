@@ -1,0 +1,1441 @@
+{% comment %}
+  BYD SEAL - Dapatkan Penawaran / Vehicle Detail & Configurator Page
+  First-pass implementation based on https://www.byd.com/id/order-seal
+  Conforms to AGENTS.md: Montserrat font, 990px breakpoint, scoped CSS, Online Store 2.0.
+{% endcomment %}
+
+<div class="byd-order-root" id="bydOrderRoot">
+  <div class="order-options-content">
+    
+    <!-- LEFT: Visual Car Studio Stage (~72% width) - Full height to bottom with centered car -->
+    <div class="order-options-content-bg" id="orderCanvasStage">
+      <div class="stage-viewports">
+        <!-- View 1: Exterior (Active by default) -->
+        <picture class="stage-picture active" id="viewExterior">
+          <source media="(max-width: 990px)" srcset="{{ 'byd-order-seal-atlantis-grey.jpg' | asset_url }}">
+          <img
+            src="{{ 'byd-order-seal-atlantis-grey.jpg' | asset_url }}"
+            alt="BYD SEAL Eksterior - Atlantis Grey"
+            class="order-options-img"
+            id="imgExterior"
+            width="1440"
+            height="900"
+            loading="eager"
+          >
+        </picture>
+
+        <!-- View 2: Interior -->
+        <picture class="stage-picture" id="viewInterior">
+          <source media="(max-width: 990px)" srcset="{{ 'byd-order-seal-interior.jpg' | asset_url }}">
+          <img
+            src="{{ 'byd-order-seal-interior.jpg' | asset_url }}"
+            alt="BYD SEAL Interior Thaumas Black"
+            class="order-options-img"
+            width="1440"
+            height="900"
+            loading="lazy"
+          >
+        </picture>
+
+        <!-- View 3: Wheel -->
+        <picture class="stage-picture" id="viewWheel">
+          <source media="(max-width: 990px)" srcset="{{ 'byd-order-seal-wheel-view.jpg' | asset_url }}">
+          <img
+            src="{{ 'byd-order-seal-wheel-view.jpg' | asset_url }}"
+            alt="BYD SEAL 19 Inch Sport Alloy Wheel"
+            class="order-options-img"
+            width="1440"
+            height="900"
+            loading="lazy"
+          >
+        </picture>
+      </div>
+
+      <!-- Navigation Chevrons: Left (<) and Right (>) -->
+      <div class="order-navigation">
+        <button type="button" class="order-navigation-left" id="btnNavLeft" aria-label="Sudut sebelumnya">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        <button type="button" class="order-navigation-right" id="btnNavRight" aria-label="Sudut selanjutnya">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Bottom-Left Badge: 360 View Indicator -->
+      <div class="stage-bottom-badge" title="Tampilan Interaktif BYD SEAL">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- RIGHT: Configurator Options & Lead Panel (~28% width, pure white background) -->
+    <div class="from-content">
+      <div class="from-content-inner">
+        
+        <!-- Car Model Title -->
+        <h1 class="car-title">{{ section.settings.model_title | default: 'BYD SEAL' }}</h1>
+
+        <!-- Varian Selection Box -->
+        <div class="car-version">
+          <div class="version-active" id="versionActiveBtn" role="button" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
+            <span id="versionActiveLabel">Premium Ext. Range</span>
+            <svg class="version-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <!-- Dropdown options -->
+          <div class="version-dropdown-menu" id="versionDropdown" role="listbox">
+            <div class="version-dropdown-item active" data-version="Premium Ext. Range" data-price="869,000,000" role="option" aria-selected="true">
+              <div class="v-info">
+                <strong>Premium Ext. Range</strong>
+                <small>650 km | 5.9s (0-100 km/h) | RWD</small>
+              </div>
+              <span class="v-price">Rp 869.000.000*</span>
+            </div>
+            <div class="version-dropdown-item" data-version="Performance AWD" data-price="969,000,000" role="option" aria-selected="false">
+              <div class="v-info">
+                <strong>Performance AWD</strong>
+                <small>580 km | 3.8s (0-100 km/h) | Dual-Motor</small>
+              </div>
+              <span class="v-price">Rp 969.000.000*</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Configurator Section -->
+        <div class="car-configure-main">
+          <h2 class="car-configure">Siapkan BYD Anda</h2>
+
+          <!-- Segmented Tab Controls: Warna | Interior | Roda -->
+          <div class="car-configure-details" role="tablist">
+            <button type="button" class="details-tab details-avive" data-tab="warna" role="tab" aria-selected="true" id="tabWarna">Warna</button>
+            <button type="button" class="details-tab" data-tab="interior" role="tab" aria-selected="false" id="tabInterior">Interior</button>
+            <button type="button" class="details-tab" data-tab="roda" role="tab" aria-selected="false" id="tabRoda">Roda</button>
+          </div>
+
+          <!-- TAB 1: Warna Eksterior -->
+          <div class="car-configure-list active" id="listWarna" role="tabpanel" aria-labelledby="tabWarna">
+            <h3 class="state-name" id="colorStateName">Atlantis Grey</h3>
+            <div class="car-configure-icon">
+              <!-- Swatch 1: Atlantis Grey -->
+              <div class="car-info-list active" data-color="Atlantis Grey" data-img="{{ 'byd-order-seal-atlantis-grey.jpg' | asset_url }}" title="Atlantis Grey" role="button" tabindex="0">
+                <div class="car-configure-list-active">
+                  <div class="swatch-wrap">
+                    <img src="{{ 'byd-order-swatch-grey.png' | asset_url }}" alt="Atlantis Grey" width="34" height="34">
+                  </div>
+                </div>
+              </div>
+              <!-- Swatch 2: Aurora White -->
+              <div class="car-info-list" data-color="Aurora White" data-img="{{ 'byd-order-seal-atlantis-grey.jpg' | asset_url }}" title="Aurora White" role="button" tabindex="0">
+                <div>
+                  <div class="swatch-wrap swatch-white">
+                    <img src="{{ 'byd-order-swatch-white.png' | asset_url }}" alt="Aurora White" width="34" height="34">
+                  </div>
+                </div>
+              </div>
+              <!-- Swatch 3: Cosmos Black -->
+              <div class="car-info-list" data-color="Cosmos Black" data-img="{{ 'byd-order-seal-atlantis-grey.jpg' | asset_url }}" title="Cosmos Black" role="button" tabindex="0">
+                <div>
+                  <div class="swatch-wrap">
+                    <img src="{{ 'byd-order-swatch-black.png' | asset_url }}" alt="Cosmos Black" width="34" height="34">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Interior -->
+          <div class="car-configure-list" id="listInterior" role="tabpanel" aria-labelledby="tabInterior" style="display: none;">
+            <h3 class="state-name">Thaumas Black</h3>
+            <div class="car-configure-icon">
+              <div class="car-info-list active" data-interior="Thaumas Black" title="Thaumas Black" role="button" tabindex="0">
+                <div class="car-configure-list-active">
+                  <div class="swatch-wrap">
+                    <img src="{{ 'byd-order-swatch-interior-black.png' | asset_url }}" alt="Thaumas Black" width="34" height="34">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Roda -->
+          <div class="car-configure-list" id="listRoda" role="tabpanel" aria-labelledby="tabRoda" style="display: none;">
+            <h3 class="state-name">19 Inch Sport Alloy Wheels</h3>
+            <div class="car-configure-icon">
+              <div class="car-info-list active" data-wheel="19 Inch" title="19 Inch Sport Alloy Wheels" role="button" tabindex="0">
+                <div class="car-configure-list-active">
+                  <div class="swatch-wrap wheel-swatch">
+                    <img src="{{ 'byd-order-seal-wheel.jpg' | asset_url }}" alt="19 Inch Sport Alloy Wheels" width="34" height="34">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Area: Price & CTA Selanjutnya -->
+        <div class="car-operate">
+          <div class="car-price is-show">
+            <p class="price-desc">Harga Retail yang<br>disarankan</p>
+            <h2 class="price-val">
+              <span id="carPriceDisplay">869,000,000</span>
+              <span class="price-asterisk">*</span>
+            </h2>
+          </div>
+          
+          <div class="car-btns">
+            <button type="button" class="save btn-selanjutnya" id="btnOpenLeadModal">
+              Selanjutnya
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Lead Generation / Penawaran Modal -->
+  <div class="byd-lead-modal-overlay" id="leadModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none;">
+    <div class="byd-lead-modal-box">
+      <button type="button" class="modal-close-btn" id="btnCloseModal" aria-label="Tutup Formulir">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Dapatkan Penawaran Resmi</h3>
+        <p class="modal-subtitle">Konfigurasi BYD SEAL Anda siap diajukan ke dealer resmi BYD Indonesia</p>
+      </div>
+
+      <!-- Selected Spec Badge -->
+      <div class="modal-spec-summary">
+        <div class="summary-item">
+          <span class="summary-label">Model:</span>
+          <strong id="modalSummaryModel">BYD SEAL</strong>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Varian:</span>
+          <strong id="modalSummaryVersion">Premium Ext. Range</strong>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Warna:</span>
+          <strong id="modalSummaryColor">Atlantis Grey</strong>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Estimasi OTR:</span>
+          <strong class="highlight-price" id="modalSummaryPrice">Rp 869.000.000*</strong>
+        </div>
+      </div>
+
+      <!-- Lead Generation Form -->
+      <form class="byd-lead-form" id="bydLeadForm" onsubmit="event.preventDefault(); submitLead();">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="leadFullName">Nama Lengkap *</label>
+            <input type="text" id="leadFullName" required placeholder="Contoh: Muhammad Raihan">
+          </div>
+          <div class="form-group">
+            <label for="leadPhone">Nomor WhatsApp / HP *</label>
+            <input type="tel" id="leadPhone" required placeholder="0812-xxxx-xxxx">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="leadEmail">Alamat Email *</label>
+            <input type="email" id="leadEmail" required placeholder="nama@email.com">
+          </div>
+          <div class="form-group">
+            <label for="leadCity">Kota / Dealer Terdekat *</label>
+            <select id="leadCity" required>
+              <option value="">-- Pilih Kota / Dealer --</option>
+              <option value="Jakarta Selatan - Simatupang">Jakarta Selatan - BYD Simatupang</option>
+              <option value="Jakarta Barat - Kebon Jeruk">Jakarta Barat - BYD Kebon Jeruk</option>
+              <option value="Jakarta Utara - PIK">Jakarta Utara - BYD Pantai Indah Kapuk</option>
+              <option value="Tangerang - BSD City">Tangerang - BYD BSD City</option>
+              <option value="Bekasi - Summarecon">Bekasi - BYD Summarecon</option>
+              <option value="Bandung - Soekarno Hatta">Bandung - BYD Soekarno Hatta</option>
+              <option value="Surabaya - HR Muhammad">Surabaya - BYD HR Muhammad</option>
+              <option value="Semarang - Pandanaran">Semarang - BYD Pandanaran</option>
+              <option value="Medan - Gatot Subroto">Medan - BYD Gatot Subroto</option>
+              <option value="Bali - Denpasar Bypass">Bali - BYD Denpasar Bypass</option>
+              <option value="Makassar - Pettarani">Makassar - BYD Pettarani</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="leadPayment">Rencana Metode Pembelian</label>
+          <select id="leadPayment">
+            <option value="Tunai / Cash">Pembelian Tunai (Cash)</option>
+            <option value="Kredit EV Ringan">Pembiayaan Kredit / Cicilan EV</option>
+            <option value="Trade-In Mobil Lama">Tukar Tambah (Trade-In)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="leadNotes">Catatan Tambahan (Opsional)</label>
+          <textarea id="leadNotes" rows="2" placeholder="Jadwal konsultasi yang diinginkan, simulasi kredit DP/tenor, dll."></textarea>
+        </div>
+
+        <div class="form-privacy">
+          <label class="privacy-label">
+            <input type="checkbox" required checked>
+            <span>Saya menyetujui bahwa data saya dapat digunakan oleh PT BYD Motor Indonesia untuk keperluan penawaran dan penjadwalan konsultasi resmi.</span>
+          </label>
+        </div>
+
+        <button type="submit" class="submit-lead-btn" id="btnSubmitLead">
+          Kirim Permintaan Penawaran
+        </button>
+      </form>
+
+      <!-- Success Feedback State -->
+      <div class="modal-success-state" id="modalSuccessState" style="display: none;">
+        <div class="success-icon-circle">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h4 class="success-title">Permintaan Penawaran Berhasil Dikirim!</h4>
+        <p class="success-desc">
+          Terima kasih. Konsultan resmi BYD Indonesia dari dealer terpilih akan segera menghubungi WhatsApp/Email Anda dengan rincian penawaran harga OTR, promo eksklusif, serta opsi simulasi cicilan BYD SEAL.
+        </p>
+        <button type="button" class="btn-success-close" id="btnSuccessClose">
+          Selesai & Tutup
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  /* ==========================================================
+     BYD SEAL CONFIGURATOR & ORDER STYLES
+     Font Stack: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif
+     Breakpoint: 990px (AGENTS.md project rule)
+     ========================================================== */
+
+  /* Global root overrides to prevent any white gap or margin */
+  html, body {
+    background-color: #252728 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #MainContent {
+    background-color: #252728 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* Scoped Page Overrides: Hide global footer & floating contact on desktop order configurator */
+  .byd-floating-contact,
+  .byd-section-floating-contact,
+  .shopify-section:has(.byd-floating-whatsapp) {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  @media (min-width: 991px) {
+    .byd-footer,
+    .byd-section-footer,
+    .shopify-section:has(.byd-footer),
+    footer {
+      display: none !important;
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+
+  .byd-order-root {
+    font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    background-color: #252728;
+    color: #252728;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .byd-order-root * {
+    box-sizing: border-box;
+    font-family: inherit;
+  }
+
+  /* Main Flex Container */
+  .order-options-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    background-color: #252728;
+  }
+
+  /* ----------------------------------------------------
+     LEFT: Car Studio Showcase (~72% - 75% width)
+     Full viewport coverage with car lowered and centered vertically
+     ---------------------------------------------------- */
+  .order-options-content-bg {
+    flex: 1;
+    position: relative;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #252728;
+    background: radial-gradient(ellipse at 50% 50%, #404850 0%, #293037 60%, #1a2025 100%);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stage-viewports {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .stage-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+  }
+
+  .stage-picture.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Car image positioned perfectly in center / slightly lowered */
+  .order-options-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 48%; /* lowered down to center comfortably */
+    display: block;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+
+  /* Navigation Chevrons */
+  .order-navigation {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 28px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .order-navigation-left,
+  .order-navigation-right {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.25);
+    border: none;
+    color: rgba(255, 255, 255, 0.75);
+    cursor: pointer;
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .order-navigation-left:hover,
+  .order-navigation-right:hover {
+    background: rgba(0, 0, 0, 0.55);
+    color: #ffffff;
+    transform: scale(1.08);
+  }
+
+  /* Bottom-Left 360 Badge */
+  .stage-bottom-badge {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.2s;
+  }
+
+  .stage-bottom-badge:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  /* ----------------------------------------------------
+     RIGHT: Configurator Panel (~380px, pure white)
+     ---------------------------------------------------- */
+  .from-content {
+    width: 380px;
+    flex-shrink: 0;
+    background-color: #ffffff;
+    color: #252728;
+    height: 100%;
+    position: relative;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.08);
+    overflow-y: auto;
+    z-index: 20;
+    margin: 0;
+  }
+
+  .from-content-inner {
+    padding: 60px 36px 36px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Title: BYD SEAL */
+  .car-title {
+    font-size: 24px;
+    line-height: 1.25;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.8px;
+    color: #000000;
+    margin: 0 0 24px 0;
+    text-transform: uppercase;
+  }
+
+  /* Version Box: Premium Ext. Range - spaced comfortably */
+  .car-version {
+    position: relative;
+    width: 100%;
+    margin-bottom: 72px; /* lowered down as in screenshot */
+  }
+
+  .version-active {
+    background-color: #252728;
+    color: #ffffff;
+    height: 44px;
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    user-select: none;
+  }
+
+  .version-active:hover {
+    background-color: #1a1b1c;
+  }
+
+  .version-arrow {
+    transition: transform 0.25s ease;
+  }
+
+  .version-active.is-open .version-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Version Dropdown */
+  .version-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    display: none;
+    z-index: 50;
+    overflow: hidden;
+  }
+
+  .version-dropdown-menu.show {
+    display: block;
+    animation: fadeInDown 0.2s ease;
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .version-dropdown-item {
+    padding: 12px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid #f2f3f5;
+    transition: background-color 0.15s;
+  }
+
+  .version-dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+  .version-dropdown-item:hover {
+    background-color: #f7f8fa;
+  }
+
+  .version-dropdown-item.active {
+    background-color: #f0f4ff;
+    border-left: 3px solid #252728;
+  }
+
+  .version-dropdown-item .v-info strong {
+    display: block;
+    font-size: 13px;
+    color: #252728;
+  }
+
+  .version-dropdown-item .v-info small {
+    display: block;
+    font-size: 11px;
+    color: #70757a;
+    margin-top: 2px;
+  }
+
+  .version-dropdown-item .v-price {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #252728;
+    white-space: nowrap;
+  }
+
+  /* Main Configurator Area */
+  .car-configure-main {
+    margin-bottom: auto;
+  }
+
+  /* Heading: Siapkan BYD Anda - lowered down with prominent size */
+  .car-configure {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    color: #000000;
+    margin: 0 0 24px 0;
+  }
+
+  /* Segmented Tabs (Warna | Interior | Roda) */
+  .car-configure-details {
+    display: flex;
+    width: 100%;
+    border: 1px solid #252728;
+    border-radius: 1px;
+    overflow: hidden;
+    height: 40px;
+    margin-bottom: 24px;
+  }
+
+  .details-tab {
+    flex: 1;
+    height: 100%;
+    border: none;
+    background-color: #ffffff;
+    color: #252728;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    border-right: 1px solid #252728;
+    padding: 0;
+  }
+
+  .details-tab:last-child {
+    border-right: none;
+  }
+
+  .details-tab.details-avive {
+    background-color: #252728;
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  /* Active Color / Spec Name */
+  .state-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #252728;
+    text-align: center;
+    margin: 0 0 20px 0;
+  }
+
+  /* Swatches Row */
+  .car-configure-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    margin-bottom: 32px;
+  }
+
+  .car-info-list {
+    position: relative;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .swatch-wrap {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+  }
+
+  .swatch-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+  }
+
+  .swatch-wrap.swatch-white {
+    border: 1px solid #dcdfe6;
+  }
+
+  /* Active double-ring indicator matching user screenshot */
+  .car-info-list.active .swatch-wrap {
+    outline: 1.5px solid #252728;
+    outline-offset: 4px;
+  }
+
+  /* ----------------------------------------------------
+     Bottom Operative Area: Price & Button (Enlarged as requested)
+     ---------------------------------------------------- */
+  .car-operate {
+    margin-top: auto;
+    padding-top: 24px;
+  }
+
+  .car-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  /* Larger retail price text */
+  .price-desc {
+    font-size: 14px;
+    line-height: 1.35;
+    color: #000000;
+    max-width: 140px;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* Larger price numbers */
+  .price-val {
+    font-size: 26px;
+    line-height: 1;
+    font-weight: 700;
+    color: #000000;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: -0.5px;
+  }
+
+  .price-asterisk {
+    color: #2c6ecb;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .car-btns {
+    width: 100%;
+  }
+
+  /* Larger button font and dimensions */
+  .btn-selanjutnya {
+    display: block;
+    width: 100%;
+    height: 48px;
+    line-height: 46px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1px solid #252728;
+    color: #000000;
+    font-size: 15.5px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-selanjutnya:hover {
+    background-color: #252728;
+    color: #ffffff;
+  }
+
+  /* ----------------------------------------------------
+     Lead Generation Modal Styles
+     ---------------------------------------------------- */
+  .byd-lead-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: modalFadeIn 0.25s ease;
+  }
+
+  @keyframes modalFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .byd-lead-modal-box {
+    background: #ffffff;
+    color: #252728;
+    width: 100%;
+    max-width: 580px;
+    border-radius: 6px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    position: relative;
+    padding: 36px 36px 32px;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #70757a;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .modal-close-btn:hover {
+    background: #f1f3f4;
+    color: #000000;
+  }
+
+  .modal-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #252728;
+    margin: 0 0 6px 0;
+  }
+
+  .modal-subtitle {
+    font-size: 13px;
+    color: #666e75;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* Spec summary badge */
+  .modal-spec-summary {
+    background-color: #f7f9fa;
+    border: 1px solid #e5e8eb;
+    border-radius: 4px;
+    padding: 12px 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .summary-item {
+    font-size: 12px;
+  }
+
+  .summary-label {
+    color: #70757a;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .summary-item strong {
+    color: #252728;
+    font-size: 13px;
+  }
+
+  .summary-item .highlight-price {
+    color: #2c6ecb;
+    font-weight: 700;
+  }
+
+  /* Form Elements */
+  .byd-lead-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 14px;
+  }
+
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #252728;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #dcdfe6;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #252728;
+    background-color: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #252728;
+    box-shadow: 0 0 0 2px rgba(37, 39, 40, 0.1);
+  }
+
+  .form-privacy {
+    margin-top: 4px;
+  }
+
+  .privacy-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11.5px;
+    color: #666e75;
+    line-height: 1.4;
+    cursor: pointer;
+  }
+
+  .privacy-label input {
+    margin-top: 2px;
+  }
+
+  .submit-lead-btn {
+    width: 100%;
+    height: 46px;
+    background-color: #252728;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: background-color 0.2s;
+  }
+
+  .submit-lead-btn:hover {
+    background-color: #000000;
+  }
+
+  /* Success State */
+  .modal-success-state {
+    text-align: center;
+    padding: 30px 10px 10px;
+    animation: fadeInDown 0.3s ease;
+  }
+
+  .success-icon-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #dcfce7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+  }
+
+  .success-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #252728;
+    margin: 0 0 10px;
+  }
+
+  .success-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: #555c65;
+    max-width: 440px;
+    margin: 0 auto 24px;
+  }
+
+  .btn-success-close {
+    padding: 12px 36px;
+    background-color: #252728;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .btn-success-close:hover {
+    background-color: #000000;
+  }
+
+  /* ==========================================================
+     RESPONSIVE BREAKPOINT RULES (AGENTS.md: 990px)
+     ========================================================== */
+
+  /* Desktop: above 990px */
+  @media (min-width: 991px) {
+    .byd-order-root {
+      height: calc(100vh - 68px);
+      margin-top: 68px;
+    }
+
+    .order-options-content {
+      height: 100%;
+    }
+
+    .order-options-content-bg {
+      width: calc(100% - 380px);
+      height: 100%;
+    }
+
+    .from-content {
+      height: 100%;
+    }
+  }
+
+  /* Mobile / Tablet: 990px and below */
+  @media (max-width: 990px) {
+    .byd-order-root {
+      margin-top: 64px;
+      height: auto;
+      overflow: visible;
+    }
+
+    .order-options-content {
+      flex-direction: column;
+      height: auto;
+      min-height: auto;
+      overflow: visible;
+    }
+
+    .order-options-content-bg {
+      width: 100%;
+      height: 65vw;
+      min-height: 280px;
+      max-height: 520px;
+    }
+
+    .from-content {
+      width: 100%;
+      height: auto;
+      box-shadow: none;
+    }
+
+    .from-content-inner {
+      padding: 32px 20px 40px;
+    }
+
+    .form-row {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .byd-lead-modal-box {
+      padding: 28px 20px 24px;
+    }
+
+    .modal-spec-summary {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    // Force zero body/main margin & dark background so no white gaps appear
+    function enforceDarkFullBleed() {
+      document.documentElement.style.backgroundColor = '#252728';
+      document.body.style.backgroundColor = '#252728';
+      document.body.style.margin = '0';
+      document.body.style.padding = '0';
+
+      var mainContent = document.getElementById('MainContent');
+      if (mainContent) {
+        mainContent.style.margin = '0';
+        mainContent.style.padding = '0';
+        mainContent.style.backgroundColor = '#252728';
+      }
+
+      // Hide footer section completely on desktop
+      if (window.innerWidth > 990) {
+        var footerSection = document.querySelector('.byd-section-footer, .shopify-section:has(.byd-footer), footer');
+        if (footerSection) {
+          var sec = footerSection.closest('.shopify-section') || footerSection;
+          sec.style.display = 'none';
+        }
+      }
+    }
+
+    enforceDarkFullBleed();
+    window.addEventListener('DOMContentLoaded', enforceDarkFullBleed);
+    window.addEventListener('resize', enforceDarkFullBleed);
+
+    // Current Active States
+    let currentTab = 'warna'; // 'warna' | 'interior' | 'roda'
+    let currentViewIndex = 0; // 0: exterior, 1: interior, 2: wheel
+    let currentVersion = 'Premium Ext. Range';
+    let currentPrice = '869,000,000';
+    let currentColor = 'Atlantis Grey';
+
+    // DOM Elements
+    const viewPictures = [
+      document.getElementById('viewExterior'),
+      document.getElementById('viewInterior'),
+      document.getElementById('viewWheel')
+    ];
+
+    const tabs = {
+      warna: document.getElementById('tabWarna'),
+      interior: document.getElementById('tabInterior'),
+      roda: document.getElementById('tabRoda')
+    };
+
+    const panels = {
+      warna: document.getElementById('listWarna'),
+      interior: document.getElementById('listInterior'),
+      roda: document.getElementById('listRoda')
+    };
+
+    const colorStateName = document.getElementById('colorStateName');
+    const versionActiveBtn = document.getElementById('versionActiveBtn');
+    const versionActiveLabel = document.getElementById('versionActiveLabel');
+    const versionDropdown = document.getElementById('versionDropdown');
+    const carPriceDisplay = document.getElementById('carPriceDisplay');
+
+    // Switch View
+    function setView(index) {
+      currentViewIndex = (index + 3) % 3;
+      viewPictures.forEach(function(pic, idx) {
+        if (pic) {
+          if (idx === currentViewIndex) {
+            pic.classList.add('active');
+          } else {
+            pic.classList.remove('active');
+          }
+        }
+      });
+
+      // Synchronize Tab
+      var tabKey = currentViewIndex === 0 ? 'warna' : (currentViewIndex === 1 ? 'interior' : 'roda');
+      activateTab(tabKey, false);
+    }
+
+    // Activate Tab
+    function activateTab(tabKey, updateView) {
+      if (updateView === undefined) updateView = true;
+      currentTab = tabKey;
+
+      // Update Tab Buttons
+      Object.keys(tabs).forEach(function(key) {
+        if (tabs[key]) {
+          if (key === tabKey) {
+            tabs[key].classList.add('details-avive');
+            tabs[key].setAttribute('aria-selected', 'true');
+          } else {
+            tabs[key].classList.remove('details-avive');
+            tabs[key].setAttribute('aria-selected', 'false');
+          }
+        }
+      });
+
+      // Update Panels
+      Object.keys(panels).forEach(function(key) {
+        if (panels[key]) {
+          if (key === tabKey) {
+            panels[key].style.display = 'block';
+            panels[key].classList.add('active');
+          } else {
+            panels[key].style.display = 'none';
+            panels[key].classList.remove('active');
+          }
+        }
+      });
+
+      // If requested, sync car stage image
+      if (updateView) {
+        var viewIdx = tabKey === 'warna' ? 0 : (tabKey === 'interior' ? 1 : 2);
+        currentViewIndex = viewIdx;
+        viewPictures.forEach(function(pic, idx) {
+          if (pic) {
+            if (idx === currentViewIndex) {
+              pic.classList.add('active');
+            } else {
+              pic.classList.remove('active');
+            }
+          }
+        });
+      }
+    }
+
+    // Attach Tab Clicks
+    if (tabs.warna) tabs.warna.addEventListener('click', function() { activateTab('warna'); });
+    if (tabs.interior) tabs.interior.addEventListener('click', function() { activateTab('interior'); });
+    if (tabs.roda) tabs.roda.addEventListener('click', function() { activateTab('roda'); });
+
+    // Navigation Chevrons
+    var btnLeft = document.getElementById('btnNavLeft');
+    var btnRight = document.getElementById('btnNavRight');
+    if (btnLeft) btnLeft.addEventListener('click', function() { setView(currentViewIndex - 1); });
+    if (btnRight) btnRight.addEventListener('click', function() { setView(currentViewIndex + 1); });
+
+    // Swatches Selection
+    var colorSwatches = document.querySelectorAll('#listWarna .car-info-list');
+    colorSwatches.forEach(function(swatch) {
+      swatch.addEventListener('click', function() {
+        colorSwatches.forEach(function(s) { s.classList.remove('active'); });
+        swatch.classList.add('active');
+        var color = swatch.getAttribute('data-color') || 'Atlantis Grey';
+        currentColor = color;
+        if (colorStateName) colorStateName.textContent = color;
+        // ensure exterior view is shown
+        setView(0);
+      });
+    });
+
+    // Version Dropdown Toggle
+    if (versionActiveBtn && versionDropdown) {
+      versionActiveBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = versionDropdown.classList.contains('show');
+        if (isOpen) {
+          versionDropdown.classList.remove('show');
+          versionActiveBtn.classList.remove('is-open');
+        } else {
+          versionDropdown.classList.add('show');
+          versionActiveBtn.classList.add('is-open');
+        }
+      });
+
+      document.addEventListener('click', function() {
+        versionDropdown.classList.remove('show');
+        versionActiveBtn.classList.remove('is-open');
+      });
+
+      var versionItems = versionDropdown.querySelectorAll('.version-dropdown-item');
+      versionItems.forEach(function(item) {
+        item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          versionItems.forEach(function(v) { v.classList.remove('active'); });
+          item.classList.add('active');
+
+          var vName = item.getAttribute('data-version') || 'Premium Ext. Range';
+          var vPrice = item.getAttribute('data-price') || '869,000,000';
+
+          currentVersion = vName;
+          currentPrice = vPrice;
+
+          if (versionActiveLabel) versionActiveLabel.textContent = vName;
+          if (carPriceDisplay) carPriceDisplay.textContent = vPrice;
+
+          versionDropdown.classList.remove('show');
+          versionActiveBtn.classList.remove('is-open');
+        });
+      });
+    }
+
+    // Modal Operations
+    var leadOverlay = document.getElementById('leadModalOverlay');
+    var btnOpen = document.getElementById('btnOpenLeadModal');
+    var btnClose = document.getElementById('btnCloseModal');
+    var btnSuccessClose = document.getElementById('btnSuccessClose');
+    var leadForm = document.getElementById('bydLeadForm');
+    var successState = document.getElementById('modalSuccessState');
+
+    function openModal() {
+      if (!leadOverlay) return;
+      document.getElementById('modalSummaryModel').textContent = 'BYD SEAL';
+      document.getElementById('modalSummaryVersion').textContent = currentVersion;
+      document.getElementById('modalSummaryColor').textContent = currentColor;
+      document.getElementById('modalSummaryPrice').textContent = 'Rp ' + currentPrice + '*';
+
+      if (leadForm) leadForm.style.display = 'flex';
+      if (successState) successState.style.display = 'none';
+
+      leadOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      if (!leadOverlay) return;
+      leadOverlay.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    if (btnOpen) btnOpen.addEventListener('click', openModal);
+    if (btnClose) btnClose.addEventListener('click', closeModal);
+    if (btnSuccessClose) btnSuccessClose.addEventListener('click', closeModal);
+
+    if (leadOverlay) {
+      leadOverlay.addEventListener('click', function(e) {
+        if (e.target === leadOverlay) {
+          closeModal();
+        }
+      });
+    }
+
+    // Submit Lead function
+    window.submitLead = function() {
+      var submitBtn = document.getElementById('btnSubmitLead');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Memproses Permintaan...';
+      }
+
+      setTimeout(function() {
+        if (leadForm) leadForm.style.display = 'none';
+        if (successState) successState.style.display = 'block';
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Kirim Permintaan Penawaran';
+        }
+      }, 700);
+    };
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "BYD SEAL Order Page",
+  "tag": "section",
+  "class": "section-byd-order-seal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Model Title",
+      "default": "BYD SEAL"
+    },
+    {
+      "type": "text",
+      "id": "model_subtitle",
+      "label": "Model Subtitle",
+      "default": "Ocean Aesthetics Pure Electric Sports Sedan"
+    },
+    {
+      "type": "url",
+      "id": "back_url",
+      "label": "Back URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD SEAL Order Configurator"
+    }
+  ]
+}
+{% endschema %}

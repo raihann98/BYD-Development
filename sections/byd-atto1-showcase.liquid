@@ -1,0 +1,486 @@
+{% comment %}
+  BYD ATTO 1 Vehicle Detail & Marketing Showcase
+  Full 8-Section Implementation matching reference: https://www.byd.com/id/car/atto1
+  Follows Shopify Online Store 2.0 conventions & AGENTS.md rules
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-atto1-detail">
+  <!-- ==========================================
+       SECTION 1: HERO BANNER & SPECIFICATION BAR
+       ========================================== -->
+  <section class="byd-seal-hero" id="atto1-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-atto1-hero.jpg' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD ATTO 1' }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD ATTO 1' }}</h1>
+      <p style="font-size: clamp(16px, 1.8vw, 24px); color: #ffffff; margin-top: 8px; font-weight: 400; letter-spacing: 1px;">Energy in Motion</p>
+    </div>
+
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Hingga 380km*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Jarak (NEDC)' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: '38,88 kWh*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Kapasitas Baterai' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '135 Nm' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: '4.9 s' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: '0-50 km/h' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 2: TAMPILAN CERAH BERKAT DESAIN OCEAN NAN ESTETIK
+       ========================================== -->
+  <section class="byd-seal-feature text-dark align-top" id="atto1-design-ocean">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-atto1-front.png' | asset_url }}" alt="Tampilan Cerah Berkat Desain Ocean Nan Estetik" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.s2_title | default: 'Tampilan Cerah Berkat Desain Ocean Nan Estetik' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.s2_desc | default: 'Anggota terbaru seri Ocean yang merevolusi mobilitas perkotaan dengan desain dinamis dan teknologi inovatif. Garis bodi aerodinamis dipadukan dengan pencahayaan LED tajam memberikan karakter modern nan energetik di setiap sudut jalan.' }}
+      </p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
+    </div>
+  </section>
+
+  <!-- Subsection 2b: 4 Fitur Eksterior Cards -->
+  <section class="byd-seal-cockpit-section" id="atto1-exterior-cards" style="background: #0d0d0d; padding: 60px 20px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-atto1-front.png' | asset_url }}" alt="Pencahayaan Dinamis" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Pencahayaan Dinamis</h3>
+            <p class="byd-seal-cockpit-card-desc">Lampu depan dengan desain 'Double Slash' memberikan identitas visual kuat dan pencahayaan optimal di siang hari, dilengkapi dengan fitur automatic LED headlamp untuk kenyamanan dan keamanan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-atto1-hero.jpg' | asset_url }}" alt="Velg Alloy 16 Inci" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Velg Alloy 16 Inci</h3>
+            <p class="byd-seal-cockpit-card-desc">Velg berukuran 16 inci melengkapi tampilan dinamis BYD Atto 1, menambah kesan sporty dan kestabilan berkendara di perkotaan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-atto1-hero.jpg' | asset_url }}" alt="Visibilitas Unggul LED" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Visibilitas Unggul dengan LED High Mounted Brake Light</h3>
+            <p class="byd-seal-cockpit-card-desc">LED High Mounted Brake Light memastikan visibilitas maksimal dari kendaraan di belakang, meningkatkan keamanan berkendara saat pengereman mendadak.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-atto1-front.png' | asset_url }}" alt="Siluet Belakang yang Tegas" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Siluet Belakang yang Tegas</h3>
+            <p class="byd-seal-cockpit-card-desc">Desain keseluruhan bagian belakang menonjolkan karakter kuat dan modern, melengkapi estetika dinamis kendaraan berjiwa muda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 3: SAATNYA BERALIH KE MOBIL LISTRIK
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="atto1-lifestyle">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-atto1-hero.jpg' | asset_url }}" alt="Saatnya Beralih ke Mobil Listrik" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.s3_title | default: 'Saatnya Beralih ke Mobil Listrik' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.s3_desc | default: 'Temukan kebebasan mobilitas yang praktis dan sepenuhnya elektrik. Saatnya beralih ke gaya hidup ramah lingkungan bersama BYD Atto 1. Rasakan sensasi berkendara senyap, bebas emisi, dan hemat biaya operasional setiap hari.' }}
+      </p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 4: KENDALI CERDAS DI UJUNG JARI (INTERIOR)
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="atto1-smart-cockpit">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="Kendali Cerdas di Ujung Jari" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.s4_title | default: 'Kendali Cerdas di Ujung Jari' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.s4_desc | default: 'Dashboard ergonomis dengan touch screen cerdas yang mendukung Apple CarPlay & Android Auto nirkabel. Kontrol seluruh fitur hiburan dan informasi berkendara secara intuitif dan menyenangkan.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- Subsection 4b: Interior Cards -->
+  <section class="byd-seal-cockpit-section" id="atto1-interior-cards" style="background: #000; padding: 40px 20px 60px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-hud.jpg' | asset_url }}" alt="Pengisian Daya Nirkabel" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Pengisian Daya Nirkabel yang Praktis*</h3>
+            <p class="byd-seal-cockpit-card-desc">Nikmati kemudahan pengisian daya perangkat seluler tanpa kabel, menjaga kabin tetap rapi dan tetap terhubung sepanjang perjalanan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-seats.png' | asset_url }}" alt="Kursi Nyaman Terintegrasi" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Kursi Nyaman dengan Desain Terintegrasi</h3>
+            <p class="byd-seal-cockpit-card-desc">Kursi berbahan kulit sintetis memberikan kenyamanan dan dukungan optimal untuk pengemudi dan penumpang, termasuk kursi belakang yang nyaman untuk setiap perjalanan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media">
+            <img src="{{ 'byd-seal-interior-storage.jpg' | asset_url }}" alt="Bagasi Fleksibel" loading="lazy">
+          </div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Bagasi Fleksibel, Kapasitas Luas</h3>
+            <p class="byd-seal-cockpit-card-desc">Ruang bagasi yang luas, dengan kapasitas 230 liter saat kursi tidak dilipat dan hingga 930 liter saat kursi dilipat, mendukung segala kebutuhan petualangan Anda.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 5: BAWA ENERGI KE MANA PUN ANDA PERGI
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="atto1-energy">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-hero.png' | asset_url }}" alt="Bawa Energi ke Mana pun Anda Pergi" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.s5_title | default: 'Bawa Energi ke Mana pun Anda Pergi' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.s5_desc | default: 'Dengan fitur Vehicle to Load (VtoL) hingga 2,2 kW, BYD Atto 1 siap jadi andalan saat Anda butuh daya di mana saja dan kapan saja. Jadikan mobil Anda sumber energi untuk berbagai perangkat elektronik saat bepergian.' }}
+      </p>
+    </div>
+  </section>
+
+  <!-- Subsection 5b: Performa & Tenaga Cards -->
+  <section class="byd-seal-cockpit-section" id="atto1-performance-cards" style="background: #111; padding: 40px 20px 60px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-body" style="padding-top: 30px;">
+            <h3 class="byd-seal-cockpit-card-title" style="font-size: 24px; color: #00bfff;">Tenaga dan Torsi Responsif</h3>
+            <p class="byd-seal-cockpit-card-desc">Didukung motor Permanent Magnet Synchronous Motor (PMSM), mobil ini mampu menghasilkan tenaga puncak hingga 55 kW dan torsi maksimal 135 Nm, memberikan akselerasi yang responsif dan tarikan bertenaga di setiap putaran roda.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-body" style="padding-top: 30px;">
+            <h3 class="byd-seal-cockpit-card-title" style="font-size: 24px; color: #00bfff;">Akselerasi 0–50 km/h: 4,9 Detik</h3>
+            <p class="byd-seal-cockpit-card-desc">Melaju 0–50 km/h hanya dalam 4,9 detik. Dengan torsi instan khas mobil listrik, setiap akselerasi dari posisi diam akan memberikan sensasi sporty yang lincah dan menyenangkan di lalu lintas perkotaan.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-body" style="padding-top: 30px;">
+            <h3 class="byd-seal-cockpit-card-title" style="font-size: 24px; color: #00bfff;">Pengisian Daya Cepat DC</h3>
+            <p class="byd-seal-cockpit-card-desc">Pengisian cepat 30 kW untuk varian Dynamic dan 40 kW untuk varian Premium, memastikan Anda lebih banyak menikmati perjalanan dan lebih sedikit menunggu saat mengisi daya baterai.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 6: E-PLATFORM 3.0
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="atto1-eplatform">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="e-Platform 3.0" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.s6_title | default: 'e-Platform 3.0' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.s6_desc | default: 'BYD Atto 1 dirancang dengan standar keamanan tinggi, menghadirkan perlindungan menyeluruh lewat sistem 4-airbag untuk varian Dynamic dan 6-airbag untuk varian Premium, serta fitur pengereman yang nyaman. Dengan struktur bodi yang kokoh dan responsif, mobil ini menawarkan stabilitas optimal untuk mendukung perjalanan yang aman dan tenang di berbagai kondisi jalan.' }}
+      </p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 7: TEKNOLOGI BATERAI BLADE BERPATEN ULTRA-AMAN
+       ========================================== -->
+  <section class="byd-seal-feature text-light align-top" id="atto1-blade-battery">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-blade-battery.png' | asset_url }}" alt="Teknologi Baterai Blade Berpaten Ultra-Aman" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">{{ section.settings.s7_title | default: 'Teknologi Baterai Blade Berpaten Ultra-Aman' }}</h2>
+      <p class="byd-seal-feature-desc">
+        {{ section.settings.s7_desc | default: 'Teknologi Blade Battery super aman dari BYD menyediakan daya tahan luar biasa dan pengisian daya yang efisien, dengan jarak tempuh hingga 380km* (NEDC) dan pengisian cepat DC. Telah melewati uji penetrasi paku ekstrem tanpa menimbulkan api atau ledakan.' }}
+      </p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">
+        {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+      </a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+        {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       SECTION 8: BYD ATTO 1 APPOINTMENT & DOWNLOAD BROSUR
+       ========================================== -->
+  <section class="byd-seal-appointment" id="atto1-bottom-cta">
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">{{ section.settings.model_title | default: 'BYD ATTO 1' }}</h2>
+      <p style="font-size: 16px; color: #d4d4d4; margin-bottom: 28px;">Siapkan diri Anda untuk mobilitas cerdas, efisien, dan menyenangkan bersama BYD ATTO 1.</p>
+      <div class="byd-seal-appointment-btns">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">
+          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+        </a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+        </a>
+        <a href="{{ section.settings.url_brochure | default: 'https://www.byd.com' }}" target="_blank" class="byd-seal-btn byd-seal-btn-outline-white">
+          Download Brosur
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ACTION BAR -->
+  <div class="byd-seal-sticky-bar" id="atto1-sticky-bar">
+    <div class="byd-seal-sticky-container">
+      <div class="byd-seal-sticky-model">{{ section.settings.model_title | default: 'BYD ATTO 1' }}</div>
+      <div class="byd-seal-sticky-actions">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">
+          {{ section.settings.label_test_drive | default: 'Uji Kendaraan' }}
+        </a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-white">
+          {{ section.settings.label_quote | default: 'Dapatkan Penawaran' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BYD ATTO 1 Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Judul Model",
+      "default": "BYD ATTO 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spesifikasi 1 Nilai",
+      "default": "Hingga 380km*"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spesifikasi 1 Label",
+      "default": "Jarak (NEDC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spesifikasi 2 Nilai",
+      "default": "38,88 kWh*"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spesifikasi 2 Label",
+      "default": "Kapasitas Baterai"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spesifikasi 3 Nilai",
+      "default": "135 Nm"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spesifikasi 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spesifikasi 4 Nilai",
+      "default": "4.9 s"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spesifikasi 4 Label",
+      "default": "0-50 km/h"
+    },
+    {
+      "type": "text",
+      "id": "s2_title",
+      "label": "Section 2 Judul",
+      "default": "Tampilan Cerah Berkat Desain Ocean Nan Estetik"
+    },
+    {
+      "type": "textarea",
+      "id": "s2_desc",
+      "label": "Section 2 Deskripsi",
+      "default": "Anggota terbaru seri Ocean yang merevolusi mobilitas perkotaan dengan desain dinamis dan teknologi inovatif."
+    },
+    {
+      "type": "text",
+      "id": "s3_title",
+      "label": "Section 3 Judul",
+      "default": "Saatnya Beralih ke Mobil Listrik"
+    },
+    {
+      "type": "textarea",
+      "id": "s3_desc",
+      "label": "Section 3 Deskripsi",
+      "default": "Temukan kebebasan mobilitas yang praktis dan sepenuhnya elektrik. Saatnya beralih ke gaya hidup ramah lingkungan bersama BYD Atto 1."
+    },
+    {
+      "type": "text",
+      "id": "s4_title",
+      "label": "Section 4 Judul",
+      "default": "Kendali Cerdas di Ujung Jari"
+    },
+    {
+      "type": "textarea",
+      "id": "s4_desc",
+      "label": "Section 4 Deskripsi",
+      "default": "Dashboard ergonomis dengan touch screen yang mendukung Apple CarPlay & Android Auto."
+    },
+    {
+      "type": "text",
+      "id": "s5_title",
+      "label": "Section 5 Judul",
+      "default": "Bawa Energi ke Mana pun Anda Pergi"
+    },
+    {
+      "type": "textarea",
+      "id": "s5_desc",
+      "label": "Section 5 Deskripsi",
+      "default": "Dengan fitur Vehicle to Load hingga 2,2 kW, BYD Atto 1 siap jadi andalan saat Anda butuh daya di mana saja dan kapan saja."
+    },
+    {
+      "type": "text",
+      "id": "s6_title",
+      "label": "Section 6 Judul",
+      "default": "e-Platform 3.0"
+    },
+    {
+      "type": "textarea",
+      "id": "s6_desc",
+      "label": "Section 6 Deskripsi",
+      "default": "BYD Atto 1 dirancang dengan standar keamanan tinggi, menghadirkan perlindungan menyeluruh lewat sistem 4-airbag untuk varian Dynamic dan 6-airbag untuk varian Premium."
+    },
+    {
+      "type": "text",
+      "id": "s7_title",
+      "label": "Section 7 Judul",
+      "default": "Teknologi Baterai Blade Berpaten Ultra-Aman"
+    },
+    {
+      "type": "textarea",
+      "id": "s7_desc",
+      "label": "Section 7 Deskripsi",
+      "default": "Teknologi Blade Battery super aman dari BYD menyediakan daya tahan luar biasa dan pengisian daya yang efisien."
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Label Tombol Uji Kendaraan",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Link Uji Kendaraan"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Label Tombol Dapatkan Penawaran",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Link Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_brochure",
+      "label": "Link Download Brosur"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD ATTO 1 Showcase"
+    }
+  ]
+}
+{% endschema %}

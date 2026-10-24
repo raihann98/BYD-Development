@@ -1,0 +1,685 @@
+{% comment %}
+  BYD Pricelist Section
+  Online Store 2.0 section for BYD Indonesia Pricelist (Daftar Harga)
+{% endcomment %}
+
+<style>
+  .byd-pricelist-section {
+    width: 100%;
+    background-color: #ffffff;
+    font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+    color: #111827;
+  }
+
+  .pricelist-container-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 20px 5rem;
+    box-sizing: border-box;
+  }
+
+  .pricelist-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .pricelist-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .pricelist-divider {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e7eb;
+    border: none;
+    margin: 0 0 2.5rem;
+  }
+
+  .pricelist-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 40px;
+    row-gap: 60px;
+  }
+
+  @media (min-width: 640px) {
+    .pricelist-container {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 32px;
+      row-gap: 60px;
+    }
+  }
+
+  @media (min-width: 991px) {
+    .pricelist-container {
+      column-gap: 50px;
+      row-gap: 70px;
+    }
+  }
+
+  .pricelist-item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .pricelist-item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .pricelist-item-link:hover .car-img {
+    transform: scale(1.02);
+  }
+
+  .car-img-wrapper {
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+
+  .car-img {
+    width: 100%;
+    max-height: 240px;
+    object-fit: contain;
+    transition: transform 0.35s ease;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .logo-img-wrapper {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .logo-img {
+    max-height: 32px;
+    max-width: 220px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .specs-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+    min-height: 64px;
+  }
+
+  .spec-button {
+    cursor: pointer;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #ffffff;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-width: 125px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+  }
+
+  .spec-button:hover:not(.active) {
+    border-color: #9ca3af;
+    background-color: #f9fafb;
+  }
+
+  .spec-button.active {
+    border-color: #007bff;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 1px #007bff;
+  }
+
+  .spec-type {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #111827;
+    line-height: 1.25;
+  }
+
+  .spec-range-type {
+    font-size: 0.75rem;
+    color: #374151;
+    line-height: 1.2;
+    margin-top: 1px;
+  }
+
+  .spec-price {
+    font-size: 0.6875rem;
+    color: #7a8080;
+    line-height: 1.2;
+    margin-top: 3px;
+  }
+
+  .price-container {
+    border-bottom: 1px solid #75acd0;
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+
+  .price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.35rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .price-otr {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #8e95a5;
+    margin: 0 0 2px;
+  }
+
+  .price-per {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: #8e95a5;
+    margin: 0;
+  }
+
+  .specification-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .specification {
+    text-align: center;
+  }
+
+  .specification-value {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    color: #111827;
+    margin: 0 0 0.25rem;
+  }
+
+  .specification-name {
+    font-size: 0.875rem;
+    line-height: 1.25;
+    color: #5c5e62;
+    margin: 0;
+  }
+
+  @media (max-width: 639px) {
+    .pricelist-container-wrapper {
+      padding: 2rem 16px 3.5rem;
+    }
+    .pricelist-title {
+      font-size: 1.875rem;
+    }
+    .car-img-wrapper {
+      height: 200px;
+    }
+    .price {
+      font-size: 1.5rem;
+    }
+    .specification-value {
+      font-size: 1.35rem;
+    }
+  }
+</style>
+
+<div class="byd-pricelist-section">
+  <div class="pricelist-container-wrapper">
+    <div class="pricelist-header">
+      <h1 class="pricelist-title">{{ section.settings.page_title | default: 'Daftar Harga' }}</h1>
+    </div>
+    <hr class="pricelist-divider">
+    <div id="pricelist-container" class="pricelist-container">
+      {% comment %}
+        Interactive vehicle cards will be rendered dynamically by JavaScript
+        and hydrated with exact reference specs & variant buttons.
+      {% endcomment %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const pricelistData = [
+    {
+      id: 1,
+      link: '/products/byd-seal',
+      name: 'Byd Seal',
+      type: 'Premium',
+      rangeType: 'Extended Range',
+      image: '{{ "seal-fix.png" | asset_url }}',
+      logoImage: '{{ "seal-logo-black-new.png" | asset_url }}',
+      price: 'Rp869.000.000',
+      pricePer: 'Agustus 2026',
+      specifications: {
+        maxTorque: '360 N.m',
+        maxPower: '230 kW',
+        drivingRangeNedc: '650 km',
+        batteryCapacity: '82.56 kwh',
+        zeroToHundred: '5.9 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 2,
+      link: '/#showcase-atto3',
+      name: 'Byd Atto 3',
+      type: 'Advanced-Plus',
+      rangeType: 'Standard Range',
+      image: '{{ "atto3-white-fix.png" | asset_url }}',
+      logoImage: '{{ "atto3-logo-black-new.png" | asset_url }}',
+      price: 'Rp415.000.000',
+      pricePer: '21 Mei 2025',
+      specifications: {
+        maxTorque: '310 N.m',
+        maxPower: '150 kW',
+        drivingRangeNedc: '410 km',
+        batteryCapacity: '49.92 kwh',
+        zeroToHundred: '7.9 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 4,
+      link: '/#showcase-dolphin',
+      name: 'Byd Dolphin',
+      type: 'Dynamic',
+      rangeType: 'Standard Range',
+      image: '{{ "dolphin-fix.png" | asset_url }}',
+      logoImage: '{{ "dolphin-logo-black-new.png" | asset_url }}',
+      price: 'Rp369.000.000',
+      pricePer: '4 Februari 2025',
+      specifications: {
+        maxTorque: '180 N.m',
+        maxPower: '70 kW',
+        drivingRangeNedc: '410 km',
+        batteryCapacity: '44.9 kwh',
+        zeroToHundred: '12.3 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 5,
+      link: '/#showcase-dolphin',
+      name: 'Byd Dolphin',
+      type: 'Premium',
+      rangeType: 'Extended Range',
+      image: '{{ "dolphin-fix.png" | asset_url }}',
+      logoImage: '{{ "dolphin-logo-black-new.png" | asset_url }}',
+      price: 'Rp429.000.000',
+      pricePer: '4 Februari 2025',
+      specifications: {
+        maxTorque: '310 N.m',
+        maxPower: '150 kW',
+        drivingRangeNedc: '490 km',
+        batteryCapacity: '60.48 kwh',
+        zeroToHundred: '7.0 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 6,
+      link: '/#showcase-m6',
+      name: 'Byd M6',
+      type: 'Standard 2026',
+      rangeType: '7 Seater',
+      image: '{{ "m6-blue-fix-fixed.png" | asset_url }}',
+      logoImage: '{{ "m6-logo-black-new.png" | asset_url }}',
+      price: 'Rp395.000.000',
+      pricePer: 'Juli 2026',
+      specifications: {
+        maxTorque: '310 N.m',
+        maxPower: '120 kW',
+        drivingRangeNedc: '420 km',
+        batteryCapacity: '55.4 kwh',
+        zeroToHundred: '10.1 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 7,
+      link: '/#showcase-m6',
+      name: 'Byd M6',
+      type: 'Superior 2026',
+      rangeType: '7 Seater',
+      image: '{{ "m6-blue-fix-fixed.png" | asset_url }}',
+      logoImage: '{{ "m6-logo-black-new.png" | asset_url }}',
+      price: 'Rp435.000.000',
+      pricePer: 'Agustus 2026',
+      specifications: {
+        maxTorque: '310 N.m',
+        maxPower: '150 kW',
+        drivingRangeNedc: '530 km',
+        batteryCapacity: '71.8 kwh',
+        zeroToHundred: '8.6 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 8,
+      link: '/#showcase-m6',
+      name: 'Byd M6',
+      type: 'Superior Captain 2026',
+      rangeType: '6 Seater',
+      image: '{{ "m6-blue-fix-fixed.png" | asset_url }}',
+      logoImage: '{{ "m6-logo-black-new.png" | asset_url }}',
+      price: 'Rp445.000.000',
+      pricePer: 'Agustus 2026',
+      specifications: {
+        maxTorque: '310 N.m',
+        maxPower: '150 kW',
+        drivingRangeNedc: '530 km',
+        batteryCapacity: '71.8 kwh',
+        zeroToHundred: '8.6 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 9,
+      link: '/pages/contact',
+      name: 'BYD Sealion 7',
+      type: 'Extended',
+      rangeType: '5 Seater',
+      image: '{{ "sealion7-2.png" | asset_url }}',
+      logoImage: '{{ "sealion-logo-black.png" | asset_url }}',
+      price: 'Rp879.000.000',
+      pricePer: 'Aug 2026',
+      specifications: {
+        maxTorque: '380 N.m',
+        maxPower: '230 kW',
+        drivingRangeNedc: '567 km',
+        batteryCapacity: '82.56 kwh',
+        zeroToHundred: '6.7 s',
+        zeroToFifty: null
+      }
+    },
+    {
+      id: 10,
+      link: '/#showcase-atto1',
+      name: 'BYD Atto 1',
+      type: 'Standard',
+      rangeType: 'Standard Range',
+      image: '{{ "atto1.png" | asset_url }}',
+      logoImage: '{{ "atto1-logo-black-new.png" | asset_url }}',
+      price: 'Rp199.000.000',
+      pricePer: 'June 2026',
+      specifications: {
+        maxTorque: '135 N.m',
+        maxPower: '55 kW',
+        drivingRangeNedc: '300 km',
+        batteryCapacity: '30.08 kwh',
+        zeroToHundred: null,
+        zeroToFifty: '4.9s'
+      }
+    },
+    {
+      id: 11,
+      link: '/#showcase-atto1',
+      name: 'BYD Atto 1',
+      type: 'Dynamic',
+      rangeType: 'Standard Range',
+      image: '{{ "atto1.png" | asset_url }}',
+      logoImage: '{{ "atto1-logo-black-new.png" | asset_url }}',
+      price: 'Rp210.000.000',
+      pricePer: 'June 2026',
+      specifications: {
+        maxTorque: '135 N.m',
+        maxPower: '55 kW',
+        drivingRangeNedc: '300 km',
+        batteryCapacity: '30.08 kwh',
+        zeroToHundred: null,
+        zeroToFifty: '4.9s'
+      }
+    },
+    {
+      id: 12,
+      link: '/#showcase-atto1',
+      name: 'BYD Atto 1',
+      type: 'Premium',
+      rangeType: 'Long Range',
+      image: '{{ "atto1.png" | asset_url }}',
+      logoImage: '{{ "atto1-logo-black-new.png" | asset_url }}',
+      price: 'Rp245.000.000',
+      pricePer: 'June 2026',
+      specifications: {
+        maxTorque: '135 N.m',
+        maxPower: '55 kW',
+        drivingRangeNedc: '380 km',
+        batteryCapacity: '38.88 kwh',
+        zeroToHundred: null,
+        zeroToFifty: '4.9s'
+      }
+    },
+    {
+      id: 13,
+      link: '/pages/contact',
+      name: 'Byd M6 DM',
+      type: 'Classic Standard',
+      rangeType: '7 Seater',
+      image: '{{ "bydm6dmtransparent3.png" | asset_url }}',
+      logoImage: '{{ "bydm6dmnameplate2.png" | asset_url }}',
+      price: 'Rp298.000.000',
+      pricePer: 'Juni 2026',
+      specifications: {
+        maxTorque: '210 N.m',
+        maxPower: '120 kW',
+        drivingRangeNedc: '45 km',
+        batteryCapacity: '7.4 kwh'
+      }
+    },
+    {
+      id: 14,
+      link: '/pages/contact',
+      name: 'Byd M6 DM',
+      type: 'Classic Dynamic',
+      rangeType: '7 Seater',
+      image: '{{ "bydm6dmtransparent3.png" | asset_url }}',
+      logoImage: '{{ "bydm6dmnameplate2.png" | asset_url }}',
+      price: 'Rp318.000.000',
+      pricePer: 'Juni 2026',
+      specifications: {
+        maxTorque: '210 N.m',
+        maxPower: '120 kW',
+        drivingRangeNedc: '45 km',
+        batteryCapacity: '7.4 kwh'
+      }
+    },
+    {
+      id: 15,
+      link: '/pages/contact',
+      name: 'Byd M6 DM',
+      type: 'Cross Advance',
+      rangeType: '7 Seater',
+      image: '{{ "bydm6dmtransparent3.png" | asset_url }}',
+      logoImage: '{{ "bydm6dmnameplate2.png" | asset_url }}',
+      price: 'Rp360.000.000',
+      pricePer: 'Juni 2026',
+      specifications: {
+        maxTorque: '210 N.m',
+        maxPower: '120 kW',
+        drivingRangeNedc: '110 km',
+        batteryCapacity: '18.3 kwh'
+      }
+    },
+    {
+      id: 16,
+      link: '/pages/contact',
+      name: 'Byd M6 DM',
+      type: 'Cross Superior',
+      rangeType: '7 Seater',
+      image: '{{ "bydm6dmtransparent3.png" | asset_url }}',
+      logoImage: '{{ "bydm6dmnameplate2.png" | asset_url }}',
+      price: 'Rp380.000.000',
+      pricePer: 'Juni 2026',
+      specifications: {
+        maxTorque: '210 N.m',
+        maxPower: '120 kW',
+        drivingRangeNedc: '110 km',
+        batteryCapacity: '18.3 kwh'
+      }
+    },
+    {
+      id: 17,
+      link: '/pages/contact',
+      name: 'Byd M6 DM',
+      type: 'Cross Superior Captain Seat',
+      rangeType: '6 Seater',
+      image: '{{ "bydm6dmtransparent3.png" | asset_url }}',
+      logoImage: '{{ "bydm6dmnameplate2.png" | asset_url }}',
+      price: 'Rp390.000.000',
+      pricePer: 'Juni 2026',
+      specifications: {
+        maxTorque: '210 N.m',
+        maxPower: '120 kW',
+        drivingRangeNedc: '110 km',
+        batteryCapacity: '18.3 kwh'
+      }
+    }
+  ];
+
+  const groupedData = pricelistData.reduce((result, currentItem) => {
+    const keyValue = currentItem.name;
+    (result[keyValue] = result[keyValue] || []).push(currentItem);
+    return result;
+  }, {});
+
+  const selectedSpecs = {
+    'Byd Seal': 0,
+    'Byd Atto 3': 0,
+    'Byd Dolphin': 0,
+    'Byd M6': 0,
+    'BYD Sealion 7': 0,
+    'BYD Atto 1': 0,
+    'Byd M6 DM': 0
+  };
+
+  function renderSpecification(name, value) {
+    if (!value || !name) return '';
+    return `
+      <div class="specification">
+        <p class="specification-value">${value}</p>
+        <p class="specification-name">${name}</p>
+      </div>
+    `;
+  }
+
+  function renderPricelist() {
+    const container = document.getElementById('pricelist-container');
+    if (!container) return;
+    container.innerHTML = '';
+
+    Object.entries(groupedData).forEach(([name, items]) => {
+      const activeIndex = selectedSpecs[name] || 0;
+      const selectedItem = items[activeIndex] || items[0];
+
+      let acceleration = '';
+      let accelerationNumber = '';
+      if (selectedItem.specifications.zeroToHundred) {
+        acceleration = '0-100 km/h';
+        accelerationNumber = selectedItem.specifications.zeroToHundred;
+      } else if (selectedItem.specifications.zeroToFifty) {
+        acceleration = '0-50 km/h';
+        accelerationNumber = selectedItem.specifications.zeroToFifty;
+      }
+
+      const itemHTML = `
+        <div class="pricelist-item" data-car="${name}">
+          <a class="pricelist-item-link" href="${selectedItem.link}">
+            <div class="car-img-wrapper">
+              <img class="car-img" src="${selectedItem.image}" alt="${name} - ${selectedItem.type}">
+            </div>
+            <div class="logo-img-wrapper">
+              <img class="logo-img" src="${selectedItem.logoImage}" alt="${name}">
+            </div>
+          </a>
+          <div class="specs-container">
+            ${items.map((item, index) => `
+              <div class="spec-button ${activeIndex === index ? 'active' : ''}" data-name="${name}" data-index="${index}">
+                <span class="spec-type">${item.type}</span>
+                <span class="spec-range-type">(${item.rangeType})</span>
+                <span class="spec-price">mulai dari ${item.price}</span>
+              </div>
+            `).join('')}
+          </div>
+          <div class="price-container">
+            <p class="price">${selectedItem.price}</p>
+            <p class="price-otr">OTR Jakarta (IDR)</p>
+            <p class="price-per">Harga per ${selectedItem.pricePer}</p>
+          </div>
+          <div class="specification-list">
+            ${renderSpecification('Torsi Maksimum', selectedItem.specifications.maxTorque)}
+            ${renderSpecification('Daya Maksimum', selectedItem.specifications.maxPower)}
+            ${renderSpecification('Jarak Mengemudi NEDC', selectedItem.specifications.drivingRangeNedc)}
+            ${renderSpecification('Kapasitas Baterai', selectedItem.specifications.batteryCapacity)}
+            ${renderSpecification(acceleration, accelerationNumber)}
+          </div>
+        </div>
+      `;
+      container.innerHTML += itemHTML;
+    });
+
+    // Attach click events to spec buttons
+    container.querySelectorAll('.spec-button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const carName = this.getAttribute('data-name');
+        const specIndex = parseInt(this.getAttribute('data-index'), 10);
+        selectedSpecs[carName] = specIndex;
+        renderPricelist();
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderPricelist);
+  } else {
+    renderPricelist();
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "BYD Pricelist",
+  "settings": [
+    {
+      "type": "text",
+      "id": "page_title",
+      "label": "Judul Halaman",
+      "default": "Daftar Harga"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Pricelist"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,246 @@
+{% comment %}
+  BYD M6 EV Vehicle Detail & Marketing Showcase
+  Full 6-Section Implementation matching reference: https://www.byd.com/id/car/m6
+  Follows Shopify Online Store 2.0 conventions & AGENTS.md rules
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-m6-detail">
+  <!-- SECTION 1: HERO BANNER & SPECIFICATION BAR -->
+  <section class="byd-seal-hero" id="m6-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-m6-hero.jpg' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD M6 EV' }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD M6 EV' }}</h1>
+      <p style="font-size: clamp(16px, 1.8vw, 24px); color: #ffffff; margin-top: 8px; font-weight: 400; letter-spacing: 1px;">MPV Listrik Modern untuk Keluarga Indonesia</p>
+    </div>
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Hingga 530km*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Jarak (NEDC)' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: '71.8 kWh*' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Kapasitas Baterai' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '310 Nm' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: '7 / 6 Seater' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: 'Kapasitas Penumpang' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2: DESAIN WAJAH NAGA AERODINAMIS -->
+  <section class="byd-seal-feature text-dark align-top" id="m6-dragonface">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-m6-dragonface.png' | asset_url }}" alt="Desain Wajah Naga Aerodinamis" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Desain Wajah Naga Aerodinamis</h2>
+      <p class="byd-seal-feature-desc">BYD M6 memadukan bahasa desain Dragon Face modern dengan kapabilitas MPV keluarga 7-seater premium. Desain aerodinamis meminimalisir hambatan angin untuk jarak tempuh keluarga yang lebih jauh dan senyap.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 3: STASIUN DAYA VEHICLE TO LOAD -->
+  <section class="byd-seal-feature text-light align-top" id="m6-vtol">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="Stasiun Daya Vehicle to Load" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Stasiun Daya Vehicle to Load</h2>
+      <p class="byd-seal-feature-desc">Setiap soket listrik dari fitur Vehicle to Load (VtoL) dilindungi sistem anti-kelebihan beban untuk memastikan keamanan saat digunakan, sekaligus menyuplai listrik hingga 3,3 kW untuk kegiatan outdoor keluarga Anda.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 4: KOKPIT TEKNOLOGI CERDAS & KELUARGA -->
+  <section class="byd-seal-cockpit-section" id="m6-cockpit" style="background: #0d0d0d; padding: 60px 20px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <h2 class="byd-seal-feature-title" style="text-align: center; margin-bottom: 12px; color: #fff;">Kokpit Teknologi Cerdas</h2>
+      <p style="text-align: center; color: #aaa; max-width: 700px; margin: 0 auto 40px; font-size: 15px;">MPEV untuk Keluarga yang menggabungkan kemewahan kabin luas, fleksibilitas kursi 6/7 penumpang, dan kepraktisan digital.</p>
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-seats.png' | asset_url }}" alt="Kursi Nyaman & Ergonomis" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">MPEV untuk Keluarga (6 / 7 Seater)</h3>
+            <p class="byd-seal-cockpit-card-desc">Tersedia pilihan konfigurasi 7-seater luas atau kemewahan 6-seater dengan Captain Seat di baris kedua untuk kenyamanan eksekutif.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-sunroof.png' | asset_url }}" alt="Atap Mobil Panoramik" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Atap Mobil Panoramik</h3>
+            <p class="byd-seal-cockpit-card-desc">Atap kaca panoramik menghadirkan pemandangan terbuka luas bagi seluruh anggota keluarga hingga baris ketiga.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="Layar Konsol Sentuh 12.8 Inci" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Layar Sentuh 12.8" Berputar</h3>
+            <p class="byd-seal-cockpit-card-desc">Pusat kendali multimedia cerdas yang intuitif dengan koneksi smartphone nirkabel dan navigasi realtime.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-storage.jpg' | asset_url }}" alt="Area Kargo Luas" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Area Kargo Luas & Fleksibel</h3>
+            <p class="byd-seal-cockpit-card-desc">Bagasi lapang dengan kemudahan pelipatan kursi baris ketiga rata lantai, siap memuat koper dan perlengkapan liburan keluarga besar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: TEKNOLOGI BATERAI BLADE BERPATEN ULTRA-AMAN -->
+  <section class="byd-seal-feature text-light align-top" id="m6-blade">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-blade-battery.png' | asset_url }}" alt="Teknologi Baterai Blade Berpaten Ultra-Aman" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">Teknologi Baterai Blade Berpaten Ultra-Aman</h2>
+      <p class="byd-seal-feature-desc">Selama uji penetrasi paku ekstrem, Baterai Blade tidak mengeluarkan asap atau api, dan suhunya hanya mencapai 30–60°C. Lolos uji diremukkan, ditekuk, dan dipanaskan hingga 300°C tanpa terbakar.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 6: APPOINTMENT & DOWNLOAD BROSUR -->
+  <section class="byd-seal-appointment" id="m6-bottom">
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">BYD M6 EV</h2>
+      <p style="font-size: 16px; color: #d4d4d4; margin-bottom: 28px;">Wujudkan perjalanan keluarga yang lebih nyaman, ramah lingkungan, dan hemat energi.</p>
+      <div class="byd-seal-appointment-btns">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+        <a href="https://www.byd.com" target="_blank" class="byd-seal-btn byd-seal-btn-outline-white">Download Brosur</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ACTION BAR -->
+  <div class="byd-seal-sticky-bar" id="m6-sticky-bar">
+    <div class="byd-seal-sticky-container">
+      <div class="byd-seal-sticky-model">BYD M6 EV</div>
+      <div class="byd-seal-sticky-actions">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-white">Dapatkan Penawaran</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BYD M6 EV Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Judul Model",
+      "default": "BYD M6 EV"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spesifikasi 1 Nilai",
+      "default": "Hingga 530km*"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spesifikasi 1 Label",
+      "default": "Jarak (NEDC)"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spesifikasi 2 Nilai",
+      "default": "71.8 kWh*"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spesifikasi 2 Label",
+      "default": "Kapasitas Baterai"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spesifikasi 3 Nilai",
+      "default": "310 Nm"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spesifikasi 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spesifikasi 4 Nilai",
+      "default": "7 / 6 Seater"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spesifikasi 4 Label",
+      "default": "Kapasitas Penumpang"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Label Tombol Uji Kendaraan",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Link Uji Kendaraan"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Label Tombol Dapatkan Penawaran",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Link Dapatkan Penawaran"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD M6 EV Showcase"
+    }
+  ]
+}
+{% endschema %}

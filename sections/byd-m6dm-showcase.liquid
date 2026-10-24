@@ -1,0 +1,230 @@
+{% comment %}
+  BYD M6 DM Vehicle Detail & Marketing Showcase
+  Full 5-Section Implementation matching reference: https://www.byd.com/id/car/m6-dm
+  Follows Shopify Online Store 2.0 conventions & AGENTS.md rules
+{% endcomment %}
+
+<div class="byd-seal-page" id="byd-m6dm-detail">
+  <!-- SECTION 1: HERO BANNER & SPECIFICATION BAR -->
+  <section class="byd-seal-hero" id="m6dm-hero">
+    <div class="byd-seal-hero-media">
+      {%- if section.settings.hero_image != blank -%}
+        {{ section.settings.hero_image | image_url: width: 2880 | image_tag: loading: 'eager', fetchpriority: 'high', alt: section.settings.model_title }}
+      {%- else -%}
+        <img src="{{ 'byd-m6dm-extside.jpg' | asset_url }}" alt="{{ section.settings.model_title | default: 'BYD M6 DM' }}" loading="eager" fetchpriority="high">
+      {%- endif -%}
+    </div>
+    <div class="byd-seal-hero-overlay"></div>
+    <div class="byd-seal-hero-content">
+      <h1 class="byd-seal-hero-title">{{ section.settings.model_title | default: 'BYD M6 DM' }}</h1>
+      <p style="font-size: clamp(16px, 1.8vw, 24px); color: #ffffff; margin-top: 8px; font-weight: 400; letter-spacing: 1px;">Ikon Baru Keluarga Indonesia — DM-i Super Hybrid</p>
+    </div>
+    <div class="byd-seal-specs-bar">
+      <ul class="byd-seal-specs-list">
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_1_val | default: 'Super Irit 65Km/L' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_1_lbl | default: 'Konsumsi Bahan Bakar' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_2_val | default: 'Hingga 110 km' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_2_lbl | default: 'Jarak Tempuh EV' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_3_val | default: '210 N.m' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_3_lbl | default: 'Torsi Maksimum' }}</div>
+        </li>
+        <li class="byd-seal-spec-item">
+          <div class="byd-seal-spec-val">{{ section.settings.spec_4_val | default: 'DM-i Hybrid' }}</div>
+          <div class="byd-seal-spec-lbl">{{ section.settings.spec_4_lbl | default: 'Teknologi Powertrain' }}</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTION 2: TEST DRIVE BYD M6 DM -->
+  <section class="byd-seal-feature text-dark align-top" id="m6dm-testdrive">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-m6dm-extback.jpg' | asset_url }}" alt="TEST DRIVE BYD M6 DM" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">TEST DRIVE BYD M6 DM</h2>
+      <p class="byd-seal-feature-desc">Rasakan langsung efisiensi luar biasa dan ketenangan berkendara teknologi DM-i Super Hybrid bersama keluarga. Pesan jadwal uji kendara Anda sekarang di dealer resmi BYD terdekat.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-black">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-black">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 3: THE COMPANION THAT NEVER LETS YOUR FAMILY DOWN (COCKPIT & DESAIN) -->
+  <section class="byd-seal-cockpit-section" id="m6dm-cockpit" style="background: #0d0d0d; padding: 60px 20px;">
+    <div class="byd-seal-cockpit-grid-container">
+      <h2 class="byd-seal-feature-title" style="text-align: center; margin-bottom: 12px; color: #fff;">The Companion That Never Lets Your Family Down</h2>
+      <p style="text-align: center; color: #aaa; max-width: 750px; margin: 0 auto 40px; font-size: 15px;">Setia menemani setiap mil perjalanan keluarga dengan ketangguhan bodi crossover dan kenyamanan kabin superior.</p>
+      <div class="byd-seal-cockpit-grid">
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-m6dm-extside.jpg' | asset_url }}" alt="Cross Over Fender" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Cross Over Fender*</h3>
+            <p class="byd-seal-cockpit-card-desc">Bodi berkarakter tangguh dengan postur lebih lebar dan siluet tegas yang mencuri perhatian dari segala sudut jalan di Indonesia.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-sunroof.png' | asset_url }}" alt="Panoramic Glass Roof" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Panoramic Glass Roof*</h3>
+            <p class="byd-seal-cockpit-card-desc">Atap kaca panoramik menghadirkan cahaya alami dan kesan kabin yang luas dan sejuk untuk seluruh anggota keluarga.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-screen.jpg' | asset_url }}" alt="10.25 Full LCD Instrument" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">10.25" Full LCD Instrument*</h3>
+            <p class="byd-seal-cockpit-card-desc">Layar meter cluster digital beresolusi tinggi menyajikan informasi performa hibrida secara jernih dan komprehensif.</p>
+          </div>
+        </div>
+        <div class="byd-seal-cockpit-card">
+          <div class="byd-seal-cockpit-card-media"><img src="{{ 'byd-seal-interior-hud.jpg' | asset_url }}" alt="Electric Column Shifter" loading="lazy"></div>
+          <div class="byd-seal-cockpit-card-body">
+            <h3 class="byd-seal-cockpit-card-title">Electric Column Shifter</h3>
+            <p class="byd-seal-cockpit-card-desc">Tuas transmisi elektrik di kolom kemudi memberikan pengoperasian praktis sekaligus membebaskan ruang lega di konsol tengah.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: DM TECHNOLOGY (SUPER HYBRID) -->
+  <section class="byd-seal-feature text-light align-top" id="m6dm-tech">
+    <div class="byd-seal-feature-bg">
+      <img src="{{ 'byd-seal-eplatform.jpg' | asset_url }}" alt="DM Technology" loading="lazy">
+    </div>
+    <div class="byd-seal-feature-overlay dark"></div>
+    <div class="byd-seal-feature-content">
+      <h2 class="byd-seal-feature-title">DM Technology</h2>
+      <p class="byd-seal-feature-desc">Teknologi revolusioner BYD DM-i Super Hybrid mengutamakan penggerak motor listrik untuk efisiensi puncak, memberikan jarak tempuh total lebih dari 1.000 km tanpa rasa cemas kehabisan daya saat perjalanan jarak jauh.</p>
+    </div>
+    <div class="byd-seal-btn-group">
+      <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+      <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+    </div>
+  </section>
+
+  <!-- SECTION 5: APPOINTMENT & DOWNLOAD BROSUR -->
+  <section class="byd-seal-appointment" id="m6dm-bottom">
+    <div class="byd-seal-appointment-content">
+      <h2 class="byd-seal-appointment-title">BYD M6 DM</h2>
+      <p style="font-size: 16px; color: #d4d4d4; margin-bottom: 28px;">Pilihan MPV hibrida cerdas dan super irit untuk keluarga Indonesia modern.</p>
+      <div class="byd-seal-appointment-btns">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-outline-white">Dapatkan Penawaran</a>
+        <a href="https://www.byd.com" target="_blank" class="byd-seal-btn byd-seal-btn-outline-white">Download Brosur</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY ACTION BAR -->
+  <div class="byd-seal-sticky-bar" id="m6dm-sticky-bar">
+    <div class="byd-seal-sticky-container">
+      <div class="byd-seal-sticky-model">BYD M6 DM</div>
+      <div class="byd-seal-sticky-actions">
+        <a href="{{ section.settings.url_test_drive | default: '/pages/contact?view=test-drive' }}" class="byd-seal-btn byd-seal-btn-outline-white">Uji Kendaraan</a>
+        <a href="{{ section.settings.url_quote | default: '/pages/contact?view=order-seal' }}" class="byd-seal-btn byd-seal-btn-white">Dapatkan Penawaran</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BYD M6 DM Showcase",
+  "settings": [
+    {
+      "type": "text",
+      "id": "model_title",
+      "label": "Judul Model",
+      "default": "BYD M6 DM"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image Banner"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_val",
+      "label": "Spesifikasi 1 Nilai",
+      "default": "Super Irit 65Km/L"
+    },
+    {
+      "type": "text",
+      "id": "spec_1_lbl",
+      "label": "Spesifikasi 1 Label",
+      "default": "Konsumsi Bahan Bakar"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_val",
+      "label": "Spesifikasi 2 Nilai",
+      "default": "Hingga 110 km"
+    },
+    {
+      "type": "text",
+      "id": "spec_2_lbl",
+      "label": "Spesifikasi 2 Label",
+      "default": "Jarak Tempuh EV"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_val",
+      "label": "Spesifikasi 3 Nilai",
+      "default": "210 N.m"
+    },
+    {
+      "type": "text",
+      "id": "spec_3_lbl",
+      "label": "Spesifikasi 3 Label",
+      "default": "Torsi Maksimum"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_val",
+      "label": "Spesifikasi 4 Nilai",
+      "default": "DM-i Hybrid"
+    },
+    {
+      "type": "text",
+      "id": "spec_4_lbl",
+      "label": "Spesifikasi 4 Label",
+      "default": "Teknologi Powertrain"
+    },
+    {
+      "type": "text",
+      "id": "label_test_drive",
+      "label": "Label Tombol Uji Kendaraan",
+      "default": "Uji Kendaraan"
+    },
+    {
+      "type": "url",
+      "id": "url_test_drive",
+      "label": "Link Uji Kendaraan"
+    },
+    {
+      "type": "text",
+      "id": "label_quote",
+      "label": "Label Tombol Dapatkan Penawaran",
+      "default": "Dapatkan Penawaran"
+    },
+    {
+      "type": "url",
+      "id": "url_quote",
+      "label": "Link Dapatkan Penawaran"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD M6 DM Showcase"
+    }
+  ]
+}
+{% endschema %}

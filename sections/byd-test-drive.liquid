@@ -1,0 +1,1400 @@
+{% comment %}
+  BYD Test Drive / Uji Kendaraan Section
+  Fidelity first-pass for BYD SEAL Test Drive page based on https://www.byd.com/id/test-asia-driver#3
+{% endcomment %}
+
+<div class="byd-testdrive-section" id="byd-test-drive-root">
+  <!-- Hero Banner -->
+  <div class="byd-td-hero">
+    <picture>
+      <source media="(max-width: 990px)" srcset="{{ 'byd-testdrive-seal.jpg' | asset_url }}">
+      <img
+        src="{{ 'byd-testdrive-seal.jpg' | asset_url }}"
+        alt="BYD SEAL Uji Kendaraan"
+        class="byd-td-hero-bg"
+        width="1920"
+        height="900"
+        loading="eager"
+      >
+    </picture>
+    <div class="byd-td-hero-overlay"></div>
+  </div>
+
+  <!-- Form & Dealer Finder Container -->
+  <div class="byd-td-main-container">
+    <div class="byd-td-layout">
+      <!-- Left Column: Booking Form Card -->
+      <div class="byd-td-form-card">
+        <!-- Top Dark Block: Title & Model Selector -->
+        <div class="byd-td-card-top">
+          <h1 class="byd-td-title">{{ section.settings.heading | default: 'Pilih model' }}</h1>
+          
+          <!-- Custom Car Model Selector -->
+          <div class="byd-td-model-selector" id="bydModelSelector">
+            <div class="byd-td-model-current" id="bydModelCurrent" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+              <span class="byd-td-model-label" id="bydSelectedModelText">BYD SEAL</span>
+              <svg class="byd-td-arrow" xmlns="http://www.w3.org/2000/svg" width="11" height="6" viewBox="0 0 10.917 6.064">
+                <path d="M610.042,325.981l5.454,5.551,5.462-5.56-.5-.5-4.966,5.055-4.958-5.047Zm0,0" transform="translate(-610.042 -325.468)" fill="#ffffff"></path>
+              </svg>
+            </div>
+            <ul class="byd-td-model-dropdown" id="bydModelDropdown" role="listbox">
+              <li class="byd-td-model-option active" data-val="BYD SEAL" role="option" aria-selected="true">BYD SEAL</li>
+              <li class="byd-td-model-option" data-val="BYD ATTO 3" role="option" aria-selected="false">BYD ATTO 3</li>
+              <li class="byd-td-model-option" data-val="BYD DOLPHIN" role="option" aria-selected="false">BYD DOLPHIN</li>
+              <li class="byd-td-model-option" data-val="BYD M6" role="option" aria-selected="false">BYD M6</li>
+              <li class="byd-td-model-option" data-val="BYD SEALION 7" role="option" aria-selected="false">BYD SEALION 7</li>
+              <li class="byd-td-model-option" data-val="BYD ATTO 1" role="option" aria-selected="false">BYD ATTO 1</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Lower Frosted Glass Block: Form Inputs & Disclaimers -->
+        <div class="byd-td-card-info">
+          <form id="bydTestDriveForm" class="byd-td-form" novalidate>
+            <input type="hidden" name="model" id="bydFormModelInput" value="BYD SEAL">
+            <input type="hidden" name="contact_preference" id="bydContactPrefInput" value="phone">
+            <input type="hidden" name="country" value="Indonesia">
+            <input type="hidden" name="selected_dealer" id="bydFormDealerInput" value="">
+
+            <!-- Name Row (2 columns) -->
+            <div class="byd-td-row byd-td-name-row">
+              <div class="byd-td-field">
+                <input type="text" id="bydFirstName" name="first_name" placeholder="Nama Depan*" class="byd-td-input" required autocomplete="given-name">
+                <span class="byd-td-remind" id="remindFirstName">Nama depan wajib diisi</span>
+              </div>
+              <div class="byd-td-field">
+                <input type="text" id="bydLastName" name="last_name" placeholder="Nama Belakang*" class="byd-td-input" required autocomplete="family-name">
+                <span class="byd-td-remind" id="remindLastName">Nama belakang wajib diisi</span>
+              </div>
+            </div>
+
+            <!-- Contact Preference Row -->
+            <div class="byd-td-row byd-td-pref-row">
+              <span class="byd-td-pref-label">Preferensi Kontak</span>
+              <div class="byd-td-pref-selector" id="bydPrefSelector">
+                <div class="byd-td-pref-current" id="bydPrefCurrent" tabindex="0" role="button">
+                  <span id="bydPrefText">No. Telepon</span>
+                  <svg class="byd-td-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                    <path d="M1 1L5 5L9 1" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <ul class="byd-td-pref-dropdown" id="bydPrefDropdown">
+                  <li class="byd-td-pref-option active" data-pref="phone">No. Telepon</li>
+                  <li class="byd-td-pref-option" data-pref="email">Email</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Country Row -->
+            <div class="byd-td-row byd-td-pref-row">
+              <span class="byd-td-pref-label">Negara</span>
+              <div class="byd-td-static-value">
+                <span>Indonesia</span>
+                <svg class="byd-td-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                  <path d="M1 1L5 5L9 1" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Phone Field -->
+            <div class="byd-td-field">
+              <input type="tel" id="bydPhone" name="phone" placeholder="No. Telepon*" class="byd-td-input" required autocomplete="tel">
+              <span class="byd-td-remind" id="remindPhone">Nomor telepon wajib diisi</span>
+            </div>
+
+            <!-- Email Field -->
+            <div class="byd-td-field">
+              <input type="email" id="bydEmail" name="email" placeholder="Email" class="byd-td-input" autocomplete="email">
+              <span class="byd-td-remind" id="remindEmail">Format email tidak sesuai</span>
+            </div>
+
+            <!-- Dealer Search Field -->
+            <div class="byd-td-field byd-td-dealer-field">
+              <input type="text" id="bydAreaSearch" placeholder="Masukkan area untuk mencari dealer*" class="byd-td-input" required autocomplete="off">
+              <span class="byd-td-remind" id="remindDealer">Silakan pilih dealer terdekat</span>
+            </div>
+
+            <!-- Space and Horizontal Divider Line as seen in reference screenshot -->
+            <div class="byd-td-divider-space">
+              <div class="byd-td-line"></div>
+            </div>
+
+            <!-- Tip Text -->
+            <p class="byd-td-tip">
+              *Jika opsi di atas tidak cocok untuk Anda, silakan tinggalkan alamat Anda di atas dan spesialis BYD kami akan segera menghubungi Anda.
+            </p>
+
+            <!-- Checkbox Disclaimers -->
+            <div class="byd-td-check-group">
+              <div class="byd-td-check-item">
+                <label class="byd-td-checkbox-label">
+                  <input type="checkbox" id="bydCheckTerms" required>
+                  <span class="byd-td-custom-box"></span>
+                  <span class="byd-td-check-text">
+                    Dengan melanjutkan lebih jauh, saya memahami dan menyetujui
+                    <a href="{{ section.settings.link_terms | default: '/pages/contact' }}" target="_blank" rel="noopener">Ketentuan Penggunaan</a>
+                    dan
+                    <a href="{{ section.settings.link_privacy | default: '/pages/contact' }}" target="_blank" rel="noopener">Kebijakan Privasi</a>
+                    BYD tentang bagaimana BYD memproses data pribadi saya.
+                  </span>
+                </label>
+                <span class="byd-td-remind" id="remindTerms">Anda harus menyetujui Ketentuan Penggunaan & Kebijakan Privasi</span>
+              </div>
+
+              <div class="byd-td-check-item">
+                <label class="byd-td-checkbox-label">
+                  <input type="checkbox" id="bydCheckNewsletter">
+                  <span class="byd-td-custom-box"></span>
+                  <span class="byd-td-check-text">
+                    <strong>BYD Buletin Berita</strong><br>
+                    Untuk berlangganan buletin berita, saya setuju dengan
+                    <a href="{{ section.settings.link_terms | default: '/pages/contact' }}" target="_blank" rel="noopener">Ketentuan Penggunaan</a>
+                    dan
+                    <a href="{{ section.settings.link_privacy | default: '/pages/contact' }}" target="_blank" rel="noopener">Kebijakan Privasi</a>
+                    BYD.<br>
+                    <span class="byd-td-subtip">Jika Anda ingin memberikan persetujuan untuk menerima buletin kami, silakan centang kotak di atas dan kirimkan. Anda dapat berhenti berlangganan kapan saja melalui tombol di email Anda.</span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Submit Button (Centered White Rectangular Button) -->
+            <div class="byd-td-action">
+              <button type="submit" class="byd-td-submit-btn" id="bydSubmitBtn">
+                {{ section.settings.submit_label | default: 'KIRIM' }}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column: Dealer Selection Panel (More Compact as Requested) -->
+      <div class="byd-td-dealer-panel" id="bydDealerPanel">
+        <div class="byd-td-dealer-header">
+          <p class="byd-td-dealer-title">Pilih dealer BYD terdekat (<span id="bydDealerCount">8</span>)</p>
+          <button type="button" class="byd-td-dealer-close" id="bydDealerClose" aria-label="Tutup daftar dealer">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M1 1L15 15M1 15L15 1" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="byd-td-dealer-list" id="bydDealerList">
+          <!-- Dealers generated dynamically via JS -->
+        </div>
+
+        <div class="byd-td-dealer-nodata" id="bydDealerNoData" style="display: none;">
+          <p>Jaringan dealer untuk area tersebut sedang dalam persiapan. Silakan cantumkan alamat Anda di kolom catatan dan tim kami akan segera menghubungi Anda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success / Result Modal Overlay -->
+  <div class="byd-td-modal-overlay" id="bydModalOverlay" style="display: none;">
+    <div class="byd-td-modal-card">
+      <button type="button" class="byd-td-modal-close" id="bydModalClose" aria-label="Tutup">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M1 1L15 15M1 15L15 1" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="byd-td-modal-icon">
+        <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="30" stroke="#12C500" stroke-width="3"/>
+          <path d="M20 32.5L28 40.5L44 24.5" stroke="#12C500" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="byd-td-modal-title">PENDAFTARAN BERHASIL</h2>
+      <p class="byd-td-modal-desc">
+        Terima kasih atas minat Anda pada <strong id="bydModalModelName">BYD SEAL</strong>.<br>
+        Dealer <strong id="bydModalDealerName">BYD Arista</strong> terdekat telah menerima formulir permohonan uji berkendara Anda dan spesialis kami akan segera menghubungi Anda.
+      </p>
+      <div class="byd-td-modal-action">
+        <a href="/" class="byd-td-modal-btn">Kembali ke Halaman Utama</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+/* ==========================================================================
+   BYD SEAL Test Drive Scoped Styles
+   Strict Reference Alignment
+   Font: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif
+   Breakpoint: 990px
+   ========================================================================== */
+
+#byd-test-drive-root {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #0b0d10;
+  color: #ffffff;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#byd-test-drive-root * {
+  box-sizing: border-box;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+}
+
+/* Hero Background Layer: Car positioned cleanly on the right */
+.byd-td-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.byd-td-hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 88% center;
+  display: block;
+}
+
+.byd-td-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(11,13,16,0.2) 0%, rgba(11,13,16,0.05) 50%, rgba(11,13,16,0.2) 100%);
+  pointer-events: none;
+}
+
+/* Main Container */
+.byd-td-main-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 85px 40px 90px 100px;
+}
+
+.byd-td-layout {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 32px;
+}
+
+/* ==========================================================================
+   Left Form Card - Matching Reference Screenshot Exactly
+   ========================================================================== */
+/* Refined Compact Glassmorphism Card (Lebih kecil & tidak terlalu gelap) */
+.byd-td-form-card,
+.test-drive-container .user {
+  width: 420px;
+  max-width: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+  flex-shrink: 0;
+}
+
+/* Top Block: Lighter Translucent Frosted Glass Header */
+.byd-td-card-top,
+.test-drive-container .user .top {
+  background: rgba(55, 62, 70, 0.58);
+  -webkit-backdrop-filter: blur(16px) contrast(68%);
+  backdrop-filter: blur(16px) contrast(68%);
+  padding: 26px 24px 22px;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box;
+}
+
+.byd-td-title,
+.test-drive-container .user .top .title {
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+  color: #ffffff;
+  margin: 0 0 18px;
+}
+
+/* Model Selector Dropdown: Compact 44px with thin border */
+.byd-td-model-selector,
+.test-drive-container .user .top .selectCar {
+  position: relative;
+  width: 100%;
+}
+
+.byd-td-model-current,
+.test-drive-container .user .top .selectCar .choose {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 44px;
+  padding: 0 18px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 3px;
+  cursor: pointer;
+  user-select: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.byd-td-model-current:hover,
+.test-drive-container .user .top .selectCar .choose:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.byd-td-model-current:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 1px;
+}
+
+.byd-td-model-label {
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  color: #ffffff;
+  line-height: 44px;
+}
+
+.byd-td-arrow {
+  display: block;
+  width: 11px;
+  height: 6px;
+  flex-shrink: 0;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.byd-td-model-selector.open .byd-td-arrow {
+  transform: rotate(180deg);
+}
+
+.byd-td-model-dropdown,
+.test-drive-container .user .top .selectCar .options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(60, 72, 82, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: none;
+  border-radius: 0 0 6px 6px;
+  list-style: none;
+  padding: 4px 0;
+  margin: 0;
+  z-index: 60;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  max-height: 240px;
+  overflow-y: auto;
+  backdrop-filter: blur(15px);
+}
+
+.byd-td-model-dropdown::-webkit-scrollbar {
+  width: 4px;
+}
+
+.byd-td-model-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.byd-td-model-selector.open .byd-td-model-dropdown {
+  display: block;
+}
+
+.byd-td-model-option,
+.test-drive-container .user .top .selectCar .options .option {
+  padding: 0 18px;
+  height: 40px;
+  line-height: 40px;
+  font-family: Montserrat, Arial, "Helvetica Neue", Helvetica, sans-serif !important;
+  font-size: 14px;
+  font-weight: 400;
+  color: #ffffff;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
+}
+
+.byd-td-model-option:last-child {
+  border-bottom: none;
+}
+
+.byd-td-model-option:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.byd-td-model-option.active {
+  background-color: rgba(255, 255, 255, 0.22);
+  font-weight: 600;
+}
+
+/* Lower Block: Lighter Semi-Transparent Frosted Glass Body */
+.byd-td-card-info,
+.test-drive-container .user .info {
+  background: rgba(45, 52, 60, 0.42);
+  -webkit-backdrop-filter: blur(16px) contrast(68%);
+  backdrop-filter: blur(16px) contrast(68%);
+  padding: 10px 24px 28px;
+  border-radius: 0 0 16px 16px;
+}
+
+.byd-td-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.byd-td-row {
+  display: flex;
+  width: 100%;
+}
+
+.byd-td-name-row {
+  gap: 16px;
+}
+
+.byd-td-name-row .byd-td-field {
+  flex: 1;
+}
+
+.byd-td-field {
+  position: relative;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Inputs - Strict Glassmorphism Underline Only (Overrides Dawn base.css)
+   ========================================================================== */
+#byd-test-drive-root input.byd-td-input,
+#byd-test-drive-root .byd-td-form input.byd-td-input,
+#byd-test-drive-root input:not([type='checkbox'], [type='radio']),
+#byd-test-drive-root .byd-td-form input,
+.byd-td-input {
+  width: 100% !important;
+  height: 42px !important;
+  min-height: 42px !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 0 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: 14px 0 6px !important;
+  outline: none !important;
+  margin: 0 !important;
+  transition: border-color 0.2s ease !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+}
+
+#byd-test-drive-root input.byd-td-input::placeholder,
+#byd-test-drive-root .byd-td-form input::placeholder,
+#byd-test-drive-root input:not([type='checkbox'], [type='radio'])::placeholder,
+.byd-td-input::placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  opacity: 1 !important;
+}
+
+#byd-test-drive-root input.byd-td-input::-webkit-input-placeholder,
+#byd-test-drive-root .byd-td-form input::-webkit-input-placeholder,
+.byd-td-input::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
+  opacity: 1 !important;
+}
+
+#byd-test-drive-root input.byd-td-input::-moz-placeholder,
+.byd-td-input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+  opacity: 1 !important;
+}
+
+#byd-test-drive-root input.byd-td-input:-ms-input-placeholder,
+.byd-td-input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8) !important;
+  opacity: 1 !important;
+}
+
+#byd-test-drive-root input.byd-td-input:focus,
+#byd-test-drive-root .byd-td-form input:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-bottom-color: #ffffff !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* Chrome autofill override */
+#byd-test-drive-root input:-webkit-autofill,
+#byd-test-drive-root input:-webkit-autofill:hover, 
+#byd-test-drive-root input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(30, 35, 42, 0.85) inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.byd-td-remind {
+  display: none;
+  color: #ff5252;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.byd-td-field.has-error .byd-td-remind {
+  display: block;
+}
+
+/* Contact Preference & Country Rows */
+.byd-td-pref-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+}
+
+.byd-td-pref-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
+}
+
+.byd-td-pref-selector {
+  position: relative;
+}
+
+.byd-td-pref-current {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.byd-td-pref-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #3e4448;
+  border: 1px solid #777;
+  border-radius: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 140px;
+  z-index: 40;
+}
+
+.byd-td-pref-selector.open .byd-td-pref-dropdown {
+  display: block;
+}
+
+.byd-td-pref-option {
+  padding: 10px 16px;
+  font-size: 14px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.byd-td-pref-option:hover,
+.byd-td-pref-option.active {
+  background: #50585f;
+}
+
+.byd-td-static-value {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #ffffff;
+  cursor: default;
+}
+
+/* Divider & Gap Space Matching Screenshot */
+.byd-td-divider-space {
+  padding-top: 24px;
+}
+
+.byd-td-line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.55);
+}
+
+.byd-td-tip {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #ffffff;
+  opacity: 0.95;
+  margin: 14px 0 20px;
+}
+
+/* Checkboxes */
+.byd-td-check-group {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-bottom: 24px;
+}
+
+.byd-td-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+
+.byd-td-checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.byd-td-custom-box {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  border-radius: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.byd-td-checkbox-label input:checked ~ .byd-td-custom-box {
+  background: #ffffff;
+}
+
+.byd-td-checkbox-label input:checked ~ .byd-td-custom-box::after {
+  content: '✓';
+  color: #0b0d10;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.byd-td-check-text {
+  font-size: 12px;
+  line-height: 1.55;
+  color: #ffffff;
+  opacity: 0.95;
+}
+
+.byd-td-check-text a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.byd-td-subtip {
+  display: block;
+  font-size: 11px;
+  opacity: 0.8;
+  margin-top: 4px;
+}
+
+/* Submit Button: Centered White Rectangular Button */
+.byd-td-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.byd-td-submit-btn {
+  display: inline-block;
+  width: 200px;
+  height: 42px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.byd-td-submit-btn:hover {
+  background: #e2e8f0;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Right Column: Dealer Panel - Made Smaller & Compact as Requested
+   ========================================================================== */
+.byd-td-dealer-panel {
+  width: 360px;
+  max-width: 380px;
+  background: rgba(35, 40, 46, 0.72);
+  backdrop-filter: blur(20px) contrast(85%);
+  -webkit-backdrop-filter: blur(20px) contrast(85%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
+}
+
+.byd-td-dealer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.byd-td-dealer-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.2px;
+}
+
+.byd-td-dealer-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.byd-td-dealer-close:hover {
+  opacity: 1;
+}
+
+.byd-td-dealer-list {
+  max-height: 440px;
+  overflow-y: auto;
+  padding: 10px 14px;
+}
+
+.byd-td-dealer-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.byd-td-dealer-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 3px;
+}
+
+.byd-td-dealer-card {
+  padding: 12px 14px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.byd-td-dealer-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
+}
+
+.byd-td-dealer-card.selected {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: #ffffff;
+}
+
+.byd-td-dealer-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.byd-td-dealer-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.byd-td-dealer-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: rgba(18, 197, 0, 0.15);
+  color: #12C500;
+  border: 1px solid rgba(18, 197, 0, 0.3);
+}
+
+.byd-td-dealer-address {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 6px;
+}
+
+.byd-td-dealer-contact {
+  display: flex;
+  gap: 12px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.byd-td-dealer-nodata {
+  padding: 30px 16px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Modal Overlay
+   ========================================================================== */
+.byd-td-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.byd-td-modal-card {
+  position: relative;
+  background: #181d22;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  max-width: 480px;
+  width: 100%;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+.byd-td-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+}
+
+.byd-td-modal-close:hover {
+  opacity: 1;
+}
+
+.byd-td-modal-icon {
+  margin-bottom: 18px;
+}
+
+.byd-td-modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  margin: 0 0 12px;
+}
+
+.byd-td-modal-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 24px;
+}
+
+.byd-td-modal-btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #ffffff;
+  color: #0b0d10;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 0;
+}
+
+/* ==========================================================================
+   Responsive Breakpoint: 990px & Below
+   ========================================================================== */
+@media (max-width: 990px) {
+  .byd-td-hero {
+    position: relative;
+    height: 52vw;
+    min-height: 250px;
+  }
+
+  .byd-td-main-container {
+    padding: 20px 16px 60px;
+    margin-top: -30px;
+  }
+
+  .byd-td-layout {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .byd-td-form-card {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  .byd-td-card-top {
+    background-color: #4b4b4b;
+    padding: 24px 20px 22px;
+    border-radius: 8px 8px 0 0;
+  }
+
+  .byd-td-title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .byd-td-model-current {
+    height: 46px;
+    padding: 0 18px;
+  }
+
+  .byd-td-model-label {
+    font-size: 15px;
+    line-height: 46px;
+  }
+
+  .byd-td-model-dropdown {
+    background-color: #4b4b4b;
+    border-color: #777777;
+  }
+
+  .byd-td-model-option {
+    height: 42px;
+    line-height: 42px;
+    padding: 0 18px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .byd-td-card-info {
+    padding: 10px 20px 35px;
+  }
+
+  .byd-td-name-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .byd-td-dealer-panel {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .byd-td-dealer-list {
+    max-height: 360px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Dealers Data
+  var dealers = [
+    {
+      id: 'arista-bsd',
+      name: 'BYD Arista BSD City',
+      city: 'Tangerang',
+      area: 'BSD Serpong Tangerang',
+      address: 'Jl. BSD Raya Utama No. 8, Pagedangan, Tangerang, Banten 15339',
+      phone: '+62 21 5315 8888',
+      hours: '08:30 - 18:00'
+    },
+    {
+      id: 'harmony-sudirman',
+      name: 'BYD Harmony Sudirman',
+      city: 'Jakarta Pusat',
+      area: 'Sudirman Thamrin Jakarta Pusat',
+      address: 'Gedung Menara Sudirman Lt. Dasar, Jl. Jend. Sudirman Kav. 60, Jakarta Pusat 12190',
+      phone: '+62 21 522 9999',
+      hours: '08:30 - 19:00'
+    },
+    {
+      id: 'arista-sunter',
+      name: 'BYD Arista Sunter',
+      city: 'Jakarta Utara',
+      area: 'Sunter Kelapa Gading Jakarta Utara',
+      address: 'Jl. Danau Sunter Barat Blok A-3 No. 9, Jakarta Utara 14350',
+      phone: '+62 21 6583 3333',
+      hours: '08:30 - 18:00'
+    },
+    {
+      id: 'haka-cibubur',
+      name: 'BYD Haka Auto Cibubur',
+      city: 'Depok / Bekasi',
+      area: 'Cibubur Cikeas Bekasi Depok',
+      address: 'Jl. Alternatif Cibubur KM 4 No. 88, Jatisampurna, Bekasi 17435',
+      phone: '+62 21 8459 7777',
+      hours: '08:30 - 18:00'
+    },
+    {
+      id: 'arista-tebet',
+      name: 'BYD Arista Tebet',
+      city: 'Jakarta Selatan',
+      area: 'Tebet Casablanca Pancoran Jakarta Selatan',
+      address: 'Jl. Prof. Dr. Soepomo No. 143, Tebet Barat, Jakarta Selatan 12810',
+      phone: '+62 21 8378 1234',
+      hours: '08:30 - 18:00'
+    },
+    {
+      id: 'haka-bintaro',
+      name: 'BYD Haka Auto Bintaro',
+      city: 'Tangerang Selatan',
+      area: 'Bintaro Pondok Aren Tangerang Selatan',
+      address: 'CBD Bintaro Jaya Sektor 7 Blok B7/D-01, Tangerang Selatan 15224',
+      phone: '+62 21 2221 4567',
+      hours: '08:30 - 18:00'
+    },
+    {
+      id: 'arista-bandung',
+      name: 'BYD Arista Soekarno Hatta Bandung',
+      city: 'Bandung',
+      area: 'Bandung Jawa Barat',
+      address: 'Jl. Soekarno-Hatta No. 689, Buahbatu, Kota Bandung, Jawa Barat 40286',
+      phone: '+62 22 7351 2345',
+      hours: '08:30 - 17:30'
+    },
+    {
+      id: 'arista-surabaya',
+      name: 'BYD Arista Kenjeran Surabaya',
+      city: 'Surabaya',
+      area: 'Surabaya Jawa Timur Kenjeran',
+      address: 'Jl. Kenjeran No. 518, Kalijudan, Kec. Mulyorejo, Surabaya, Jawa Timur 60114',
+      phone: '+62 31 382 8888',
+      hours: '08:30 - 17:30'
+    }
+  ];
+
+  // DOM Elements
+  var modelSelector = document.getElementById('bydModelSelector');
+  var modelCurrent = document.getElementById('bydModelCurrent');
+  var selectedModelText = document.getElementById('bydSelectedModelText');
+  var formModelInput = document.getElementById('bydFormModelInput');
+  var modelOptions = document.querySelectorAll('.byd-td-model-option');
+
+  var prefSelector = document.getElementById('bydPrefSelector');
+  var prefCurrent = document.getElementById('bydPrefCurrent');
+  var prefText = document.getElementById('bydPrefText');
+  var contactPrefInput = document.getElementById('bydContactPrefInput');
+  var prefOptions = document.querySelectorAll('.byd-td-pref-option');
+
+  var dealerListContainer = document.getElementById('bydDealerList');
+  var dealerCountSpan = document.getElementById('bydDealerCount');
+  var dealerNoData = document.getElementById('bydDealerNoData');
+  var areaSearchInput = document.getElementById('bydAreaSearch');
+  var formDealerInput = document.getElementById('bydFormDealerInput');
+
+  var testDriveForm = document.getElementById('bydTestDriveForm');
+  var modalOverlay = document.getElementById('bydModalOverlay');
+  var modalClose = document.getElementById('bydModalClose');
+  var modalModelName = document.getElementById('bydModalModelName');
+  var modalDealerName = document.getElementById('bydModalDealerName');
+
+  // Initialize Dealers List
+  function renderDealers(items, selectedId) {
+    dealerListContainer.innerHTML = '';
+    dealerCountSpan.textContent = items.length;
+
+    if (items.length === 0) {
+      dealerNoData.style.display = 'block';
+      return;
+    }
+    dealerNoData.style.display = 'none';
+
+    items.forEach(function (d) {
+      var isSelected = d.id === selectedId;
+      var card = document.createElement('div');
+      card.className = 'byd-td-dealer-card' + (isSelected ? ' selected' : '');
+      card.setAttribute('data-id', d.id);
+      card.setAttribute('data-name', d.name);
+
+      card.innerHTML =
+        '<div class="byd-td-dealer-name-row">' +
+          '<div class="byd-td-dealer-name">' + d.name + '</div>' +
+          '<span class="byd-td-dealer-badge">Resmi</span>' +
+        '</div>' +
+        '<p class="byd-td-dealer-address">' + d.address + '</p>' +
+        '<div class="byd-td-dealer-contact">' +
+          '<span>Tel: ' + d.phone + '</span>' +
+          '<span>Jam: ' + d.hours + '</span>' +
+        '</div>';
+
+      card.addEventListener('click', function () {
+        selectDealer(d);
+      });
+
+      dealerListContainer.appendChild(card);
+    });
+  }
+
+  function selectDealer(d) {
+    formDealerInput.value = d.name;
+    areaSearchInput.value = d.name + ' (' + d.city + ')';
+    var remindDealer = document.getElementById('remindDealer');
+    if (remindDealer && remindDealer.parentElement) {
+      remindDealer.parentElement.classList.remove('has-error');
+    }
+
+    var cards = dealerListContainer.querySelectorAll('.byd-td-dealer-card');
+    cards.forEach(function (c) {
+      if (c.getAttribute('data-id') === d.id) {
+        c.classList.add('selected');
+      } else {
+        c.classList.remove('selected');
+      }
+    });
+  }
+
+  // Initial render
+  renderDealers(dealers, 'arista-bsd');
+  selectDealer(dealers[0]);
+
+  // Area Search Filter
+  areaSearchInput.addEventListener('input', function (e) {
+    var query = e.target.value.toLowerCase().trim();
+    if (!query) {
+      renderDealers(dealers, formDealerInput.value);
+      return;
+    }
+    var filtered = dealers.filter(function (d) {
+      return (
+        d.name.toLowerCase().indexOf(query) !== -1 ||
+        d.city.toLowerCase().indexOf(query) !== -1 ||
+        d.area.toLowerCase().indexOf(query) !== -1 ||
+        d.address.toLowerCase().indexOf(query) !== -1
+      );
+    });
+    renderDealers(filtered, formDealerInput.value);
+  });
+
+  // Model Selector Toggle
+  modelCurrent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var isOpen = modelSelector.classList.toggle('open');
+    modelCurrent.setAttribute('aria-expanded', isOpen);
+  });
+
+  modelOptions.forEach(function (opt) {
+    opt.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var val = opt.getAttribute('data-val');
+      selectedModelText.textContent = val;
+      formModelInput.value = val;
+      modelOptions.forEach(function (o) { o.classList.remove('active'); o.setAttribute('aria-selected', 'false'); });
+      opt.classList.add('active');
+      opt.setAttribute('aria-selected', 'true');
+      modelSelector.classList.remove('open');
+      modelCurrent.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Preference Selector Toggle
+  prefCurrent.addEventListener('click', function (e) {
+    e.stopPropagation();
+    prefSelector.classList.toggle('open');
+  });
+
+  prefOptions.forEach(function (opt) {
+    opt.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var pref = opt.getAttribute('data-pref');
+      prefText.textContent = opt.textContent;
+      contactPrefInput.value = pref;
+      prefOptions.forEach(function (o) { o.classList.remove('active'); });
+      opt.classList.add('active');
+      prefSelector.classList.remove('open');
+    });
+  });
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', function () {
+    modelSelector.classList.remove('open');
+    modelCurrent.setAttribute('aria-expanded', 'false');
+    prefSelector.classList.remove('open');
+  });
+
+  // Dealer Panel Close Button
+  var dealerCloseBtn = document.getElementById('bydDealerClose');
+  if (dealerCloseBtn) {
+    dealerCloseBtn.addEventListener('click', function () {
+      var panel = document.getElementById('bydDealerPanel');
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    });
+  }
+
+  // Form Validation & Submission
+  testDriveForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var isValid = true;
+
+    // First Name
+    var firstName = document.getElementById('bydFirstName');
+    if (!firstName.value.trim()) {
+      firstName.parentElement.classList.add('has-error');
+      isValid = false;
+    } else {
+      firstName.parentElement.classList.remove('has-error');
+    }
+
+    // Last Name
+    var lastName = document.getElementById('bydLastName');
+    if (!lastName.value.trim()) {
+      lastName.parentElement.classList.add('has-error');
+      isValid = false;
+    } else {
+      lastName.parentElement.classList.remove('has-error');
+    }
+
+    // Phone
+    var phone = document.getElementById('bydPhone');
+    var phoneVal = phone.value.trim();
+    if (!phoneVal || phoneVal.length < 8) {
+      phone.parentElement.classList.add('has-error');
+      isValid = false;
+    } else {
+      phone.parentElement.classList.remove('has-error');
+    }
+
+    // Email
+    var email = document.getElementById('bydEmail');
+    var emailVal = email.value.trim();
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (contactPrefInput.value === 'email' && !emailVal) {
+      email.parentElement.classList.add('has-error');
+      isValid = false;
+    } else if (emailVal && !emailRegex.test(emailVal)) {
+      email.parentElement.classList.add('has-error');
+      isValid = false;
+    } else {
+      email.parentElement.classList.remove('has-error');
+    }
+
+    // Dealer
+    if (!formDealerInput.value) {
+      areaSearchInput.parentElement.classList.add('has-error');
+      isValid = false;
+    } else {
+      areaSearchInput.parentElement.classList.remove('has-error');
+    }
+
+    // Terms Checkbox
+    var checkTerms = document.getElementById('bydCheckTerms');
+    var termsRemind = document.getElementById('remindTerms');
+    if (!checkTerms.checked) {
+      termsRemind.style.display = 'block';
+      isValid = false;
+    } else {
+      termsRemind.style.display = 'none';
+    }
+
+    if (isValid) {
+      modalModelName.textContent = formModelInput.value;
+      modalDealerName.textContent = formDealerInput.value;
+      modalOverlay.style.display = 'flex';
+    }
+  });
+
+  // Modal Close
+  modalClose.addEventListener('click', function () {
+    modalOverlay.style.display = 'none';
+  });
+
+  modalOverlay.addEventListener('click', function (e) {
+    if (e.target === modalOverlay) {
+      modalOverlay.style.display = 'none';
+    }
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "BYD Test Drive",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Judul Utama",
+      "default": "Pilih model"
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Label Tombol Kirim",
+      "default": "KIRIM"
+    },
+    {
+      "type": "url",
+      "id": "link_terms",
+      "label": "Tautan Ketentuan Penggunaan"
+    },
+    {
+      "type": "url",
+      "id": "link_privacy",
+      "label": "Tautan Kebijakan Privasi"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BYD Test Drive"
+    }
+  ]
+}
+{% endschema %}
